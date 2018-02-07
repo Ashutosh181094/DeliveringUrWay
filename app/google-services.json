@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "155188592027",
+    "firebase_url": "https://deliveringurway.firebaseio.com",
+    "project_id": "deliveringurway",
+    "storage_bucket": "deliveringurway.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155188592027:android:7018246ee17fd9c4",
+        "android_client_info": {
+          "package_name": "com.example.a1505197.deliveringurway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155188592027-fpjtbhp0vn2ncvnd0ie7evl5tccbdja4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.a1505197.deliveringurway",
+            "certificate_hash": "fd14d22675707250143b116c8b3895950dbd0618"
+          }
+        },
+        {
+          "client_id": "155188592027-jb93o9ha73di29l3meunupnp9g7o91am.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSYSQI26moBQ7Niweo6GAsLtCzNZTtXt8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155188592027-jb93o9ha73di29l3meunupnp9g7o91am.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
