@@ -36,7 +36,7 @@ public class Register extends AppCompatActivity
         buttonRegister= (Button) findViewById(R.id.btn_register);
         initProgressBar();
         setUpFireBase();
-        createNewUser();
+        createNewUser();a
     }
     public void setUpFireBase()
     {
