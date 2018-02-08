@@ -34,7 +34,7 @@ public class Register extends AppCompatActivity
         etPassword= (EditText) findViewById(R.id.etPassword);
         etConfirmPassword= (EditText) findViewById(R.id.etConfirmPassword);
         buttonRegister= (Button) findViewById(R.id.btn_register);
-        progressBar= (ProgressBar) findViewById(R.id.progressBar);
+        initProgressBar();
         setUpFireBase();
         createNewUser();
     }
@@ -64,6 +64,7 @@ public class Register extends AppCompatActivity
                email=etEmail.getText().toString();
                password=etPassword.getText().toString();
                confirmpassword=etConfirmPassword.getText().toString();
+               showProgressBar();
                if (isStringNull(email)&&isStringNull(password)&&isStringNull(confirmpassword))
                {
                    Toast.makeText(Register.this,"Fill in all the fields",Toast.LENGTH_LONG).show();
@@ -85,7 +86,7 @@ public class Register extends AppCompatActivity
                            {
                                sendVerificationEmail();
                             Toast.makeText(Register.this,"Varification Email sent",Toast.LENGTH_LONG).show();
-                               progressBar.setVisibility(View.GONE);
+                              hideProgressBar();
                            }
                            else
                            {
@@ -107,7 +108,8 @@ public class Register extends AppCompatActivity
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
+                            if (task.isSuccessful())
+                            {
 
                             }
                             else{
@@ -137,6 +139,21 @@ public class Register extends AppCompatActivity
         else
             return false;
     }
+    private void initProgressBar(){
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
+    }
+    private void showProgressBar(){
+        progressBar.setVisibility(View.VISIBLE);
+
+    }
+
+    private void hideProgressBar(){
+        if(progressBar.getVisibility() == View.VISIBLE){
+            progressBar.setVisibility(View.INVISIBLE);
+        }
+    }
+
     @Override
     public void onStart() {
         super.onStart();

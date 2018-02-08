@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.valdesekamdem.library.mdtoast.MDToast;
 
 public class Login extends AppCompatActivity
 {
@@ -90,7 +91,9 @@ public class Login extends AppCompatActivity
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful())
                             {
-                                Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_LONG).show();
+                                 MDToast.makeText(Login.this,"Login Successful",MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
+
+
                                 Intent intent=new Intent(Login.this,MainActivity.class);
                                 startActivity(intent);
 
