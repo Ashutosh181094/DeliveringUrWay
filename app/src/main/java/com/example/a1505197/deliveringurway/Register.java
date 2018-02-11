@@ -38,7 +38,7 @@ public class Register extends AppCompatActivity
         setUpFireBase();
         createNewUser();
     }
-    public void setUpFireBase()
+    public void setUpFireBase()i
     {
         mAuthListener=new FirebaseAuth.AuthStateListener() {
             @Override
