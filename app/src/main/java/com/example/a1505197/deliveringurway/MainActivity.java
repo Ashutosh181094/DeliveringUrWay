@@ -1,20 +1,38 @@
 package com.example.a1505197.deliveringurway;
 
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
+
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
 public class MainActivity extends AppCompatActivity {
+    CarouselView carouselView;
 
-    ViewPager viewPager;
+    int[] sampleImages = {R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        viewPager = findViewById(R.id.viewPager);
+        carouselView = (CarouselView) findViewById(R.id.carouselView);
+        carouselView.setPageCount(sampleImages.length);
 
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-        viewPager.setAdapter(viewPagerAdapter);
+        carouselView.setImageListener(imageListener);
 
     }
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(sampleImages[position]);
+        }
+    };
+
+
+
 }
+
+
+
