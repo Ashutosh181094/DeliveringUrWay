@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,7 @@ public class Login extends AppCompatActivity
     String email,password;
     Button SignIn,SignUp;
     Button tvForgotPassword;
+    ProgressBar progressBar;
     private static final String TAG = "Login";
 
     @Override
@@ -38,6 +40,7 @@ public class Login extends AppCompatActivity
         tvForgotPassword= (Button) findViewById(R.id.tvForgotPassword);
        setUpFirebase();
         setupsignin();
+        initProgressBar();
         tvForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -80,6 +83,7 @@ public class Login extends AppCompatActivity
             public void onClick(View view) {
                 email=etemail.getText().toString();
                 password=etpassword.getText().toString();
+                showProgressBar();
                 if(isStringNull(email)&&isStringNull(password))
                 {
                     Toast.makeText(Login.this,"Fill in all the fields",Toast.LENGTH_LONG).show();
@@ -93,7 +97,7 @@ public class Login extends AppCompatActivity
                             {
                                  MDToast.makeText(Login.this,"Login Successful",MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
 
-
+                                 hideProgressBar();
                                 Intent intent=new Intent(Login.this,MainActivity.class);
                                 startActivity(intent);
 
@@ -124,6 +128,21 @@ public class Login extends AppCompatActivity
         else
             return false;
     }
+    private void showProgressBar(){
+        progressBar.setVisibility(View.VISIBLE);
+
+    }
+
+    private void hideProgressBar(){
+        if(progressBar.getVisibility() == View.VISIBLE){
+            progressBar.setVisibility(View.INVISIBLE);
+        }
+    }
+    private void initProgressBar(){
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
+    }
+
 
     @Override
     public void onStart() {

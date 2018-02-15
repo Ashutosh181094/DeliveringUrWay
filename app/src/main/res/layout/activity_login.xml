@@ -88,6 +88,11 @@
         android:textColor="@color/White"
         android:layout_below="@+id/tvForgotPassword"
         android:layout_centerHorizontal="true" />
+    <ProgressBar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/progressBar"
+        android:layout_centerInParent="true"/>
 
 
 </RelativeLayout>
