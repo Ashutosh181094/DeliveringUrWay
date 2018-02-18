@@ -65,7 +65,9 @@
         android:layout_height="wrap_content"
         android:src="@drawable/arrow"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:id="@+id/arrow2"
+        android:clickable="true"/>
 
 
 </LinearLayout>

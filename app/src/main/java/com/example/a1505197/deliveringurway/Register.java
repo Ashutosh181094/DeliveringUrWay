@@ -1,5 +1,6 @@
 package com.example.a1505197.deliveringurway;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +25,7 @@ public class Register extends AppCompatActivity
     Button buttonRegister;
     String email,password,confirmpassword;
     ProgressBar progressBar;
+    TextView tvRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +37,18 @@ public class Register extends AppCompatActivity
         etPassword= (EditText) findViewById(R.id.etPassword);
         etConfirmPassword= (EditText) findViewById(R.id.etConfirmPassword);
         buttonRegister= (Button) findViewById(R.id.btn_register);
+        tvRegister=(TextView) findViewById(R.id.textViewRegister);
+        tvRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Register.this,Vendorinfo1.class);
+                startActivity(intent);
+            }
+        });
         initProgressBar();
         setUpFireBase();
         createNewUser();
+
     }
     public void setUpFireBase()
     {
