@@ -36,7 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="140dp"
-            android:thumb="@drawable/track"
+            android:thumb="@drawable/thumbsad"
+            android:id="@+id/switchNightDelivery"
 
             />
 
@@ -61,7 +62,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="140dp"
-            android:thumb="@drawable/track"
+            android:thumb="@drawable/thumbsad"
+            android:id="@+id/switchPaytm"
             />
 
     </LinearLayout>
