@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 /**
  * Created by 1505197 on 2/7/2018.
@@ -35,7 +34,6 @@ public class ForgotPasswordDialog extends DialogFragment
         forgotPasswordEmail=(EditText) view.findViewById(R.id.etForgotPasswordemail);
         sendForgotPassword=(Button)view.findViewById(R.id.btnSendPassword);
         mAuth=FirebaseAuth.getInstance();
-        setUpFireBase();
         sendForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,33 +55,13 @@ public class ForgotPasswordDialog extends DialogFragment
         });
         return view;
     }
-    public void setUpFireBase()
-    {
-        mAuthListener=new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user=firebaseAuth.getCurrentUser();
-                if(user!=null)
-                {
-                    //signed in
-                }
-                else
-                {
-                    //signed out
-                }
-            }
-        };
-    }
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
+
     }
     @Override
     public void onStop() {
         super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
     }
 }

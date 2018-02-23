@@ -5,7 +5,7 @@
         android:id="@+id/aboutus"
         app:showAsAction="never"
         android:orderInCategory="100"
-        android:title="Aboutus">
+        android:title="Sign Out">
 
     </item>
     <item

@@ -22,7 +22,7 @@ public class Vendorinfo1 extends AppCompatActivity {
         setContentView(R.layout.vendorregistration1);
         Arrow=(CircleImageView) findViewById(R.id.arrow1);
         aSwitch=(Switch) findViewById(R.id.switchPaytm);
-        bSwitch=findViewById(R.id.switchNightDelivery);
+        bSwitch=(Switch) findViewById(R.id.switchNightDelivery);
         vendorInformation=new VendorInformation();
         Arrow.setOnClickListener(new View.OnClickListener() {
             @Override

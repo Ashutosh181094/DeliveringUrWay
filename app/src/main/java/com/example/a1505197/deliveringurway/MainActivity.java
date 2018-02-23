@@ -9,12 +9,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
 public class MainActivity extends AppCompatActivity {
     CarouselView carouselView;
     Toolbar toolbar;
+    FirebaseAuth mAuth;
 
     int[] sampleImages = {R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut};
 
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAuth=FirebaseAuth.getInstance();
         carouselView = (CarouselView) findViewById(R.id.carouselView);
         toolbar = (Toolbar) findViewById(R.id.customToolbar);
         carouselView.setPageCount(sampleImages.length);
@@ -53,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     {
         if(item.getItemId()==R.id.aboutus)
         {
-
+         Logout();
         }
 
         else if(item.getItemId()==R.id.share)
@@ -82,9 +86,26 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void Logout()
+    {
+       mAuth.signOut();
+       Intent intent=new Intent(MainActivity.this,Login.class);
+       startActivity(intent);
+       finish();
+    }
 
-
-
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+        if(user==null)
+        {
+            Intent intent=new Intent(MainActivity.this,Login.class);
+            startActivity(intent);
+            finish();
+        }
+    }
 }
 
 

@@ -38,7 +38,6 @@ public class Login extends AppCompatActivity
         etemail= (EditText) findViewById(R.id.etEmail);
         etpassword= (EditText) findViewById(R.id.etPassword);
         tvForgotPassword= (Button) findViewById(R.id.tvForgotPassword);
-       setUpFirebase();
         setupsignin();
         initProgressBar();
         tvForgotPassword.setOnClickListener(new View.OnClickListener() {
@@ -57,25 +56,7 @@ public class Login extends AppCompatActivity
             }
         });
     }
-    public void setUpFirebase()
-    {
 
-        mAuthListener=new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user=firebaseAuth.getCurrentUser();
-                if(user!=null)
-                {
-                    //user is signed in
-                }
-                else
-                {
-
-                    //user is signed out
-                }
-            }
-        };
-    }
     public void setupsignin()
     {
         SignIn.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +89,7 @@ public class Login extends AppCompatActivity
                             {
                                 Toast.makeText(Login.this,"Login Failed",Toast.LENGTH_LONG).show();
                                 //if the authentication is not sucessful
+                                hideProgressBar();
                             }
                         }
                     });
@@ -147,13 +129,19 @@ public class Login extends AppCompatActivity
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
-    }
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
+        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+        if(user==null)
+        {
+       // not signed in
         }
+        else
+        {
+            Intent intent=new Intent(Login.this,MainActivity.class);
+            startActivity(intent);
+            finish();
+          // signed in
+        }
+
     }
+
 }
