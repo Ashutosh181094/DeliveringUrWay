@@ -35,29 +35,33 @@
         android:layout_marginTop="40dp">
 
         <RadioGroup
+            android:id="@+id/radiogroupDelivery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/radioButtonNO"
                 android:layout_width="wrap_content"
+                android:onClick="rbClick"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="NO" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/radioButtonYES"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="rbClick"
                 android:layout_weight="1"
                 android:text="YES" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/radioButtonCOND"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="rbClick"
                 android:text="YES, but conditionally" />
         </RadioGroup>
     </LinearLayout>
