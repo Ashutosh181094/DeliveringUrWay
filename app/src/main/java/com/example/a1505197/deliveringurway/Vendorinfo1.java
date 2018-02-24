@@ -29,7 +29,7 @@ public class Vendorinfo1 extends AppCompatActivity {
             public void onClick(View view) {
                 vendorInformation.setNightDelivery(nightDelivery);
                 vendorInformation.setPayTmAccepted(payTmAccepted);
-                Intent intent=new Intent(Vendorinfo1.this,VendorInfo2.class);
+                Intent intent=new Intent(Vendorinfo1.this,VendorInfo4.class);
                 startActivity(intent);
             }
         });

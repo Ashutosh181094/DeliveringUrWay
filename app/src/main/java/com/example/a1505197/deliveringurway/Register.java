@@ -23,7 +23,7 @@ public class Register extends AppCompatActivity
     private FirebaseAuth.AuthStateListener mAuthListener;
     EditText etName,etEmail,etPassword,etConfirmPassword;
     Button buttonRegister;
-    String email,password,confirmpassword;
+    String name,email,password,confirmpassword;
     ProgressBar progressBar;
     TextView tvRegister;
 
@@ -41,7 +41,7 @@ public class Register extends AppCompatActivity
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Register.this,Vendorinfo1.class);
+                Intent intent=new Intent(Register.this,VendorInfo2.class);
                 startActivity(intent);
             }
         });
@@ -73,11 +73,12 @@ public class Register extends AppCompatActivity
            @Override
            public void onClick(View view)
            {
+               name=etName.getText().toString();
                email=etEmail.getText().toString();
                password=etPassword.getText().toString();
                confirmpassword=etConfirmPassword.getText().toString();
-               showProgressBar();
-               if (isStringNull(email)&&isStringNull(password)&&isStringNull(confirmpassword))
+               //showProgressBar();
+               if (isStringNull(name)||isStringNull(email)||isStringNull(password)||isStringNull(confirmpassword))
                {
                    Toast.makeText(Register.this,"Fill in all the fields",Toast.LENGTH_LONG).show();
                }
@@ -94,8 +95,9 @@ public class Register extends AppCompatActivity
                        @Override
                        public void onComplete(@NonNull Task<AuthResult> task)
                        {
+                           showProgressBar();
                            if (task.isSuccessful())
-                           {
+                           {    hideProgressBar();
                                sendVerificationEmail();
                             Toast.makeText(Register.this,"Varification Email sent",Toast.LENGTH_LONG).show();
                               hideProgressBar();
