@@ -1,74 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
     >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="215dp"
-        android:background="#4d4cb6">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/hut"
-            android:layout_gravity="center"
-            android:layout_marginLeft="120dp"/>
-
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Address"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:textColor="@color/Black"
-        android:layout_marginTop="30dp"
-        />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:inputType="textPersonName"
-        android:drawableLeft="@drawable/ic_location"
-        />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Phone Number"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:textColor="@color/Black"
-        android:layout_marginTop="30dp"/>
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:inputType="textPersonName"
-         />
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="215dp"
+    android:background="#4d4cb6">
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/arrow3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/hut"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/arrow" />
+        android:layout_marginLeft="120dp"/>
+
+
+</LinearLayout>
+
+<TextView
+    android:id="@+id/textView3"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Address"
+    android:gravity="center"
+    android:textSize="30dp"
+    android:textColor="@color/Black"
+    android:layout_marginTop="30dp"
+    />
+
+<EditText
+    android:id="@+id/editText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:layout_marginRight="30dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="20dp"
+    android:inputType="textPersonName"
+    android:drawableLeft="@drawable/ic_location"
+    />
+
+<TextView
+    android:id="@+id/textView4"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Phone Number"
+    android:gravity="center"
+    android:textSize="30dp"
+    android:textColor="@color/Black"
+    android:layout_marginTop="30dp"/>
+
+<EditText
+    android:id="@+id/editText3"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:layout_marginRight="30dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="20dp"
+    android:inputType="textPersonName"
+    />
+
+<de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/arrow3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:src="@drawable/arrow" />
 
 
 </LinearLayout>
