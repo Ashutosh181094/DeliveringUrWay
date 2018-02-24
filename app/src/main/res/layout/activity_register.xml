@@ -42,7 +42,7 @@
             android:textColor="@color/White"
             android:textSize="40dp" />
 
-
+<!--jajaj -->
         <EditText
             android:id="@+id/etname"
             android:layout_width="match_parent"

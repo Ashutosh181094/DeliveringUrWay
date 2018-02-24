@@ -89,6 +89,7 @@ public class Register extends AppCompatActivity
                        etConfirmPassword.setText("");
                        etPassword.setText("");
                    }
+                   //g
                else
                {
                    mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

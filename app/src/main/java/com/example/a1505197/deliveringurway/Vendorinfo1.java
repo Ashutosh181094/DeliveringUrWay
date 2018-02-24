@@ -41,6 +41,7 @@ public class Vendorinfo1 extends AppCompatActivity {
                     bSwitch.setThumbResource(R.drawable.thumbsmiley);
                     nightDelivery=1;
                 }
+                //vv
                 else
                 {
                     bSwitch.setThumbResource(R.drawable.thumbsad);

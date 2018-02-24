@@ -9,7 +9,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VendorInfo3 extends AppCompatActivity {
     CircleImageView Arrow3;
-    //comment hai
+    //comment haif
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

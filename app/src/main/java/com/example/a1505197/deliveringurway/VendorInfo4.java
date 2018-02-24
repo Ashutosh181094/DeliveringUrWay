@@ -28,7 +28,7 @@ public class VendorInfo4 extends AppCompatActivity {
 //        int n=rg.getCheckedRadioButtonId();
 //        if(n==1){
 //            Toast.makeText(getApplicationContext(),"1",Toast.LENGTH_SHORT).show();
-//        }
+//        }ff
 
     }
     public void rbClick(View v){
