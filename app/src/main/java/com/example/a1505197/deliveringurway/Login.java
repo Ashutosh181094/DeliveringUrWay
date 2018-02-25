@@ -76,7 +76,7 @@ public class Login extends AppCompatActivity
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful())
                             {
-                                 MDToast.makeText(Login.this,"Login Successful",MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
+                                 Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_LONG).show();
 
                                  hideProgressBar();
                                 Intent intent=new Intent(Login.this,MainActivity.class);
