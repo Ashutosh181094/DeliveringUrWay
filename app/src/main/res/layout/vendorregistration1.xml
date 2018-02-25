@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+    <!--jajaj -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="215dp"
@@ -22,12 +23,11 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Is Late Night Delivery available?"
-        android:gravity="center"
-        android:textSize="25dp"
-        android:textColor="@color/Black"
         android:layout_marginTop="30dp"
-        />
+        android:gravity="center"
+        android:text="Is Late Night Delivery available?"
+        android:textColor="@color/Black"
+        android:textSize="24sp" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,16 +44,15 @@
     </LinearLayout>
 
 
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Is Paytm accepted as mode of payment?"
+        android:layout_marginTop="30dp"
         android:gravity="center"
-        android:textSize="25dp"
+        android:text="Is Paytm accepted as mode of payment?"
         android:textColor="@color/Black"
-        android:layout_marginTop="30dp"/>
+        android:textSize="24sp" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,7 +75,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
         android:id="@+id/arrow1"
-        android:clickable="true"/>
+        android:clickable="true" android:focusable="true"/>
 
 
 </LinearLayout>

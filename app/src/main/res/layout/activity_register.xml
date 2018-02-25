@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/bg"
-    android:fitsSystemWindows="true">
+    android:orientation="vertical"
+    >
+    <ScrollView
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    >
+
+        <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:fitsSystemWindows="true">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,21 +42,22 @@
             android:textColor="@color/White"
             android:textSize="40dp" />
 
-
+<!--jajaj -->
         <EditText
             android:id="@+id/etname"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-
+            android:padding="10dp"
+            android:alpha="0.15"
             android:background="@drawable/edittextshape"
-            android:textSize="20sp"
+
 
             android:hint="Name"
 
             android:inputType="textEmailAddress"
-            android:textColor="#ffffff"
-            android:alpha="0.15"/>
+            android:textColor="#0900b7"
+            android:textSize="20sp" />
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
@@ -52,21 +69,22 @@
             android:hint="Email Id"
 
             android:inputType="textEmailAddress"
-            android:textColor="#f90404"
+            android:textColor="#0900b7"
             android:alpha="0.15"/>
+
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
+            android:alpha="0.15"
             android:background="@drawable/edittextshape"
-            android:textSize="20sp"
-            android:padding="10dp"
             android:hint="Password"
+            android:inputType="textPassword"
 
-            android:inputType="textEmailAddress"
-            android:textColor="#fd0606"
-            android:alpha="0.15"/>
+            android:padding="10dp"
+            android:textColor="#1800fc"
+            android:textSize="20sp" />
 
 
 
@@ -79,7 +97,7 @@
             android:background="@drawable/edittextshape"
             android:id="@+id/etConfirmPassword"
             android:layout_marginTop="15dp"
-            android:textColor="#f70303"
+            android:textColor="#0900b7"
             android:alpha="0.15"
             android:textSize="20sp"
             android:padding="10dp"
@@ -137,12 +155,10 @@
 
 
 
-</RelativeLayout>
 
-
-
-
-
+            </RelativeLayout>
+        </ScrollView>
+</LinearLayout>
 
 
 
