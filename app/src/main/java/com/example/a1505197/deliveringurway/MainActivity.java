@@ -3,6 +3,7 @@ package com.example.a1505197.deliveringurway;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         carouselView.setImageListener(imageListener);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("DUR WAY");
+
 
         getSupportActionBar().setElevation(10f);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -74,10 +77,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            Toast.makeText(getApplicationContext(),"ABHI KAAM CHAALU HAI",Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.nav_slideshow) {
+            Toast.makeText(getApplicationContext(),"BOLA NA ABHI KAAM CHAALU HAI",Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.nav_manage) {
+            Toast.makeText(getApplicationContext(),"SAMJH NAHI AATA KI ABHI KAAM CHAALU HAI",Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.nav_share) {
 
