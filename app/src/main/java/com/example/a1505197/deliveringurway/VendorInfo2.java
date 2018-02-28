@@ -33,8 +33,9 @@ public class VendorInfo2 extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
                 } else
                 {
-                vendorInformation.setBusinessName(nameOfB);
-                vendorInformation.setOwnerName(OwnerOfB);
+                Intent intentsend2=new Intent(VendorInfo2.this,VendorInfo4.class);
+                intentsend2.putExtra("nameOfB",nameOfB);
+                intentsend2.putExtra("OwnerOfB",OwnerOfB);
                 Intent intent = new Intent(VendorInfo2.this, VendorInfo3.class);
                 startActivity(intent);
             }

@@ -27,8 +27,9 @@ public class Vendorinfo1 extends AppCompatActivity {
         Arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vendorInformation.setNightDelivery(nightDelivery);
-                vendorInformation.setPayTmAccepted(payTmAccepted);
+               Intent intentsend1=new Intent(Vendorinfo1.this,VendorInfo4.class);
+               intentsend1.putExtra("nightDelivery",nightDelivery);
+               intentsend1.putExtra("paytmAccepted",payTmAccepted);
                 Intent intent=new Intent(Vendorinfo1.this,VendorInfo4.class);
                 startActivity(intent);
             }

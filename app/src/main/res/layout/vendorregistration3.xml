@@ -19,7 +19,7 @@ android:layout_height="match_parent"
 </LinearLayout>
 
 <TextView
-    android:id="@+id/textView3"
+    android:id="@+id/tvAddress"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Address"
@@ -42,7 +42,7 @@ android:layout_height="match_parent"
     />
 
 <TextView
-    android:id="@+id/textView4"
+    android:id="@+id/tvPhoneNumber"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Phone Number"

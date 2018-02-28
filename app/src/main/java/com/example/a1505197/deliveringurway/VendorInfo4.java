@@ -2,15 +2,18 @@ package com.example.a1505197.deliveringurway;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -20,7 +23,9 @@ public class VendorInfo4 extends AppCompatActivity {
     Integer r;
     CircleImageView arrow3;
     VendorInformation vendorInformation;
-
+    DatabaseReference vendordata;
+    String nameOFB,OwnerOfB,Address,PhoneNumber;
+    int nightdelivery,paytmAccepted;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +34,14 @@ public class VendorInfo4 extends AppCompatActivity {
         no=(RadioButton)findViewById(R.id.radioButtonNO);
         yes=(RadioButton)findViewById(R.id.radioButtonYES);
         cond=(RadioButton)findViewById(R.id.radioButtonCOND);
+        Intent getIntent=new Intent();
+        nameOFB=getIntent.getStringExtra("nameOfB");
+        OwnerOfB=getIntent.getStringExtra("OwnerOfB");
+        Address=getIntent.getStringExtra("Address");
+        PhoneNumber=getIntent.getStringExtra("PhoneNumber");
+        nightdelivery=getIntent.getIntExtra("nightDelivery",0);
+        paytmAccepted=getIntent.getIntExtra("paytmAccepted",0);
+        vendordata= FirebaseDatabase.getInstance().getReference();
 
 //        int n=rg.getCheckedRadioButtonId();
 //        if(n==1){
@@ -43,8 +56,7 @@ public class VendorInfo4 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                    Intent intent = new Intent(VendorInfo4.this, VendorInfo5.class);
-                    startActivity(intent);
+
 
 
             }
@@ -113,7 +125,7 @@ public class VendorInfo4 extends AppCompatActivity {
 
                 }
                 else{
-                    vendorInformation.setFreeDelivery(2);
+
 
 
                     b.dismiss();

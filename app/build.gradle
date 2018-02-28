@@ -29,5 +29,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.valdesekamdem.library:md-toast:0.9.0'
     implementation 'com.synnapps:carouselview:0.1.4'
+    implementation 'com.google.firebase:firebase-database:11.8.0'
+
 }
 apply plugin: 'com.google.gms.google-services'
