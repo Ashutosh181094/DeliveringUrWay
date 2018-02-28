@@ -27,10 +27,19 @@ public class Vendorinfo1 extends AppCompatActivity {
         Arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent intentsend1=new Intent(Vendorinfo1.this,VendorInfo4.class);
-               intentsend1.putExtra("nightDelivery",nightDelivery);
-               intentsend1.putExtra("paytmAccepted",payTmAccepted);
+
+                Intent getintent=getIntent();
+                String nameOfB=getintent.getStringExtra("nameOfB");
+                String OwnerOfB=getintent.getStringExtra("OwnerOfB");
+                String Address=getintent.getStringExtra("Address");
+                String PhoneNumber=getintent.getStringExtra("PhoneNumber");
                 Intent intent=new Intent(Vendorinfo1.this,VendorInfo4.class);
+                intent.putExtra("nightDelivery",nightDelivery);
+                intent.putExtra("paytmAccepted",payTmAccepted);
+                intent.putExtra("Address",Address);
+                intent.putExtra("PhoneNumber",PhoneNumber);
+                intent.putExtra("nameOfB",nameOfB);
+                intent.putExtra("OwnerOfB",OwnerOfB);
                 startActivity(intent);
             }
         });

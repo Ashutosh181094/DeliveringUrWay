@@ -34,20 +34,7 @@ public class VendorInfo4 extends AppCompatActivity {
         no=(RadioButton)findViewById(R.id.radioButtonNO);
         yes=(RadioButton)findViewById(R.id.radioButtonYES);
         cond=(RadioButton)findViewById(R.id.radioButtonCOND);
-        Intent getIntent=new Intent();
-        nameOFB=getIntent.getStringExtra("nameOfB");
-        OwnerOfB=getIntent.getStringExtra("OwnerOfB");
-        Address=getIntent.getStringExtra("Address");
-        PhoneNumber=getIntent.getStringExtra("PhoneNumber");
-        nightdelivery=getIntent.getIntExtra("nightDelivery",0);
-        paytmAccepted=getIntent.getIntExtra("paytmAccepted",0);
-        vendordata= FirebaseDatabase.getInstance().getReference();
-        Toast.makeText(VendorInfo4.this,nameOFB,Toast.LENGTH_LONG).show();
-        Toast.makeText(VendorInfo4.this,OwnerOfB,Toast.LENGTH_LONG).show();
-        Toast.makeText(VendorInfo4.this,PhoneNumber,Toast.LENGTH_LONG).show();
-        Toast.makeText(VendorInfo4.this,Address,Toast.LENGTH_LONG).show();
-        Toast.makeText(VendorInfo4.this,nightdelivery,Toast.LENGTH_LONG).show();
-        Toast.makeText(VendorInfo4.this,paytmAccepted,Toast.LENGTH_LONG).show();
+
 
 
 
@@ -63,6 +50,22 @@ public class VendorInfo4 extends AppCompatActivity {
         arrow3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent getintent=getIntent();
+                nameOFB=getintent.getStringExtra("nameOfB");
+                OwnerOfB=getintent.getStringExtra("OwnerOfB");
+                Address=getintent.getStringExtra("Address");
+                PhoneNumber=getintent.getStringExtra("PhoneNumber");
+                nightdelivery=getintent.getIntExtra("nightDelivery",0);
+                paytmAccepted=getintent.getIntExtra("paytmAccepted",0);
+                vendordata= FirebaseDatabase.getInstance().getReference("vendors");
+                VendorInformation vendorInformation=new VendorInformation(nightdelivery,paytmAccepted,nameOFB,OwnerOfB,Address,PhoneNumber);
+                String id=vendordata.push().getKey();
+                vendordata.child(id).setValue(vendorInformation);
+                Toast.makeText(VendorInfo4.this,nameOFB,Toast.LENGTH_LONG).show();
+                Toast.makeText(VendorInfo4.this,OwnerOfB,Toast.LENGTH_LONG).show();
+                Toast.makeText(VendorInfo4.this,Address,Toast.LENGTH_LONG).show();
+                Toast.makeText(VendorInfo4.this,PhoneNumber,Toast.LENGTH_LONG).show();
 
 
 

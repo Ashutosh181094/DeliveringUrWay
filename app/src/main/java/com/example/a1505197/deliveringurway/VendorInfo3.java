@@ -29,10 +29,15 @@ public class VendorInfo3 extends AppCompatActivity {
             public void onClick(View v) {
                 sAddress=Address.getText().toString();
                 sPhoneNumber=phoneNumber.getText().toString();
-               Intent intentsend3=new Intent(VendorInfo3.this,VendorInfo4.class);
-               intentsend3.putExtra("Address",sAddress);
-               intentsend3.putExtra("PhoneNumber",sPhoneNumber);
+               Intent intentsend3=getIntent();
+                String nameOfB=intentsend3.getStringExtra("nameOfB");
+                String OwnerOfB=intentsend3.getStringExtra("OwnerOfB");
+
                 Intent intent=new Intent(VendorInfo3.this,Vendorinfo1.class);
+                intent.putExtra("Address",sAddress);
+                intent.putExtra("PhoneNumber",sPhoneNumber);
+                intent.putExtra("nameOfB",nameOfB);
+                intent.putExtra("OwnerOfB",OwnerOfB);
                 startActivity(intent);
             }
         });

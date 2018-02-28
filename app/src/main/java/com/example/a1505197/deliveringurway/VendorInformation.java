@@ -11,16 +11,16 @@ public class VendorInformation {
     String ownerName;
     String address;
     String phoneNumber;
-    String Delivery;
 
-    public VendorInformation(int nightDelivery, int payTmAccepted, String businessName, String ownerName, String address, String phoneNumber, String delivery) {
+
+    public VendorInformation(int nightDelivery, int payTmAccepted, String businessName, String ownerName, String address, String phoneNumber) {
         this.nightDelivery = nightDelivery;
         this.payTmAccepted = payTmAccepted;
         this.businessName = businessName;
         this.ownerName = ownerName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        Delivery = delivery;
+
     }
 
 
@@ -49,13 +49,6 @@ public class VendorInformation {
         this.businessName = businessName;
     }
 
-    public String getDelivery() {
-        return Delivery;
-    }
-
-    public void setDelivery(String delivery) {
-        Delivery = delivery;
-    }
 
     public String getOwnerName() {
         return ownerName;
@@ -70,18 +63,7 @@ public class VendorInformation {
         return address;
     }
 
-    @Override
-    public String toString() {
-        return "VendorInformation{" +
-                "nightDelivery=" + nightDelivery +
-                ", payTmAccepted=" + payTmAccepted +
-                ", businessName='" + businessName + '\'' +
-                ", ownerName='" + ownerName + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", Delivery='" + Delivery + '\'' +
-                '}';
-    }
+
 
     public void setAddress(String address) {
         this.address = address;
