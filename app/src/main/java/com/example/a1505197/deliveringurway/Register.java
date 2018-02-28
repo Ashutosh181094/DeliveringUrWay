@@ -70,6 +70,7 @@ public class Register extends AppCompatActivity
                    if (!isStringEqual(password,confirmpassword))
                    {
                        Toast.makeText(Register.this,"Password and confirm password do not match",Toast.LENGTH_LONG).show();
+                       hideProgressBar();
                        etConfirmPassword.setText("");
                        etPassword.setText("");
                    }
@@ -89,6 +90,9 @@ public class Register extends AppCompatActivity
                            }
                            else
                            {
+                               Toast.makeText(Register.this,"Email allready registered",Toast.LENGTH_LONG).show();
+
+                               hideProgressBar();
 
                            }
 
