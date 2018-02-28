@@ -15,7 +15,7 @@ public class Vendorinfo1 extends AppCompatActivity {
     Switch aSwitch,bSwitch;
     int nightDelivery=0;
     int payTmAccepted;
-    VendorInformation vendorInformation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +23,7 @@ public class Vendorinfo1 extends AppCompatActivity {
         Arrow=(CircleImageView) findViewById(R.id.arrow1);
         aSwitch=(Switch) findViewById(R.id.switchPaytm);
         bSwitch=(Switch) findViewById(R.id.switchNightDelivery);
-        vendorInformation=new VendorInformation();
+
         Arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

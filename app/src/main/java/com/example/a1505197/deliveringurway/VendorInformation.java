@@ -13,6 +13,18 @@ public class VendorInformation {
     String phoneNumber;
     String Delivery;
 
+    public VendorInformation(int nightDelivery, int payTmAccepted, String businessName, String ownerName, String address, String phoneNumber, String delivery) {
+        this.nightDelivery = nightDelivery;
+        this.payTmAccepted = payTmAccepted;
+        this.businessName = businessName;
+        this.ownerName = ownerName;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        Delivery = delivery;
+    }
+
+
+
     public int getNightDelivery() {
         return nightDelivery;
     }

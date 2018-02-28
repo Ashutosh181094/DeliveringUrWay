@@ -42,13 +42,21 @@ public class VendorInfo4 extends AppCompatActivity {
         nightdelivery=getIntent.getIntExtra("nightDelivery",0);
         paytmAccepted=getIntent.getIntExtra("paytmAccepted",0);
         vendordata= FirebaseDatabase.getInstance().getReference();
+        Toast.makeText(VendorInfo4.this,nameOFB,Toast.LENGTH_LONG).show();
+        Toast.makeText(VendorInfo4.this,OwnerOfB,Toast.LENGTH_LONG).show();
+        Toast.makeText(VendorInfo4.this,PhoneNumber,Toast.LENGTH_LONG).show();
+        Toast.makeText(VendorInfo4.this,Address,Toast.LENGTH_LONG).show();
+        Toast.makeText(VendorInfo4.this,nightdelivery,Toast.LENGTH_LONG).show();
+        Toast.makeText(VendorInfo4.this,paytmAccepted,Toast.LENGTH_LONG).show();
+
+
 
 //        int n=rg.getCheckedRadioButtonId();
 //        if(n==1){
 //            Toast.makeText(getApplicationContext(),"1",Toast.LENGTH_SHORT).show();
 
 //        }ff
-        vendorInformation=new VendorInformation();
+
         arrow3=(CircleImageView) findViewById(R.id.arrow3);
         // onclicklistener
 

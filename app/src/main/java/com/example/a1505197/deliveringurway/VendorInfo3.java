@@ -13,7 +13,7 @@ public class VendorInfo3 extends AppCompatActivity {
     TextView Address;
     TextView phoneNumber;
     String sAddress,sPhoneNumber;
-    VendorInformation vendorInformation;
+
     //comment haif
 
     @Override
@@ -22,7 +22,6 @@ public class VendorInfo3 extends AppCompatActivity {
         setContentView(R.layout.vendorregistration3);
         Address=findViewById(R.id.tvAddress);
         phoneNumber=findViewById(R.id.tvPhoneNumber);
-        vendorInformation=new VendorInformation();
 
         Arrow3=(CircleImageView)findViewById(R.id.arrow3);
         Arrow3.setOnClickListener(new View.OnClickListener() {

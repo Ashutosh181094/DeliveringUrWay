@@ -15,7 +15,7 @@ public class VendorInfo2 extends AppCompatActivity {
    String nameOfB="";
    String OwnerOfB="";
     CircleImageView Arrow2;
-    VendorInformation vendorInformation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +23,7 @@ public class VendorInfo2 extends AppCompatActivity {
         Arrow2=(CircleImageView) findViewById(R.id.arrow2);
         nameOfBusiness=(EditText) findViewById(R.id.nameOfBusiness);
         ownerOfBusiness=(EditText) findViewById(R.id.ownerOfBusiness);
-        vendorInformation=new VendorInformation();
+
         Arrow2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
