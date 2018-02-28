@@ -11,6 +11,9 @@ public class VendorInformation {
     String ownerName;
     String address;
     String phoneNumber;
+    int freeDelivery;
+    int minAmount,dist,chargesOtherwise;
+
 
     public int getNightDelivery() {
         return nightDelivery;
@@ -50,6 +53,38 @@ public class VendorInformation {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getFreeDelivery() {
+        return freeDelivery;
+    }
+
+    public void setFreeDelivery(int freeDelivery) {
+        this.freeDelivery = freeDelivery;
+    }
+
+    public int getMinAmount() {
+        return minAmount;
+    }
+
+    public void setMinAmount(int minAmount) {
+        this.minAmount = minAmount;
+    }
+
+    public int getDist() {
+        return dist;
+    }
+
+    public void setDist(int dist) {
+        this.dist = dist;
+    }
+
+    public int getChargesOtherwise() {
+        return chargesOtherwise;
+    }
+
+    public void setChargesOtherwise(int chargesOtherwise) {
+        this.chargesOtherwise = chargesOtherwise;
     }
 
     public String getPhoneNumber() {

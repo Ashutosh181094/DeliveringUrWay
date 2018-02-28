@@ -78,6 +78,13 @@
             <!--/>-->
 
     <!--</LinearLayout>-->
-
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/arrow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        android:clickable="true"
+        android:src="@drawable/arrow" />
 
 </LinearLayout>

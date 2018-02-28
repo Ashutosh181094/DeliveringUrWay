@@ -21,8 +21,8 @@
         <activity android:name=".Vendorinfo1" />
         <activity android:name=".VendorInfo2" />
         <activity android:name=".VendorInfo3" />
-        <activity android:name=".VendorInfo4"/>
-
+        <activity android:name=".VendorInfo4" />
+        <activity android:name=".VendorInfo5"></activity>
     </application>
 
 </manifest>
