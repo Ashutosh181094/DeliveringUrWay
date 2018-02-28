@@ -46,27 +46,11 @@ public class Register extends AppCompatActivity
             }
         });
         initProgressBar();
-        setUpFireBase();
+
         createNewUser();
 
     }
-    public void setUpFireBase()
-    {
-        mAuthListener=new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user=firebaseAuth.getCurrentUser();
-                if(user!=null)
-                {
-                    //signed in
-                }
-                else
-                {
-                    //signed out
-                }
-            }
-        };
-    }
+
     public  void createNewUser()
     {
        buttonRegister.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +61,7 @@ public class Register extends AppCompatActivity
                email=etEmail.getText().toString();
                password=etPassword.getText().toString();
                confirmpassword=etConfirmPassword.getText().toString();
-               //showProgressBar();
+               showProgressBar();
                if (isStringNull(name)||isStringNull(email)||isStringNull(password)||isStringNull(confirmpassword))
                {
                    Toast.makeText(Register.this,"Fill in all the fields",Toast.LENGTH_LONG).show();

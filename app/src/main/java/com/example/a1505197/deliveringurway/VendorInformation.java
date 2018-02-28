@@ -29,25 +29,16 @@ public class VendorInformation {
         return nightDelivery;
     }
 
-    public void setNightDelivery(int nightDelivery) {
-        this.nightDelivery = nightDelivery;
-    }
 
     public int getPayTmAccepted() {
         return payTmAccepted;
     }
 
-    public void setPayTmAccepted(int payTmAccepted) {
-        this.payTmAccepted = payTmAccepted;
-    }
 
     public String getBusinessName() {
         return businessName;
     }
 
-    public void setBusinessName(String businessName) {
-        this.businessName = businessName;
-    }
 
 
     public String getOwnerName() {
@@ -55,9 +46,6 @@ public class VendorInformation {
 
     }
 
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
-    }
 
     public String getAddress() {
         return address;
@@ -65,17 +53,11 @@ public class VendorInformation {
 
 
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
 
 }

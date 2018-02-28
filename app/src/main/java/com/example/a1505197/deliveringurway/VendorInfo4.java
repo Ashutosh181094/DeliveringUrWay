@@ -12,6 +12,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -62,10 +65,33 @@ public class VendorInfo4 extends AppCompatActivity {
                 VendorInformation vendorInformation=new VendorInformation(nightdelivery,paytmAccepted,nameOFB,OwnerOfB,Address,PhoneNumber);
                 String id=vendordata.push().getKey();
                 vendordata.child(id).setValue(vendorInformation);
-                Toast.makeText(VendorInfo4.this,nameOFB,Toast.LENGTH_LONG).show();
-                Toast.makeText(VendorInfo4.this,OwnerOfB,Toast.LENGTH_LONG).show();
-                Toast.makeText(VendorInfo4.this,Address,Toast.LENGTH_LONG).show();
-                Toast.makeText(VendorInfo4.this,PhoneNumber,Toast.LENGTH_LONG).show();
+
+                vendordata.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        Toast.makeText(VendorInfo4.this,"new data added",Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
 
 
 
