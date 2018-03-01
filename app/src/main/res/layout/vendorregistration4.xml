@@ -101,7 +101,7 @@
             android:layout_marginTop="140dp"
             android:layout_weight="1"
 
-            android:background="@color/orange1"
+            android:background="@drawable/roundedregisterbutton"
             android:text="REGISTER"
             android:textSize="20sp"
 
