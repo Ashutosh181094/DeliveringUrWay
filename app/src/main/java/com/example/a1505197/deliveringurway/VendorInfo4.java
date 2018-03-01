@@ -1,6 +1,5 @@
 package com.example.a1505197.deliveringurway;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,8 +18,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VendorInfo4 extends AppCompatActivity {
     RadioGroup rg;
@@ -73,7 +70,7 @@ public class VendorInfo4 extends AppCompatActivity {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                         Toast.makeText(VendorInfo4.this,"new data added",Toast.LENGTH_LONG).show();
-                        addedFlag=1;
+                        makeDialog();
                     }
 
                     @Override
@@ -108,9 +105,7 @@ public class VendorInfo4 extends AppCompatActivity {
 
 
 
-    if (addedFlag==1){
-        makeDialog();
-    }
+
 
     }
     void makeDialog(){
