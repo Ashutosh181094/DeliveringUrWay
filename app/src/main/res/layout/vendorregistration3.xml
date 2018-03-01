@@ -29,17 +29,16 @@ android:layout_height="match_parent"
     android:layout_marginTop="30dp"
     />
 
-<EditText
-    android:id="@+id/editText"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:layout_marginRight="30dp"
-    android:layout_marginLeft="30dp"
-    android:layout_marginTop="20dp"
-    android:inputType="textPersonName"
-    android:drawableLeft="@drawable/ic_location"
-    />
+    <EditText
+        android:id="@+id/editAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_location"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
 <TextView
     android:id="@+id/tvPhoneNumber"
@@ -51,16 +50,15 @@ android:layout_height="match_parent"
     android:textColor="@color/Black"
     android:layout_marginTop="30dp"/>
 
-<EditText
-    android:id="@+id/editText3"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:layout_marginRight="30dp"
-    android:layout_marginLeft="30dp"
-    android:layout_marginTop="20dp"
-    android:inputType="textPersonName"
-    />
+    <EditText
+        android:id="@+id/editPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
 <de.hdodenhof.circleimageview.CircleImageView
     android:id="@+id/arrow3"
