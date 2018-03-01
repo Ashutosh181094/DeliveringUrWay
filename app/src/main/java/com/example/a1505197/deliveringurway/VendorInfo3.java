@@ -32,12 +32,27 @@ public class VendorInfo3 extends AppCompatActivity {
                 String nameOfB=intentsend3.getStringExtra("nameOfB");
                 String OwnerOfB=intentsend3.getStringExtra("OwnerOfB");
 
-                Intent intent=new Intent(VendorInfo3.this,Vendorinfo1.class);
-                intent.putExtra("Address",sAddress);
-                intent.putExtra("PhoneNumber",sPhoneNumber);
-                intent.putExtra("nameOfB",nameOfB);
-                intent.putExtra("OwnerOfB",OwnerOfB);
-                startActivity(intent);
+                if(sAddress.equals("")){
+                    vAddress.setError("Please enter address");
+                }
+                if(sPhoneNumber.equals("")){
+                    vPhoneNumber.setError("Please enter phone number");
+                }
+
+                else {
+
+                    if(sPhoneNumber.length()>0 && sPhoneNumber.length()!=10){
+                        vPhoneNumber.setError("Invalid mobile number.10 digits allowed");
+                    }
+                    else {
+                        Intent intent = new Intent(VendorInfo3.this, Vendorinfo1.class);
+                        intent.putExtra("Address", sAddress);
+                        intent.putExtra("PhoneNumber", sPhoneNumber);
+                        intent.putExtra("nameOfB", nameOfB);
+                        intent.putExtra("OwnerOfB", OwnerOfB);
+                        startActivity(intent);
+                    }
+                }
             }
         });
     }
