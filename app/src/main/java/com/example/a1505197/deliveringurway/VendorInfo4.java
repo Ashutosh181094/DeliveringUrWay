@@ -1,5 +1,6 @@
 package com.example.a1505197.deliveringurway;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class VendorInfo4 extends AppCompatActivity {
     DatabaseReference vendordata;
     String nameOFB,OwnerOfB,Address,PhoneNumber;
     int nightdelivery,paytmAccepted;
+    int addedFlag=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +73,7 @@ public class VendorInfo4 extends AppCompatActivity {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                         Toast.makeText(VendorInfo4.this,"new data added",Toast.LENGTH_LONG).show();
+                        addedFlag=1;
                     }
 
                     @Override
@@ -105,7 +108,29 @@ public class VendorInfo4 extends AppCompatActivity {
 
 
 
+    if (addedFlag==1){
+        makeDialog();
+    }
 
+    }
+    void makeDialog(){
+        AlertDialog.Builder d = new AlertDialog.Builder(this);
+        d.setTitle("Registered");
+        d.setMessage("Account has been created");
+
+
+        d.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //do something with edt.getText().toString();
+//                if(edt1.getText().toString().equals("")||edt2.getText().toString().equals("")||edt3.getText().toString().equals("")){
+//                    Toast.makeText(getApplicationContext(),"Please enter all values",Toast.LENGTH_SHORT).show();
+//
+//
+//                }
+
+            }
+        });
+        d.show();
 
     }
     public void rbClick(View v){
