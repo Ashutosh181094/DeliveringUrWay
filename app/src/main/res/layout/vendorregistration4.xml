@@ -78,13 +78,35 @@
             <!--/>-->
 
     <!--</LinearLayout>-->
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/arrow3"
+    <!--<de.hdodenhof.circleimageview.CircleImageView-->
+        <!--android:id="@+id/arrow3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginTop="150dp"-->
+        <!--android:clickable="true"-->
+        <!--android:src="@drawable/arrow" />-->
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="150dp"
-        android:clickable="true"
-        android:src="@drawable/arrow" />
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/arrow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="140dp"
+            android:layout_weight="1"
+
+            android:background="@color/orange1"
+            android:text="REGISTER"
+            android:textSize="20sp"
+
+            android:paddingHorizontal="40dp"
+            android:textColor="@color/White" />
+    </LinearLayout>
 
 </LinearLayout>

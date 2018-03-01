@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -24,7 +25,7 @@ public class VendorInfo4 extends AppCompatActivity {
     RadioGroup rg;
     RadioButton yes,no,cond,Rbtn;
     Integer r;
-    CircleImageView arrow3;
+    Button registerButton;
     VendorInformation vendorInformation;
     DatabaseReference vendordata;
     String nameOFB,OwnerOfB,Address,PhoneNumber;
@@ -47,10 +48,10 @@ public class VendorInfo4 extends AppCompatActivity {
 
 //        }ff
 
-        arrow3=(CircleImageView) findViewById(R.id.arrow3);
+        registerButton=(Button) findViewById(R.id.arrow3);
         // onclicklistener
 
-        arrow3.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

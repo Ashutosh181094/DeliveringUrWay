@@ -22,8 +22,8 @@ public class VendorInfo3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vendorregistration3);
-        vAddress=findViewById(R.id.editAddress);
-        vPhoneNumber=findViewById(R.id.editPhoneNumber);
+        vAddress=(EditText) findViewById(R.id.editAddress);
+        vPhoneNumber=(EditText) findViewById(R.id.editPhoneNumber);
 
         Arrow3=(CircleImageView)findViewById(R.id.arrow3);
         Arrow3.setOnClickListener(new View.OnClickListener() {
