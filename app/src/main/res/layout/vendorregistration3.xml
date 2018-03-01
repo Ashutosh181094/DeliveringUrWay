@@ -58,6 +58,7 @@ android:layout_height="match_parent"
         android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:drawableLeft="@drawable/ic_call_black_24dp"
         android:inputType="textPersonName" />
 
 <de.hdodenhof.circleimageview.CircleImageView
