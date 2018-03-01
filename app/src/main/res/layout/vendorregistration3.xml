@@ -59,7 +59,7 @@ android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:drawableLeft="@drawable/ic_call_black_24dp"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
 <de.hdodenhof.circleimageview.CircleImageView
     android:id="@+id/arrow3"

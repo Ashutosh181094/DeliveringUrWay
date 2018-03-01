@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -31,16 +32,33 @@ public class VendorInfo3 extends AppCompatActivity {
             public void onClick(View v) {
                 sAddress=vAddress.getText().toString();
                 sPhoneNumber=vPhoneNumber.getText().toString();
-               Intent intentsend3=getIntent();
-                String nameOfB=intentsend3.getStringExtra("nameOfB");
-                String OwnerOfB=intentsend3.getStringExtra("OwnerOfB");
+                if(sAddress.equals("")) {
 
-                Intent intent=new Intent(VendorInfo3.this,Vendorinfo1.class);
-                intent.putExtra("Address",sAddress);
-                intent.putExtra("PhoneNumber",sPhoneNumber);
-                intent.putExtra("nameOfB",nameOfB);
-                intent.putExtra("OwnerOfB",OwnerOfB);
-                startActivity(intent);
+                    vAddress.setError("please fill all the fields");
+
+                }
+                if(sPhoneNumber.equals("")){
+                    vPhoneNumber.setError("Please enter phone number");
+
+                }
+                if(sPhoneNumber.length()!=10){
+
+                        Toast.makeText(getApplicationContext(),"Invalid mobile number.Length must me 10 digits",Toast.LENGTH_LONG).show();
+
+                }
+
+                else {
+                    Intent intentsend3 = getIntent();
+                    String nameOfB = intentsend3.getStringExtra("nameOfB");
+                    String OwnerOfB = intentsend3.getStringExtra("OwnerOfB");
+
+                    Intent intent = new Intent(VendorInfo3.this, Vendorinfo1.class);
+                    intent.putExtra("Address", sAddress);
+                    intent.putExtra("PhoneNumber", sPhoneNumber);
+                    intent.putExtra("nameOfB", nameOfB);
+                    intent.putExtra("OwnerOfB", OwnerOfB);
+                    startActivity(intent);
+                }
             }
         });
     }
