@@ -98,6 +98,7 @@ public class VendorInfo4 extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //do something with edt.getText().toString();
                 Intent intent=new Intent(VendorInfo4.this,VendorLogin.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
 
