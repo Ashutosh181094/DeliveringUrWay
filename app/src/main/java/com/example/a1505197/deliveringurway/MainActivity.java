@@ -163,6 +163,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
             finish();
         }
+        else if(user.getEmail().equals(""))
+        {
+            Toast.makeText(MainActivity.this,"Its a vendor",Toast.LENGTH_LONG).show();
+            Intent intent=new Intent(MainActivity.this,CustomerData.class);
+            startActivity(intent);
+            finish();
+        }
+        else
+        {
+            Toast.makeText(MainActivity.this,"Its a user",Toast.LENGTH_LONG).show();
+
+        }
     }
 
     @Override
