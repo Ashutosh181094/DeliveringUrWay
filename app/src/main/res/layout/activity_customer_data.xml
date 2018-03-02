@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.a1505197.deliveringurway.CustomerData">
 <!---->
+    <!---->
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
