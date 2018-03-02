@@ -3,6 +3,7 @@ package com.example.a1505197.deliveringurway;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -13,6 +14,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -65,8 +69,9 @@ public class VendorInfo4 extends AppCompatActivity {
                 paytmAccepted=getintent.getIntExtra("paytmAccepted",0);
                 vendordata= FirebaseDatabase.getInstance().getReference("vendors");
                 VendorInformation vendorInformation=new VendorInformation(nightdelivery,paytmAccepted,nameOFB,OwnerOfB,Address,PhoneNumber,DeliveryInfo);
-
                 vendordata.child(PhoneNumber).setValue(vendorInformation);
+
+
                 makeDialog();
 
 

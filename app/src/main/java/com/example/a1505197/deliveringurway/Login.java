@@ -65,7 +65,7 @@ public class Login extends AppCompatActivity
                 email=etemail.getText().toString();
                 password=etpassword.getText().toString();
                 showProgressBar();
-                if(isStringNull(email)&&isStringNull(password))
+                if(isStringNull(email)||isStringNull(password))
                 {
                     Toast.makeText(Login.this,"Fill in all the fields",Toast.LENGTH_LONG).show();
                 }

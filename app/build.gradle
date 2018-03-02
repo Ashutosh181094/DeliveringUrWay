@@ -31,5 +31,6 @@ dependencies {
     implementation 'com.synnapps:carouselview:0.1.4'
     implementation 'com.google.firebase:firebase-database:11.8.0'
 
+
 }
 apply plugin: 'com.google.gms.google-services'
