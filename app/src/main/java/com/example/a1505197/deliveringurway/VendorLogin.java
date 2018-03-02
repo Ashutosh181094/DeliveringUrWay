@@ -51,21 +51,26 @@ public class VendorLogin extends AppCompatActivity {
         sendOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showProgressBar();
-                sphoneNumber=phoneNumber.getText().toString();
-                phoneNumber.setVisibility(View.GONE);
-                sendOtp.setVisibility(View.GONE);
-                Signup.setVisibility(View.GONE);
-                Verify.setVisibility(View.VISIBLE);
-                OTP.setVisibility(View.VISIBLE);
 
-                PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                        sphoneNumber,
-                        60,
-                        TimeUnit.SECONDS,
-                        VendorLogin.this,
-                        mCall
-                );
+                sphoneNumber = phoneNumber.getText().toString();
+                if (sphoneNumber.equals("")) {
+                    showError();
+                } else {
+                    showProgressBar();
+                    phoneNumber.setVisibility(View.GONE);
+                    sendOtp.setVisibility(View.GONE);
+                    Signup.setVisibility(View.GONE);
+                    Verify.setVisibility(View.VISIBLE);
+                    OTP.setVisibility(View.VISIBLE);
+
+                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                            sphoneNumber,
+                            60,
+                            TimeUnit.SECONDS,
+                            VendorLogin.this,
+                            mCall
+                    );
+                }
             }
         });
         mCall=new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -96,8 +101,22 @@ public class VendorLogin extends AppCompatActivity {
             }
 
         };
+        Signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),VendorInfo2.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
+
+    private void showError()
+    {
+        phoneNumber.setError("Fill the field");
+    }
+
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
