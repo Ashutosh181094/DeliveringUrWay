@@ -85,12 +85,12 @@ public class Register extends AppCompatActivity
                            if (task.isSuccessful())
                            {    hideProgressBar();
                                sendVerificationEmail();
-                            Toast.makeText(Register.this,"Varification Email sent",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Register.this,"Verification link has been sent to registered Email",Toast.LENGTH_LONG).show();
                               hideProgressBar();
                            }
                            else
                            {
-                               Toast.makeText(Register.this,"Email allready registered",Toast.LENGTH_LONG).show();
+                               Toast.makeText(Register.this,"Email already registered",Toast.LENGTH_LONG).show();
 
                                hideProgressBar();
 
