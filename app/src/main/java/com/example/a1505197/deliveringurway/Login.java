@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,7 +16,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.valdesekamdem.library.mdtoast.MDToast;
 
 public class Login extends AppCompatActivity
 {
@@ -24,7 +24,7 @@ public class Login extends AppCompatActivity
     EditText etemail,etpassword;
     String email,password;
     Button SignIn,SignUp;
-    Button tvForgotPassword;
+    TextView tvForgotPassword,LoginVendor;
     ProgressBar progressBar;
     private static final String TAG = "Login";
 
@@ -37,9 +37,17 @@ public class Login extends AppCompatActivity
         SignUp= (Button) findViewById(R.id.btn_register);
         etemail= (EditText) findViewById(R.id.etEmail);
         etpassword= (EditText) findViewById(R.id.etPassword);
-        tvForgotPassword= (Button) findViewById(R.id.tvForgotPassword);
+        tvForgotPassword=  findViewById(R.id.tvForgotPassword);
+        LoginVendor=findViewById(R.id.LoginAsVendor);
         setupsignin();
         initProgressBar();
+        LoginVendor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Login.this,VendorLogin.class);
+                startActivity(intent);
+            }
+        });
         tvForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)

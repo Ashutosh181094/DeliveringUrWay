@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="120dp"
+        android:paddingTop="90dp"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         android:weightSum="1"
@@ -66,28 +66,39 @@
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true" />
 
-    <Button
+    <TextView
         android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="10dp"
         android:text="Forgot Password"
         android:textColor="@color/White"
-        android:background="@drawable/signupbutton"
+        android:clickable="true"
         android:layout_below="@+id/btn_login"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp"/>
+        android:textSize="20dp"/>
     <Button
         android:id="@+id/btn_register"
         android:layout_width="195dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/signupbutton"
         android:padding="12dp"
         android:text="Sign Up"
         android:textColor="@color/White"
         android:layout_below="@+id/tvForgotPassword"
         android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/LoginAsVendor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login as Vendor"
+        android:layout_below="@+id/btn_register"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"
+        android:clickable="true"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"/>
     <ProgressBar
         android:layout_width="50dp"
         android:layout_height="50dp"
