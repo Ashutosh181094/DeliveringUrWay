@@ -13,9 +13,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,6 +26,14 @@ public class VendorInfo4 extends AppCompatActivity {
     String nameOFB,OwnerOfB,Address,PhoneNumber;
     int nightdelivery,paytmAccepted;
     int addedFlag=0;
+    String id;
+    String DeliveryInfo="NO";
+    DeliveryInformation deliveryInformation;
+    EditText minAmount;
+    EditText distance;
+    EditText chargesOtherwise;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +46,7 @@ public class VendorInfo4 extends AppCompatActivity {
 
 
 
-//        int n=rg.getCheckedRadioButtonId();
-//        if(n==1){
-//            Toast.makeText(getApplicationContext(),"1",Toast.LENGTH_SHORT).show();
 
-//        }ff
 
         registerButton=(Button) findViewById(R.id.arrow3);
         // onclicklistener
@@ -53,6 +54,7 @@ public class VendorInfo4 extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 Intent getintent=getIntent();
                 nameOFB=getintent.getStringExtra("nameOfB");
@@ -62,37 +64,10 @@ public class VendorInfo4 extends AppCompatActivity {
                 nightdelivery=getintent.getIntExtra("nightDelivery",0);
                 paytmAccepted=getintent.getIntExtra("paytmAccepted",0);
                 vendordata= FirebaseDatabase.getInstance().getReference("vendors");
-                VendorInformation vendorInformation=new VendorInformation(nightdelivery,paytmAccepted,nameOFB,OwnerOfB,Address,PhoneNumber);
-                String id=vendordata.push().getKey();
-                vendordata.child(id).setValue(vendorInformation);
+                VendorInformation vendorInformation=new VendorInformation(nightdelivery,paytmAccepted,nameOFB,OwnerOfB,Address,PhoneNumber,DeliveryInfo);
 
-                vendordata.addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        Toast.makeText(VendorInfo4.this,"new data added",Toast.LENGTH_LONG).show();
-                        makeDialog();
-                    }
-
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+                vendordata.child(PhoneNumber).setValue(vendorInformation);
+                makeDialog();
 
 
 
@@ -131,8 +106,24 @@ public class VendorInfo4 extends AppCompatActivity {
         if(radioText.equals("YES, but conditionally")){
             //Toast.makeText(getApplicationContext(),"THIS IS  "+Rbtn.getText(),Toast.LENGTH_SHORT).show();
             showChangeLangDialog();
+            DeliveryInfo="YES, but conditionally";
+
 
         }
+        else
+        if(radioText.equals("YES"))
+        {
+        DeliveryInfo="YES";
+
+
+        }
+        else
+            if(radioText.equals("NO"))
+            {
+            DeliveryInfo="NO";
+
+
+            }
     }
 
     public void showChangeLangDialog() {
@@ -168,9 +159,9 @@ public class VendorInfo4 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final EditText minAmount = (EditText) dialogView.findViewById(R.id.edit1);
-                final EditText distance = (EditText) dialogView.findViewById(R.id.edit2);
-                final EditText chargesOtherwise = (EditText) dialogView.findViewById(R.id.edit3);
+                minAmount = (EditText) dialogView.findViewById(R.id.edit1);
+                distance = (EditText) dialogView.findViewById(R.id.edit2);
+                chargesOtherwise = (EditText) dialogView.findViewById(R.id.edit3);
 
 
                 if(minAmount.getText().equals("")||distance.getText().toString().equals("")||chargesOtherwise.getText().toString().equals("")){
@@ -179,6 +170,7 @@ public class VendorInfo4 extends AppCompatActivity {
                 }
                 else{
 
+                    deliveryInformation=new DeliveryInformation(minAmount.getText().toString(),distance.getText().toString(),chargesOtherwise.getText().toString());
 
 
                     b.dismiss();

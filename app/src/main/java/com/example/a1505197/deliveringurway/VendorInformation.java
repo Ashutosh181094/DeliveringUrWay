@@ -11,19 +11,17 @@ public class VendorInformation {
     String ownerName;
     String address;
     String phoneNumber;
+    String DeliveryInfo;
 
-
-    public VendorInformation(int nightDelivery, int payTmAccepted, String businessName, String ownerName, String address, String phoneNumber) {
+    public VendorInformation(int nightDelivery, int payTmAccepted, String businessName, String ownerName, String address, String phoneNumber, String deliveryInfo) {
         this.nightDelivery = nightDelivery;
         this.payTmAccepted = payTmAccepted;
         this.businessName = businessName;
         this.ownerName = ownerName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-
+        DeliveryInfo = deliveryInfo;
     }
-
-
 
     public int getNightDelivery() {
         return nightDelivery;
