@@ -120,7 +120,7 @@ public class VendorLogin extends AppCompatActivity {
                     }
                 });
     }
-
+//
     private void showProgressBar(){
         progressBar.setVisibility(View.VISIBLE);
 
