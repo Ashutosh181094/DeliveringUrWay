@@ -40,3 +40,4 @@ public class DeliveryInformation
         DeliveryChargesOtherwise = deliveryChargesOtherwise;
     }
 }
+//
