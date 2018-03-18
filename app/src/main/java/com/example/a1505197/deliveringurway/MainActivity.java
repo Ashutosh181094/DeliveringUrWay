@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     CarouselView carouselView;
     Toolbar toolbar;
     FirebaseAuth mAuth;
+    private static final int REQUEST_CODE=1;
 
     int[] sampleImages = {R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut};
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         carouselView = (CarouselView) findViewById(R.id.carouselView);
         toolbar = (Toolbar) findViewById(R.id.customToolbar);
         carouselView.setPageCount(sampleImages.length);
+
 
         carouselView.setImageListener(imageListener);
         setSupportActionBar(toolbar);
@@ -166,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if(user.getEmail().equals(""))
         {
             Toast.makeText(MainActivity.this,"Its a vendor",Toast.LENGTH_LONG).show();
-            Intent intent=new Intent(MainActivity.this,CustomerData.class);
+            Intent intent=new Intent(MainActivity.this,VendorData.class);
             startActivity(intent);
             finish();
         }
@@ -177,11 +179,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
 
-    }
+
+
 }
-//
-
-//

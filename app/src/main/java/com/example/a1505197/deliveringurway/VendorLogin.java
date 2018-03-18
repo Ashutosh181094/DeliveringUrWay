@@ -124,7 +124,7 @@ public class VendorLogin extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Intent intent=new Intent(VendorLogin.this,CustomerData.class);
+                            Intent intent=new Intent(VendorLogin.this,VendorData.class);
                             startActivity(intent);
                             finish();
 

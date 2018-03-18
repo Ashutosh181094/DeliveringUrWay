@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.a1505197.deliveringurway.CustomerData">
+    tools:context="com.example.a1505197.deliveringurway.VendorData">
 <!---->
     <!---->
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign Out Vendor"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="183dp" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_container">
+    </FrameLayout>
+
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addVendorData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
