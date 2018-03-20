@@ -43,12 +43,27 @@
                         android:layout_below="@+id/vendorImage"
                         android:paddingTop="10dp"
                         android:src="@drawable/ic_camera" />
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ivCamera"
+                        android:text="Name"
+                        android:textColor="@color/Black"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="20dp"/>
 
+                    <EditText
+                        android:id="@+id/etName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvName"
+                       />
                     <TextView
                         android:id="@+id/etCostPrice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/ivCamera"
+                        android:layout_below="@+id/etName"
                         android:text="CostPrice"
                         android:textColor="@color/Black"
                         android:textSize="20dp"
@@ -82,6 +97,7 @@
                         android:layout_below="@+id/etdescription"
                         android:layout_marginLeft="120dp"
                         android:text="Upload"
+                        android:id="@+id/btnUpload"
                         android:background="@drawable/loginbutton"
                         android:layout_marginTop="40dp"
                         android:layout_marginBottom="10dp"/>

@@ -36,7 +36,7 @@ public class VendorData extends AppCompatActivity {
         {
             AddProductFragement fragment=new AddProductFragement();
             FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container,fragment);
+            transaction.replace(android.R.id.content,fragment);
             transaction.addToBackStack(null);
             transaction.commit();
 
