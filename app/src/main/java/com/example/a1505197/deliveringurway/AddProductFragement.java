@@ -87,7 +87,7 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
 
                 FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
                 productinfo= FirebaseDatabase.getInstance().getReference("productinfo");
-                storePhoto= FirebaseStorage.getInstance().getReference(user.getUid()+"/"+sname);
+                storePhoto= FirebaseStorage.getInstance().getReference(user.getPhoneNumber()+"/"+sname);
                 // Get the data from an ImageView as bytes
                 vendorImage.setDrawingCacheEnabled(true);
                 vendorImage.buildDrawingCache();
@@ -121,7 +121,7 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
 
                 ProductDescription pdescription=new ProductDescription(sname,scost,sdescription);
                 pdescription.setProductName(sname);
-                productinfo.child(user.getUid()).child(sname).setValue(pdescription);
+                productinfo.child(user.getPhoneNumber()).child(sname).setValue(pdescription);
             }
         });
         return view;
