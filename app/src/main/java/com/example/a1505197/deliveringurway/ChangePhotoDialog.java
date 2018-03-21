@@ -21,10 +21,12 @@ import java.io.File;
  */
 
 public class ChangePhotoDialog extends DialogFragment {
+
     public interface OnPhotoRecievedListener
     {
         public void getBitmapImage(Bitmap bitmap);
         public void getImagePath(String imagePath);
+        public  Uri getImageUri(Uri Imageuri);
     }
     OnPhotoRecievedListener mOnPhotoRecieved;
     @Nullable
@@ -83,7 +85,7 @@ public class ChangePhotoDialog extends DialogFragment {
         {
             Uri selectedImageUri=data.getData();
             File file=new File(selectedImageUri.toString());
-
+            mOnPhotoRecieved.getImageUri(selectedImageUri);
             mOnPhotoRecieved.getImagePath(file.getPath());
             getDialog().dismiss();
 

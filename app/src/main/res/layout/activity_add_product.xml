@@ -24,16 +24,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:id="@+id/vendorImage"
                         android:layout_width="180dp"
                         android:layout_height="180dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="30dp"
                         android:src="@drawable/hut"
-                        app:civ_border_color="@color/Black"
-                        app:civ_border_width="0.5dp"
-                        app:civ_fill_color="@color/blue1" />
+                        />
 
                     <ImageView
                         android:id="@+id/ivCamera"
