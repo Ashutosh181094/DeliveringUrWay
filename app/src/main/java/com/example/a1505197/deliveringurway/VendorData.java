@@ -9,6 +9,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,14 +21,20 @@ import java.io.ByteArrayOutputStream;
 
 public class VendorData extends AppCompatActivity {
 
+    RecyclerView VendorRecyclerView;
     FirebaseAuth mAuth;
     FloatingActionButton addVendordata;
     private static final int REQUEST_CODE=1;
+    VendorDataAdapter adapter;
+    BringVendorDataFromFirebase bringVendorDataFromFirebase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendordata);
 
+       VendorRecyclerView=findViewById(R.id.vendorrecycler);
+       adapter=new VendorDataAdapter(VendorData.this,new BringVendorDataFromFirebase().getdata());
+      VendorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAuth=FirebaseAuth.getInstance();
         addVendordata=findViewById(R.id.addVendorData);
         initimageLoader();

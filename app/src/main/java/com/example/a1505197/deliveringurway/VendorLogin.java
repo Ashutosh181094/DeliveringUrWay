@@ -73,6 +73,13 @@ public class VendorLogin extends AppCompatActivity {
                 }
             }
         });
+        Verify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PhoneAuthCredential credential=PhoneAuthProvider.getCredential(mVerificationId,OTP.getText().toString());
+                signInWithPhoneAuthCredential(credential);
+            }
+        });
         mCall=new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
             public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
@@ -82,7 +89,9 @@ public class VendorLogin extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
-                Toast.makeText(VendorLogin.this,"Error",Toast.LENGTH_LONG).show();
+                Toast.makeText(VendorLogin.this,"Error on verification failed"+e.getMessage(),Toast.LENGTH_LONG).show();
+                hideProgressBar();
+                Log.d(TAG, "onVerificationFailed: "+e.getMessage());
 
             }
             @Override
@@ -131,9 +140,9 @@ public class VendorLogin extends AppCompatActivity {
                             FirebaseUser user = task.getResult().getUser();
                             // ...
                         } else {
-                            Toast.makeText(VendorLogin.this,"Error",Toast.LENGTH_LONG).show();
+                            Toast.makeText(VendorLogin.this,"Error in signing in",Toast.LENGTH_LONG).show();
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                // The verification code entered was invalid
+                                Toast.makeText(VendorLogin.this,"Verification code Entered was invalid",Toast.LENGTH_LONG).show();
                             }
                         }
                     }

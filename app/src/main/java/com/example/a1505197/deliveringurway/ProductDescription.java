@@ -9,34 +9,48 @@ public class ProductDescription
     String productName;
     String cost;
     String description;
+    String imageUrl;
+    public ProductDescription()
+    {
 
-    public ProductDescription(String productName, String cost, String description) {
+    }
+
+    public ProductDescription(String productName, String cost, String description, String imageUrl) {
         this.productName = productName;
         this.cost = cost;
         this.description = description;
-    }
-
-    public String getProductName() {
-        return productName;
+        this.imageUrl = imageUrl;
     }
 
     public void setProductName(String productName) {
         this.productName = productName;
     }
 
-    public String getCost() {
-        return cost;
-    }
-
     public void setCost(String cost) {
         this.cost = cost;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public String getCost() {
+        return cost;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getImageUrl() {
+        return imageUrl;
     }
 }

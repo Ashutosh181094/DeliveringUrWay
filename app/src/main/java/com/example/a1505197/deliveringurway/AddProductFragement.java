@@ -41,8 +41,9 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
     String sname,scost,sdescription;
     Button buttonUpload;
     StorageReference storePhoto;
-    Bitmap ImageBitmap;
     ProgressDialog progressDialog;
+    FirebaseUser user;
+    int i=0;
 
     @Nullable
     @Override
@@ -81,11 +82,12 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
         buttonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                i++;
                 sname=name.getText().toString();
                 scost=cost.getText().toString();
                 sdescription=description.getText().toString();
 
-                FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+                 user= FirebaseAuth.getInstance().getCurrentUser();
                 productinfo= FirebaseDatabase.getInstance().getReference("productinfo");
                 storePhoto= FirebaseStorage.getInstance().getReference(user.getPhoneNumber()+"/"+sname);
                 // Get the data from an ImageView as bytes
@@ -111,6 +113,8 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
                         Uri downloadUrl = taskSnapshot.getDownloadUrl();
                         Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
                         dismissDialog();
+                        ProductDescription pdescription=new ProductDescription(sname,scost,sdescription,taskSnapshot.getDownloadUrl().toString());
+                        productinfo.child(user.getPhoneNumber()).child(""+i).setValue(pdescription);
                         Intent intent=new Intent(getContext(),VendorData.class);
                         startActivity(intent);
 
@@ -119,9 +123,7 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
                 });
 
 
-                ProductDescription pdescription=new ProductDescription(sname,scost,sdescription);
-                pdescription.setProductName(sname);
-                productinfo.child(user.getPhoneNumber()).child(sname).setValue(pdescription);
+
             }
         });
         return view;
