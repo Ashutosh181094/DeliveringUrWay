@@ -43,7 +43,7 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
     StorageReference storePhoto;
     ProgressDialog progressDialog;
     FirebaseUser user;
-    int i=0;
+   static int i=0;
 
     @Nullable
     @Override
@@ -82,7 +82,7 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
         buttonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i++;
+
                 sname=name.getText().toString();
                 scost=cost.getText().toString();
                 sdescription=description.getText().toString();
@@ -114,7 +114,7 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
                         Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
                         dismissDialog();
                         ProductDescription pdescription=new ProductDescription(sname,scost,sdescription,taskSnapshot.getDownloadUrl().toString());
-                        productinfo.child(user.getPhoneNumber()).child(""+i).setValue(pdescription);
+                        productinfo.child(user.getPhoneNumber()).child(""+i++).setValue(pdescription);
                         Intent intent=new Intent(getContext(),VendorData.class);
                         startActivity(intent);
 

@@ -32,7 +32,7 @@ public class VendorData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendordata);
 
-       VendorRecyclerView=findViewById(R.id.vendorrecycler);
+      VendorRecyclerView=findViewById(R.id.vendorrecycler);
        adapter=new VendorDataAdapter(VendorData.this,new BringVendorDataFromFirebase().getdata());
       VendorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAuth=FirebaseAuth.getInstance();

@@ -19,22 +19,25 @@ public class BringVendorDataFromFirebase
 DatabaseReference Vendortotaldata;
 ArrayList<ProductDescription> data;
 FirebaseUser user;
+static int i=0;
     private static final String TAG = "BringVendorDataFromFire";
 public ArrayList<ProductDescription> getdata()
 {
+    data=new ArrayList<>();
     Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo");
     Vendortotaldata.addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot)
         {
+
             if(dataSnapshot.exists())
             user= FirebaseAuth.getInstance().getCurrentUser();
-            int i=0;
+
             for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
             {
-                i++;
 
-          ProductDescription productDescription=dataSnapshot1.child(user.getPhoneNumber()).child(""+i).getValue(ProductDescription.class);
+
+          ProductDescription productDescription=dataSnapshot1.child(user.getPhoneNumber()).child(""+i++).getValue(ProductDescription.class);
 
            data.add(productDescription);
 
