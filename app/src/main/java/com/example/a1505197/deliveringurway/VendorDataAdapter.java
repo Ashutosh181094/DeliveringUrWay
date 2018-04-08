@@ -7,14 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
-/**
- * Created by 1505197 on 3/26/2018.
- */
 
 public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.VendorViewHolder>
 {
@@ -24,6 +21,8 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
 
     public VendorDataAdapter(Context context, ArrayList<ProductDescription> data)
     {
+        Toast.makeText(context,"This is data adapter "+data.size(),Toast.LENGTH_LONG).show();
+
         this.context=context;
         this.data=data;
         inflater=LayoutInflater.from(context);
@@ -40,7 +39,7 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
     @Override
     public void onBindViewHolder(VendorViewHolder holder, int position)
     {
-        holder.productName.setText(data.get(position).productName);
+        holder.productname.setText(data.get(position).productName);
         holder.price.setText(data.get(position).cost);
         Picasso.with(context)
                 .load(data.get(position).imageUrl)
@@ -57,16 +56,15 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
 
     public class VendorViewHolder extends RecyclerView.ViewHolder
     {
-        TextView productName;
+        TextView productname;
         TextView price;
         ImageView imageView;
 
         public VendorViewHolder(View itemView) {
             super(itemView);
-            productName=itemView.findViewById(R.id.CardViewProductName);
+            productname=itemView.findViewById(R.id.CardViewProductName);
             price=itemView.findViewById(R.id.PriceEntered);
             imageView=itemView.findViewById(R.id.CardViewImageView);
-
         }
     }
 }

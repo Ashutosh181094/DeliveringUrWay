@@ -1,5 +1,8 @@
 package com.example.a1505197.deliveringurway;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,35 +23,47 @@ DatabaseReference Vendortotaldata;
 ArrayList<ProductDescription> data;
 FirebaseUser user;
 static int i=0;
+    Context contex1t;
     private static final String TAG = "BringVendorDataFromFire";
-public ArrayList<ProductDescription> getdata()
+public ArrayList<ProductDescription> getdata(Context context)
 {
+    contex1t=context;
+
     data=new ArrayList<>();
-    Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo");
+    user= FirebaseAuth.getInstance().getCurrentUser();
+
+    Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child(user.getPhoneNumber());
     Vendortotaldata.addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot)
         {
 
-            if(dataSnapshot.exists())
-            user= FirebaseAuth.getInstance().getCurrentUser();
+
 
             for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
             {
 
+                Toast.makeText(contex1t,"This is on datachange method"+i,Toast.LENGTH_LONG).show();
 
-          ProductDescription productDescription=dataSnapshot1.child(user.getPhoneNumber()).child(""+i++).getValue(ProductDescription.class);
-
+          ProductDescription productDescription=dataSnapshot1.child(user.getPhoneNumber()).getValue(ProductDescription.class);
+i++;
            data.add(productDescription);
+                Toast.makeText(contex1t,"data added to list "+data.size(),Toast.LENGTH_LONG).show();
+
 
             }
         }
 
+
         @Override
-        public void onCancelled(DatabaseError databaseError) {
+        public void onCancelled(DatabaseError databaseError)
+        {
 
         }
     });
+
+    Toast.makeText(contex1t,"This is on  "+data.size(),Toast.LENGTH_LONG).show();
+
     return data;
 
 }

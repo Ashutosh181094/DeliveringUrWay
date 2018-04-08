@@ -12,18 +12,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class VendorData extends AppCompatActivity {
 
     RecyclerView VendorRecyclerView;
     FirebaseAuth mAuth;
     FloatingActionButton addVendordata;
+    ArrayList<ProductDescription> data;
+
     private static final int REQUEST_CODE=1;
     VendorDataAdapter adapter;
     BringVendorDataFromFirebase bringVendorDataFromFirebase;
@@ -33,8 +37,15 @@ public class VendorData extends AppCompatActivity {
         setContentView(R.layout.activity_vendordata);
 
       VendorRecyclerView=findViewById(R.id.vendorrecycler);
-       adapter=new VendorDataAdapter(VendorData.this,new BringVendorDataFromFirebase().getdata());
-      VendorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+      bringVendorDataFromFirebase=new BringVendorDataFromFirebase();
+      data=bringVendorDataFromFirebase.getdata(VendorData.this);
+       adapter=new VendorDataAdapter(VendorData.this,data);
+        Toast.makeText(getApplicationContext(),"This is vendor data class "+data.size(),Toast.LENGTH_LONG).show();
+
+        VendorRecyclerView.setAdapter(adapter);
+        Toast.makeText(getApplicationContext(),"This is vendordatacass  "+data.size(),Toast.LENGTH_LONG).show();
+
+        VendorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAuth=FirebaseAuth.getInstance();
         addVendordata=findViewById(R.id.addVendorData);
         initimageLoader();
