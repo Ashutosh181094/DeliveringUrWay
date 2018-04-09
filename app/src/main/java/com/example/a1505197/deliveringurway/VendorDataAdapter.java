@@ -65,6 +65,12 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
             productname=itemView.findViewById(R.id.CardViewProductName);
             price=itemView.findViewById(R.id.PriceEntered);
             imageView=itemView.findViewById(R.id.CardViewImageView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position=getAdapterPosition();
+                }
+            });
         }
     }
 }
