@@ -9,43 +9,80 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class VendorData extends AppCompatActivity {
 
     RecyclerView VendorRecyclerView;
     FirebaseAuth mAuth;
     FloatingActionButton addVendordata;
-    ArrayList<ProductDescription> data;
+    DatabaseReference Vendortotaldata;
+    List<ProductDescription> data;
+    FirebaseUser user;
+    static int i=0;
+
 
     private static final int REQUEST_CODE=1;
     VendorDataAdapter adapter;
-    BringVendorDataFromFirebase bringVendorDataFromFirebase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendordata);
+        VendorRecyclerView=findViewById(R.id.vendorrecycler);
 
-      VendorRecyclerView=findViewById(R.id.vendorrecycler);
-      bringVendorDataFromFirebase=new BringVendorDataFromFirebase();
-      data=bringVendorDataFromFirebase.getdata(VendorData.this);
-       adapter=new VendorDataAdapter(VendorData.this,data);
-        Toast.makeText(getApplicationContext(),"This is vendor data class "+data.size(),Toast.LENGTH_LONG).show();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
-        VendorRecyclerView.setAdapter(adapter);
-        Toast.makeText(getApplicationContext(),"This is vendordatacass  "+data.size(),Toast.LENGTH_LONG).show();
+        data=new ArrayList<>();
+        Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child(user.getPhoneNumber());
+        Vendortotaldata.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                {
 
-        VendorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+                    data.clear();
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                    {
+                        ProductDescription productDescription = dataSnapshot1.getValue(ProductDescription.class);
+                        i++;
+                        data.add(productDescription);
+                    }
+                    adapter = new VendorDataAdapter(VendorData.this, data);
+                    VendorRecyclerView.setAdapter(adapter);
+                    VendorRecyclerView.setHasFixedSize(true);
+                    GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getApplicationContext(), 2);
+                    VendorRecyclerView.setLayoutManager(mgridlayoutmanager);
+                    adapter.notifyDataSetChanged();
+
+                }
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+
+            }
+        });
+
+
+
+
         mAuth=FirebaseAuth.getInstance();
         addVendordata=findViewById(R.id.addVendorData);
         initimageLoader();
@@ -68,12 +105,13 @@ public class VendorData extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
             Intent intent = new Intent(VendorData.this, Login.class);
             startActivity(intent);
             finish();
         }
+
 
     }
     public void verifyPermissions(String[] permissions)
@@ -107,6 +145,7 @@ public class VendorData extends AppCompatActivity {
         UniversalImageLoader universalImageLoader=new UniversalImageLoader(VendorData.this);
         ImageLoader.getInstance().init(universalImageLoader.getConfig());
     }
+
 
 
 }

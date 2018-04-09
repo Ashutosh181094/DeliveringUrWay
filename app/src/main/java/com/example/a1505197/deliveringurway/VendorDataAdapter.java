@@ -7,22 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-import java.util.ArrayList;
+
+import java.util.List;
 
 
 public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.VendorViewHolder>
 {
     Context context;
-    ArrayList<ProductDescription> data;
+    List<ProductDescription> data;
     LayoutInflater inflater;
 
-    public VendorDataAdapter(Context context, ArrayList<ProductDescription> data)
+    public VendorDataAdapter(Context context, List<ProductDescription> data)
     {
-        Toast.makeText(context,"This is data adapter "+data.size(),Toast.LENGTH_LONG).show();
-
         this.context=context;
         this.data=data;
         inflater=LayoutInflater.from(context);
@@ -39,6 +37,8 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
     @Override
     public void onBindViewHolder(VendorViewHolder holder, int position)
     {
+
+
         holder.productname.setText(data.get(position).productName);
         holder.price.setText(data.get(position).cost);
         Picasso.with(context)
