@@ -1,6 +1,7 @@
 package com.example.a1505197.deliveringurway;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,6 +70,12 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
                 @Override
                 public void onClick(View v) {
                     int position=getAdapterPosition();
+                    Intent intent=new Intent(context,VendorProductDescription.class);
+                    intent.putExtra("name",data.get(position).productName);
+                    intent.putExtra("cost",data.get(position).cost);
+                    intent.putExtra("description",data.get(position).description);
+                    intent.putExtra("imageurl",data.get(position).imageUrl);
+                    context.startActivity(intent);
                 }
             });
         }

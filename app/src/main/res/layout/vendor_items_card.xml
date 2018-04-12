@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/relLayout"
     android:orientation="vertical">
@@ -9,7 +9,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/cardId"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="350dp"
         >
         <RelativeLayout
 
@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/CardViewImageView"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="230dp"
 
             />
 
@@ -40,7 +40,7 @@
              android:orientation="horizontal"
              android:id="@+id/linearLayoutCard"
              android:layout_below="@+id/CardViewProductName"
-             android:layout_marginTop="20dp"
+             android:layout_marginTop="5dp"
              >
          <TextView
              android:layout_width="wrap_content"

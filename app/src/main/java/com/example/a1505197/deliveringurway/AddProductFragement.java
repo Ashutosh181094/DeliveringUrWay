@@ -1,7 +1,9 @@
 package com.example.a1505197.deliveringurway;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -169,4 +171,20 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
        progressDialog.dismiss();
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        SharedPreferences sp = getActivity().getSharedPreferences("IValue", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putInt("i", i);
+        editor.commit();
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        SharedPreferences sp =getActivity().getSharedPreferences("IValue", Activity.MODE_PRIVATE);
+        int Value = sp.getInt("your_int_key", -1);
+    }
 }
