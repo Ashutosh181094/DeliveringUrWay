@@ -60,6 +60,29 @@
         android:layout_marginTop="20dp"
         android:inputType="textPersonName"
          />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type"
+            android:textColor="@color/Black"
+            android:layout_marginLeft="100dp"
+            android:layout_gravity="center"
+            android:textSize="25dp"
+            android:layout_marginTop="10dp"
+            />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/type"
+            ></Spinner>
+    </LinearLayout>
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

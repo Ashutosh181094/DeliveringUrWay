@@ -59,7 +59,6 @@
               android:id="@+id/PriceEntered"
               android:layout_marginLeft="5dp"
               android:text="000"
-
               android:layout_toEndOf="@+id/PriceRupeeSymbol"
               android:layout_below="@id/CardViewProductName"
 

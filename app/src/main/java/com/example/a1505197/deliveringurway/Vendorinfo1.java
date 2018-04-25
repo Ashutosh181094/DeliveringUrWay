@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -33,6 +34,9 @@ public class Vendorinfo1 extends AppCompatActivity {
                 String OwnerOfB=getintent.getStringExtra("OwnerOfB");
                 String Address=getintent.getStringExtra("Address");
                 String PhoneNumber=getintent.getStringExtra("PhoneNumber");
+                String Type=getintent.getStringExtra("type");
+                Toast.makeText(getApplicationContext(),"j"+Type,Toast.LENGTH_LONG).show();
+
                 Intent intent=new Intent(Vendorinfo1.this,VendorInfo4.class);
                 intent.putExtra("nightDelivery",nightDelivery);
                 intent.putExtra("paytmAccepted",payTmAccepted);
@@ -40,6 +44,7 @@ public class Vendorinfo1 extends AppCompatActivity {
                 intent.putExtra("PhoneNumber",PhoneNumber);
                 intent.putExtra("nameOfB",nameOfB);
                 intent.putExtra("OwnerOfB",OwnerOfB);
+                intent.putExtra("type",Type);
                 startActivity(intent);
             }
         });

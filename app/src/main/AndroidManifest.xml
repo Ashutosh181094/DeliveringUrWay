@@ -29,7 +29,8 @@
         <activity android:name=".VendorInfo4" />
         <activity android:name=".VendorLogin" />
         <activity android:name=".VendorData" />
-        <activity android:name=".VendorProductDescription"></activity>
+        <activity android:name=".VendorProductDescription" />
+        <activity android:name=".UserSideVendors"></activity>
     </application>
 
 </manifest>

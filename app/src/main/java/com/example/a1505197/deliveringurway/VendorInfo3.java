@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -31,7 +32,8 @@ public class VendorInfo3 extends AppCompatActivity {
                Intent intentsend3=getIntent();
                 String nameOfB=intentsend3.getStringExtra("nameOfB");
                 String OwnerOfB=intentsend3.getStringExtra("OwnerOfB");
-
+                String Type=intentsend3.getStringExtra("type");
+                Toast.makeText(getApplicationContext(),"j"+Type,Toast.LENGTH_LONG).show();
                 if(sAddress.equals("")){
                     vAddress.setError("Please enter address");
                 }
@@ -50,6 +52,7 @@ public class VendorInfo3 extends AppCompatActivity {
                         intent.putExtra("PhoneNumber", sPhoneNumber);
                         intent.putExtra("nameOfB", nameOfB);
                         intent.putExtra("OwnerOfB", OwnerOfB);
+                        intent.putExtra("type",Type);
                         startActivity(intent);
                     }
                 }

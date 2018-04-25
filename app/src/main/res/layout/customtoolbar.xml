@@ -7,7 +7,7 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/customToolbar"
+        android:id="@+id/customToolbarLayout"
         android:background="#4d4cb6">
 
     </android.support.v7.widget.Toolbar>

@@ -32,6 +32,8 @@ public class VendorInfo4 extends AppCompatActivity {
     EditText minAmount;
     EditText distance;
     EditText chargesOtherwise;
+    String Type;
+    static  int i=0;
 
 
     @Override
@@ -63,15 +65,18 @@ public class VendorInfo4 extends AppCompatActivity {
                 PhoneNumber=getintent.getStringExtra("PhoneNumber");
                 nightdelivery=getintent.getIntExtra("nightDelivery",0);
                 paytmAccepted=getintent.getIntExtra("paytmAccepted",0);
+                Type=getintent.getStringExtra("type");
+
                 vendordata= FirebaseDatabase.getInstance().getReference("vendors");
                 deliveryInfo=FirebaseDatabase.getInstance().getReference("deliveryInfo");
-                VendorInformation vendorInformation=new VendorInformation(nightdelivery,paytmAccepted,nameOFB,OwnerOfB,Address,PhoneNumber,DeliveryInfo);
+                VendorInformation vendorInformation=new VendorInformation(nightdelivery,paytmAccepted,nameOFB,OwnerOfB,Address,PhoneNumber,DeliveryInfo,Type);
 
-                vendordata.child(PhoneNumber).setValue(vendorInformation);
+                vendordata.child(""+i).setValue(vendorInformation);
                 if(DeliveryInfo.equals("Yes, but Conditionally"))
                 {
                    deliveryInfo.child(PhoneNumber).setValue(deliveryInformation);
                 }
+                i++;
                 makeDialog();
 
 

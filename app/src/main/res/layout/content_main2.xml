@@ -18,5 +18,31 @@
         app:slideInterval="3000"
         app:strokeColor="#FF777777"
         app:strokeWidth="1dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#f76606"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:drawableLeft="@drawable/fork"
+        android:text="Food"
+        android:textSize="30dp"
+        android:layout_marginStart="20dp"
+        android:id="@+id/tvFood"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#f76606"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Clothing"
+        android:textSize="30dp"
+        android:id="@+id/tvClothing"
+
+        />
 </LinearLayout>
     <!---->

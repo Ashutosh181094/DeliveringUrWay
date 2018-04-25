@@ -11,7 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,8 +25,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     CarouselView carouselView;
     Toolbar toolbar;
     FirebaseAuth mAuth;
+    TextView tvFood,tvClothes;
     private static final int REQUEST_CODE=1;
-
     int[] sampleImages = {R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut};
 
 
@@ -33,8 +35,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth=FirebaseAuth.getInstance();
+        tvFood=findViewById(R.id.tvFood);
+        tvClothes=findViewById(R.id.tvClothing);
         carouselView = (CarouselView) findViewById(R.id.carouselView);
-        toolbar = (Toolbar) findViewById(R.id.customToolbar);
+        toolbar = (Toolbar) findViewById(R.id.customToolbarLayout);
+
         carouselView.setPageCount(sampleImages.length);
 
 
@@ -55,6 +60,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        tvFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,UserSideVendors.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
