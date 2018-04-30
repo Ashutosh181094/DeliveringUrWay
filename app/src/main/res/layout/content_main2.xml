@@ -21,26 +21,38 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="#f76606"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:paddingLeft="20dp"
         android:drawableLeft="@drawable/fork"
-        android:text="Food"
+        android:text="Order Food"
+        android:drawablePadding="65dp"
         android:textSize="30dp"
-        android:layout_marginStart="20dp"
+        android:textColor="@color/Black"
+        android:paddingTop="10dp"
         android:id="@+id/tvFood"
+        android:background="@drawable/rounded_corners"
+
+
 
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="#f76606"
+        android:drawableLeft="@drawable/clothingicon"
+        android:paddingLeft="20dp"
+        android:drawablePadding="80dp"
+        android:paddingTop="10dp"
+
         android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:text="Clothing"
         android:textSize="30dp"
+        android:textColor="@color/Black"
+        android:background="@drawable/rounded_corners"
+
         android:id="@+id/tvClothing"
 
         />

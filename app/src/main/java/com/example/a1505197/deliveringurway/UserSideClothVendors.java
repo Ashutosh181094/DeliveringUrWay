@@ -2,8 +2,8 @@ package com.example.a1505197.deliveringurway;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -13,7 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class UserSideVendors extends AppCompatActivity {
+public class UserSideClothVendors extends AppCompatActivity {
     RecyclerView VendorRecyclerView;
     ArrayList<VendorInformation> vendorInformations;
     DatabaseReference Vendorcontactinfo;
@@ -25,7 +25,8 @@ public class UserSideVendors extends AppCompatActivity {
         VendorRecyclerView=findViewById(R.id.userSideRecyclerView);
         vendorInformations=new ArrayList<>();
         Vendorcontactinfo = FirebaseDatabase.getInstance().getReference("vendors");
-        Vendorcontactinfo.addValueEventListener(new ValueEventListener() {
+        Vendorcontactinfo.addValueEventListener(new ValueEventListener()
+        {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
@@ -33,23 +34,24 @@ public class UserSideVendors extends AppCompatActivity {
                 {
 
                     vendorInformations.clear();
+
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                     {
-                        VendorInformation vendorInformation = dataSnapshot1.child(""+i).getValue(VendorInformation.class);
+                        VendorInformation vendorInformation = dataSnapshot1.getValue(VendorInformation.class);
                         i++;
-                        Toast.makeText(getApplicationContext(),""+vendorInformation.businessName,Toast.LENGTH_LONG).show();
+                        if(vendorInformation.type.compareTo("Clothing")==0)
+                        {
+                            vendorInformations.add(vendorInformation);
+                        }
 
-                        vendorInformations.add(vendorInformation);
 
                     }
-                    Totaldata totaldata=new Totaldata();
-                    totaldata.setVendorsdata(vendorInformations);
-                    //VendorsAdapter vendorsAdapter=new VendorsAdapter(getApplicationContext(),vendorInformations);
-                    //VendorRecyclerView.setAdapter(vendorsAdapter);
-                   // VendorRecyclerView.setHasFixedSize(true);
-                    //VendorRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    VendorsAdapter vendorsAdapter=new VendorsAdapter(UserSideClothVendors.this,vendorInformations);
+                    VendorRecyclerView.setAdapter(vendorsAdapter);
+                    VendorRecyclerView.setHasFixedSize(true);
+                    VendorRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-                    //vendorsAdapter.notifyDataSetChanged();
+                    vendorsAdapter.notifyDataSetChanged();
 
                 }
 

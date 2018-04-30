@@ -5,60 +5,60 @@ package com.example.a1505197.deliveringurway;
  */
 
 public class VendorInformation {
-    int nightDelivery;
-    int payTmAccepted;
-    String businessName;
-    String ownerName;
+    int night_delivery;
+    int pay_tm_accepted;
+    String business_name;
+    String owner_name;
     String address;
-    String phoneNumber;
-    String deliveryInfo;
+    String phone_number;
+    String delivery_info;
     String type;
     public VendorInformation()
     {
 
     }
 
-    public VendorInformation(int nightDelivery, int payTmAccepted, String businessName, String ownerName, String address, String phoneNumber, String deliveryInfo, String type) {
-        this.nightDelivery = nightDelivery;
-        this.payTmAccepted = payTmAccepted;
-        this.businessName = businessName;
-        this.ownerName = ownerName;
+    public VendorInformation(int night_delivery, int pay_tm_accepted, String business_name, String owner_name, String address, String phone_number, String delivery_info, String type) {
+        this.night_delivery = night_delivery;
+        this.pay_tm_accepted = pay_tm_accepted;
+        this.business_name = business_name;
+        this.owner_name = owner_name;
         this.address = address;
-        this.phoneNumber = phoneNumber;
-        deliveryInfo = deliveryInfo;
+        this.phone_number = phone_number;
+        this.delivery_info = delivery_info;
         this.type = type;
     }
 
-    public int getNightDelivery() {
-        return nightDelivery;
+    public int getNight_delivery() {
+        return night_delivery;
     }
 
-    public void setNightDelivery(int nightDelivery) {
-        this.nightDelivery = nightDelivery;
+    public void setNight_delivery(int night_delivery) {
+        this.night_delivery = night_delivery;
     }
 
-    public int getPayTmAccepted() {
-        return payTmAccepted;
+    public int getPay_tm_accepted() {
+        return pay_tm_accepted;
     }
 
-    public void setPayTmAccepted(int payTmAccepted) {
-        this.payTmAccepted = payTmAccepted;
+    public void setPay_tm_accepted(int pay_tm_accepted) {
+        this.pay_tm_accepted = pay_tm_accepted;
     }
 
-    public String getBusinessName() {
-        return businessName;
+    public String getBusiness_name() {
+        return business_name;
     }
 
-    public void setBusinessName(String businessName) {
-        this.businessName = businessName;
+    public void setBusiness_name(String business_name) {
+        this.business_name = business_name;
     }
 
-    public String getOwnerName() {
-        return ownerName;
+    public String getOwner_name() {
+        return owner_name;
     }
 
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
+    public void setOwner_name(String owner_name) {
+        this.owner_name = owner_name;
     }
 
     public String getAddress() {
@@ -69,20 +69,20 @@ public class VendorInformation {
         this.address = address;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone_number() {
+        return phone_number;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
-    public String getDeliveryInfo() {
-        return deliveryInfo;
+    public String getDelivery_info() {
+        return delivery_info;
     }
 
-    public void setDeliveryInfo(String deliveryInfo) {
-        deliveryInfo = deliveryInfo;
+    public void setDelivery_info(String delivery_info) {
+        this.delivery_info = delivery_info;
     }
 
     public String getType() {

@@ -1,6 +1,7 @@
 package com.example.a1505197.deliveringurway;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -47,6 +49,9 @@ public class VendorData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendordata);
+        SharedPreferences sp = getPreferences(MODE_PRIVATE);
+        i = sp.getInt("iValue", 0);
+        Toast.makeText(VendorData.this,""+i,Toast.LENGTH_LONG).show();
         toolbar = (Toolbar) findViewById(R.id.customToolbarLayout);
         VendorRecyclerView=findViewById(R.id.vendorrecycler);
         setSupportActionBar(toolbar);
@@ -123,6 +128,7 @@ public class VendorData extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+
 
 
     }
@@ -206,9 +212,14 @@ public class VendorData extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
 
-
-
+        SharedPreferences.Editor spe = getPreferences(MODE_PRIVATE).edit();
+        spe.putInt("iValue", i);
+        spe.commit();
+    }
 }
 //
 //

@@ -6,51 +6,51 @@ package com.example.a1505197.deliveringurway;
 
 public class ProductDescription
 {
-    String productName;
+    String product_name;
     String cost;
     String description;
-    String imageUrl;
+    String image_url;
     public ProductDescription()
     {
 
     }
 
-    public ProductDescription(String productName, String cost, String description, String imageUrl) {
-        this.productName = productName;
+    public ProductDescription(String product_name, String cost, String description, String image_url) {
+        this.product_name = product_name;
         this.cost = cost;
         this.description = description;
-        this.imageUrl = imageUrl;
+        this.image_url = image_url;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public String getProduct_name() {
+        return product_name;
     }
 
-    public void setCost(String cost) {
-        this.cost = cost;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getProductName() {
-        return productName;
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
     }
 
     public String getCost() {
         return cost;
     }
 
+    public void setCost(String cost) {
+        this.cost = cost;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 }

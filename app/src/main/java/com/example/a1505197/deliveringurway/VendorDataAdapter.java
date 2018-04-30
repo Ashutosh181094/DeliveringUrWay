@@ -40,10 +40,10 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
     {
 
 
-        holder.productname.setText(data.get(position).productName);
+        holder.productname.setText(data.get(position).product_name);
         holder.price.setText(data.get(position).cost);
         Picasso.with(context)
-                .load(data.get(position).imageUrl)
+                .load(data.get(position).image_url)
                 .fit()
                 .centerCrop()
                 .into(holder.imageView);
@@ -71,10 +71,10 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
                 public void onClick(View v) {
                     int position=getAdapterPosition();
                     Intent intent=new Intent(context,VendorProductDescription.class);
-                    intent.putExtra("name",data.get(position).productName);
+                    intent.putExtra("name",data.get(position).product_name);
                     intent.putExtra("cost",data.get(position).cost);
                     intent.putExtra("description",data.get(position).description);
-                    intent.putExtra("imageurl",data.get(position).imageUrl);
+                    intent.putExtra("imageurl",data.get(position).image_url);
                     context.startActivity(intent);
                 }
             });

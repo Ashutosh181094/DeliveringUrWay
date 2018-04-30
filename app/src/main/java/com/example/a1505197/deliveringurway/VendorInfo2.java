@@ -42,11 +42,11 @@ public class VendorInfo2 extends AppCompatActivity {
            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                if(position==0)
                {
-                   Type=Type+"Food";
+                   Type="Food";
                }
                else
                {
-                   Type=Type+"Clothing";
+                   Type="Clothing";
                }
            }
 

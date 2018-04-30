@@ -30,7 +30,9 @@
         <activity android:name=".VendorLogin" />
         <activity android:name=".VendorData" />
         <activity android:name=".VendorProductDescription" />
-        <activity android:name=".UserSideVendors"></activity>
+        <activity android:name=".UserSideFoodVendors" />
+        <activity android:name=".UserSideClothVendors"/>
+        <activity android:name=".UserSideVendorData"></activity>
     </application>
 
 </manifest>
