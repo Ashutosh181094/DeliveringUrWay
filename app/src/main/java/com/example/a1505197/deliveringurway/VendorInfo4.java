@@ -72,7 +72,7 @@ public class VendorInfo4 extends AppCompatActivity {
                 VendorInformation vendorInformation=new VendorInformation(nightdelivery,paytmAccepted,nameOFB,OwnerOfB,Address,PhoneNumber,DeliveryInfo,Type);
 
                 vendordata.child(""+i).setValue(vendorInformation);
-                if(DeliveryInfo.equals("Yes, but Conditionally"))
+                if(DeliveryInfo.compareTo("YES,but Conditionally")==0)
                 {
                    deliveryInfo.child(PhoneNumber).setValue(deliveryInformation);
                 }
@@ -117,10 +117,10 @@ public class VendorInfo4 extends AppCompatActivity {
         Rbtn=(RadioButton)findViewById(radioButtonId);
 
         String radioText=Rbtn.getText().toString();
-        if(radioText.equals("YES, but conditionally")){
+        if(radioText.equals("YES,but Conditionally")){
             //Toast.makeText(getApplicationContext(),"THIS IS  "+Rbtn.getText(),Toast.LENGTH_SHORT).show();
             showChangeLangDialog();
-            DeliveryInfo="YES, but conditionally";
+            DeliveryInfo="YES,but Conditionally";
 
 
         }
