@@ -74,3 +74,4 @@ public class UserSideVendorDataAdapter extends RecyclerView.Adapter<UserSideVend
         }
     }
 }
+//

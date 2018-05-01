@@ -71,3 +71,4 @@ public class VendorsAdapter extends RecyclerView.Adapter<VendorsAdapter.VendorVi
         }
     }
 }
+//
