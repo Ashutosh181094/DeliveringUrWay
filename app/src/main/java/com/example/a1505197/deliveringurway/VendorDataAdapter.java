@@ -30,7 +30,7 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
     @Override
     public VendorViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View view= inflater.inflate(R.layout.vendor_items_card,parent,false);
+        View view= inflater.inflate(R.layout.product_card_view,parent,false);
         VendorDataAdapter.VendorViewHolder holder=new  VendorDataAdapter.VendorViewHolder(view);
         return holder;
     }
@@ -63,9 +63,9 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
 
         public VendorViewHolder(View itemView) {
             super(itemView);
-            productname=itemView.findViewById(R.id.CardViewProductName);
-            price=itemView.findViewById(R.id.PriceEntered);
-            imageView=itemView.findViewById(R.id.CardViewImageView);
+            productname=itemView.findViewById(R.id.product_card_text_description);
+            price=itemView.findViewById(R.id.product_card_view_PriceRupeeSymbol);
+            imageView=itemView.findViewById(R.id.product_card_Image);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

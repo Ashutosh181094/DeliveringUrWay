@@ -5,7 +5,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -13,6 +19,8 @@ public class VendorInfo3 extends AppCompatActivity {
     CircleImageView Arrow3;
     String sAddress,sPhoneNumber;
     EditText vAddress,vPhoneNumber;
+    TextView tvAddress;
+    int PLACE_PICKER_REQUEST=1;
 
     //comment haif
 
@@ -22,6 +30,24 @@ public class VendorInfo3 extends AppCompatActivity {
         setContentView(R.layout.vendorregistration3);
         vAddress=findViewById(R.id.editAddress);
         vPhoneNumber=findViewById(R.id.editPhoneNumber);
+        tvAddress=findViewById(R.id.tvAddress);
+        tvAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlacePicker.IntentBuilder builder=new PlacePicker.IntentBuilder();
+                Toast.makeText(getApplicationContext(),"j on click",Toast.LENGTH_LONG).show();
+
+                try {
+                    Intent intent=builder.build(VendorInfo3.this);
+                    startActivityForResult(intent,PLACE_PICKER_REQUEST);
+                } catch (GooglePlayServicesRepairableException e) {
+                    e.printStackTrace();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
         Arrow3=(CircleImageView)findViewById(R.id.arrow3);
         Arrow3.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +60,7 @@ public class VendorInfo3 extends AppCompatActivity {
                 String OwnerOfB=intentsend3.getStringExtra("OwnerOfB");
                 String Type=intentsend3.getStringExtra("type");
                 Toast.makeText(getApplicationContext(),"j"+Type,Toast.LENGTH_LONG).show();
+
                 if(sAddress.equals("")){
                     vAddress.setError("Please enter address");
                 }
@@ -58,6 +85,18 @@ public class VendorInfo3 extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PLACE_PICKER_REQUEST) {
+
+            if (resultCode== RESULT_OK) {
+                Place place=PlacePicker.getPlace(data,this);
+                String address=String.format("%s", place.getAddress());
+                vAddress.setText(address);
+            }
+        }
     }
 }
 //////

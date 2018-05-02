@@ -35,6 +35,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:11.8.0'
     implementation 'com.android.support:recyclerview-v7:27.0.2'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.google.android.gms:play-services-places:11.8.0'
 
 }
 apply plugin: 'com.google.gms.google-services'
