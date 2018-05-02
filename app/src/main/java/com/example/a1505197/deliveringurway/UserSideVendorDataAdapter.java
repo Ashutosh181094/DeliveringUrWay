@@ -63,7 +63,7 @@ public class UserSideVendorDataAdapter extends RecyclerView.Adapter<UserSideVend
         public VendorViewHolder(View itemView) {
             super(itemView);
             productname=itemView.findViewById(R.id.product_card_text_description);
-            price=itemView.findViewById(R.id.product_card_view_PriceRupeeSymbol);
+            price=itemView.findViewById(R.id.PriceEntered);
             imageView=itemView.findViewById(R.id.product_card_Image);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

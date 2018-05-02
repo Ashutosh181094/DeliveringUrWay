@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView android:layout_width="180dp"
+<android.support.v7.widget.CardView android:layout_width="160dp"
     android:layout_height="240dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:elevation="10dp"
     app:cardCornerRadius="8dp"
+    android:layout_margin="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/product_card_view_PriceRupeeSymbol"
                 android:text="₹"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="15dp"
                 android:layout_below="@+id/product_card_text_description"
                 android:textSize="15sp"
                 android:textColor="@color/Black">
