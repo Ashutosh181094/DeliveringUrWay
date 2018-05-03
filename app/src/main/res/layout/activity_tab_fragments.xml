@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="#085cd9"
-
+        android:background="#20468F"
+        app:titleTextColor="@color/White"
         android:minHeight="?attr/actionBarSize"
         />
 
@@ -20,8 +20,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:background="#085cd9"
-
+        android:background="#20468F"
+        app:tabTextColor="@color/White"
+        app:tabSelectedTextColor="#EEFF41"
         android:minHeight="?attr/actionBarSize"
         />
 

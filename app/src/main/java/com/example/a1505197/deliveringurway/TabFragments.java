@@ -50,7 +50,7 @@ public class TabFragments extends AppCompatActivity
                     getSupportActionBar().setTitle("Description");
                 else
                 if(tab.getPosition()==1)
-                    getSupportActionBar().setTitle("Riview");
+                    getSupportActionBar().setTitle("Review");
                 else
                     getSupportActionBar().setTitle("Rating");
             }
