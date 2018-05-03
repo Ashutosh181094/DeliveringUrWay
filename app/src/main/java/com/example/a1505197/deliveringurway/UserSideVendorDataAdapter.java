@@ -1,6 +1,7 @@
 package com.example.a1505197.deliveringurway;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +69,8 @@ public class UserSideVendorDataAdapter extends RecyclerView.Adapter<UserSideVend
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent=new Intent(context,TabFragments.class);
+                    context.startActivity(intent);
                 }
             });
         }
