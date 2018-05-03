@@ -33,6 +33,7 @@
             android:hint="email"
             android:inputType="textEmailAddress"
             android:textColor="#ef0d0d"
+
             android:alpha="0.2"/>
 
 

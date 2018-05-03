@@ -29,7 +29,7 @@
         android:text="Order Food"
         android:drawablePadding="65dp"
         android:textSize="30dp"
-        android:textColor="@color/Black"
+        android:textColor="@color/White"
         android:paddingTop="10dp"
         android:id="@+id/tvFood"
         android:background="@drawable/rounded_corners"
@@ -50,7 +50,7 @@
         android:layout_marginRight="10dp"
         android:text="Clothing"
         android:textSize="30dp"
-        android:textColor="@color/Black"
+        android:textColor="@color/White"
         android:background="@drawable/rounded_corners"
 
         android:id="@+id/tvClothing"

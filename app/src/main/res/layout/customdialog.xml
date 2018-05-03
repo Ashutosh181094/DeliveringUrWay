@@ -4,22 +4,22 @@
 
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#01bafd">
+    android:background="#03A9F4">
     <!--jajaj -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FORGOT PASSWORD"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:textSize="25dp"
-            android:textColor="@color/White"
-            android:textStyle="bold"
-            />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="FORGOT PASSWORD"
+                android:textColor="@color/White"
+                android:textSize="25dp"
+                android:textStyle="bold" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -28,14 +28,28 @@
                 android:layout_marginTop="60dp"
                 android:layout_marginLeft="10dp"
                 android:id="@+id/etForgotPasswordemail"
+                android:textColorHint="@color/Black"
+                android:hint="enter email address"
                 />
-            <Button
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+
+            <Button
                 android:id="@+id/btnSendPassword"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="20dp"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="250dp"
+                android:layout_marginBottom="20dp"
+                android:background="#827717"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/White"
+                android:text="SEND EMAIL"
+                />
+            </LinearLayout>
         </LinearLayout>
 
 
