@@ -39,6 +39,7 @@
         <activity android:name=".UserSideClothVendors" />
         <activity android:name=".UserSideVendorData" />
         <activity android:name=".TabFragments"></activity>
+        <activity android:name=".VendorProductDescription"/>
     </application>
 
 </manifest>

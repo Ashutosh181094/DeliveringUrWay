@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -93,21 +92,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        if (id == R.id.nav_share)
+        {
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-            Toast.makeText(getApplicationContext(),"ABHI KAAM CHAALU HAI",Toast.LENGTH_LONG).show();
-
-        } else if (id == R.id.nav_slideshow) {
-            Toast.makeText(getApplicationContext(),"BOLA NA ABHI KAAM CHAALU HAI",Toast.LENGTH_LONG).show();
-
-        } else if (id == R.id.nav_manage) {
-            Toast.makeText(getApplicationContext(),"SAMJH NAHI AATA KI ABHI KAAM CHAALU HAI",Toast.LENGTH_LONG).show();
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        }
+        else
+            if (id == R.id.nav_send)
+            {
            Logout();
         }
 
@@ -186,14 +177,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if(user.getEmail().equals(""))
         {
-            Toast.makeText(MainActivity.this,"Its a vendor",Toast.LENGTH_LONG).show();
             Intent intent=new Intent(MainActivity.this,VendorData.class);
             startActivity(intent);
             finish();
         }
         else
         {
-            Toast.makeText(MainActivity.this,"Its a user",Toast.LENGTH_LONG).show();
 
         }
     }
