@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.net.ConnectException;
+
 public class VendorInfo4 extends AppCompatActivity {
     RadioGroup rg;
     RadioButton yes,no,cond,Rbtn;
@@ -66,19 +68,21 @@ public class VendorInfo4 extends AppCompatActivity {
                 nightdelivery=getintent.getIntExtra("nightDelivery",0);
                 paytmAccepted=getintent.getIntExtra("paytmAccepted",0);
                 Type=getintent.getStringExtra("type");
+                try {
+                    vendordata = FirebaseDatabase.getInstance().getReference("vendors");
+                    deliveryInfo = FirebaseDatabase.getInstance().getReference("deliveryInfo");
+                    VendorInformation vendorInformation = new VendorInformation(nightdelivery, paytmAccepted, nameOFB, OwnerOfB, Address, PhoneNumber, DeliveryInfo, Type);
 
-                vendordata= FirebaseDatabase.getInstance().getReference("vendors");
-                deliveryInfo=FirebaseDatabase.getInstance().getReference("deliveryInfo");
-                VendorInformation vendorInformation=new VendorInformation(nightdelivery,paytmAccepted,nameOFB,OwnerOfB,Address,PhoneNumber,DeliveryInfo,Type);
-
-                vendordata.child(""+i).setValue(vendorInformation);
-                if(DeliveryInfo.compareTo("YES,but Conditionally")==0)
-                {
-                   deliveryInfo.child(PhoneNumber).setValue(deliveryInformation);
+                    vendordata.child("" + i).setValue(vendorInformation);
+                    if (DeliveryInfo.compareTo("YES,but Conditionally") == 0) {
+                        deliveryInfo.child(PhoneNumber).setValue(deliveryInformation);
+                    }
+                    i++;
+                    makeDialog();
+                }catch (NullPointerException e){
+                    Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
                 }
-                i++;
-                makeDialog();
-
 
 
 
