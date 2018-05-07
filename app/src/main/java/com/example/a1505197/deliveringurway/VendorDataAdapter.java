@@ -78,6 +78,7 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
                     context.startActivity(intent);
                 }
             });
+
         }
     }
 }

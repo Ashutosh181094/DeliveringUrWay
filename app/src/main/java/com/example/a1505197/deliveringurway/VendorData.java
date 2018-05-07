@@ -16,7 +16,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,7 +38,6 @@ public class VendorData extends AppCompatActivity {
     ArrayList<ProductDescription> data;
     FirebaseUser user;
     Toolbar toolbar;
-    static int i=0;
 
 
     private static final int REQUEST_CODE=1;
@@ -49,7 +47,6 @@ public class VendorData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendordata);
 
-        Toast.makeText(VendorData.this,""+i,Toast.LENGTH_LONG).show();
         toolbar = (Toolbar) findViewById(R.id.customToolbarLayout);
         VendorRecyclerView=findViewById(R.id.vendorrecycler);
         setSupportActionBar(toolbar);
