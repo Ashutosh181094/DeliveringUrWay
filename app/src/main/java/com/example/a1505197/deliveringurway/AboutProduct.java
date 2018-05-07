@@ -98,8 +98,8 @@ RecyclerView recyclerView;
                 .setTitleTextColor(R.color.colorPrimary)
                 .setDescriptionTextColor(R.color.colorPrimary)
                 .setHint("Please write your comment here....")
-                .setHintTextColor(R.color.colorAccent)
-                .setCommentBackgroundColor(R.color.colorPrimaryDark)
+                .setHintTextColor(R.color.DarkGrey)
+                .setCommentBackgroundColor(R.color.lightGrey)
                 .setWindowAnimation(R.style.RatingDialogFadeAnim)
                 .create(AboutProduct.this)
                 .show();
