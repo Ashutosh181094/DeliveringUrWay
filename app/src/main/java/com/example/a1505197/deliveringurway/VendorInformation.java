@@ -93,4 +93,3 @@ public class VendorInformation {
         this.type = type;
     }
 }
-//////

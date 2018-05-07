@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -22,7 +21,7 @@ public class VendorInfo3 extends AppCompatActivity {
     TextView tvAddress;
     int PLACE_PICKER_REQUEST=1;
 
-    //comment haif
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,6 @@ public class VendorInfo3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 PlacePicker.IntentBuilder builder=new PlacePicker.IntentBuilder();
-                Toast.makeText(getApplicationContext(),"j on click",Toast.LENGTH_LONG).show();
 
                 try {
                     Intent intent=builder.build(VendorInfo3.this);
@@ -59,7 +57,6 @@ public class VendorInfo3 extends AppCompatActivity {
                 String nameOfB=intentsend3.getStringExtra("nameOfB");
                 String OwnerOfB=intentsend3.getStringExtra("OwnerOfB");
                 String Type=intentsend3.getStringExtra("type");
-                Toast.makeText(getApplicationContext(),"j"+Type,Toast.LENGTH_LONG).show();
 
                 if(sAddress.equals("")){
                     vAddress.setError("Please enter address");
@@ -99,4 +96,3 @@ public class VendorInfo3 extends AppCompatActivity {
         }
     }
 }
-//////

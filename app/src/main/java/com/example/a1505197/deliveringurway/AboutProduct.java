@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,6 +62,7 @@ RecyclerView recyclerView;
                         Rating rating = dataSnapshot1.getValue(Rating.class);
                         ratings.add(rating);
                     }
+                    Toast.makeText(getApplicationContext(),""+ratings.size(),Toast.LENGTH_LONG).show();
                     CommentAdapter commentsAdapter=new CommentAdapter(AboutProduct.this,ratings);
                     recyclerView.setAdapter(commentsAdapter);
                     recyclerView.setHasFixedSize(true);

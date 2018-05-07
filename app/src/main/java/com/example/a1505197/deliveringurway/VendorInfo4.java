@@ -28,7 +28,6 @@ public class VendorInfo4 extends AppCompatActivity {
     DatabaseReference vendordata,deliveryInfo;
     String nameOFB,OwnerOfB,Address,PhoneNumber;
     int nightdelivery,paytmAccepted;
-    int addedFlag=0;
     String id;
     String DeliveryInfo="NO";
     DeliveryInformation deliveryInformation;
@@ -36,7 +35,6 @@ public class VendorInfo4 extends AppCompatActivity {
     EditText distance;
     EditText chargesOtherwise;
     String Type;
-    static  int i=0;
     boolean wifi,mobile;
 
 
@@ -55,7 +53,7 @@ public class VendorInfo4 extends AppCompatActivity {
 
 
         registerButton=(Button) findViewById(R.id.arrow3);
-        // onclicklistener
+
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,11 +74,11 @@ public class VendorInfo4 extends AppCompatActivity {
                         deliveryInfo = FirebaseDatabase.getInstance().getReference("deliveryInfo");
                         VendorInformation vendorInformation = new VendorInformation(nightdelivery, paytmAccepted, nameOFB, OwnerOfB, Address, PhoneNumber, DeliveryInfo, Type);
 
-                        vendordata.child("" + i).setValue(vendorInformation);
+                        vendordata.push().setValue(vendorInformation);
                         if (DeliveryInfo.compareTo("YES,but Conditionally") == 0) {
                             deliveryInfo.child(PhoneNumber).setValue(deliveryInformation);
                         }
-                        i++;
+
 
                         makeDialog();
 
@@ -102,14 +100,14 @@ public class VendorInfo4 extends AppCompatActivity {
 
 
 
-//
+
 
 
     }
 
 
 
-    //
+
     boolean checkConn(){
 
         ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Service.CONNECTIVITY_SERVICE);
@@ -118,10 +116,8 @@ public class VendorInfo4 extends AppCompatActivity {
             wifi=networkInfo.getType()==ConnectivityManager.TYPE_WIFI;
             mobile=networkInfo.getType()==ConnectivityManager.TYPE_MOBILE;
             if(wifi){
-                //Toast.makeText(getApplicationContext(),"WIFI",Toast.LENGTH_LONG).show();
             }
             if (mobile){
-               // Toast.makeText(getApplicationContext(),"Mobile",Toast.LENGTH_LONG).show();
             }
             return true;
         }
@@ -142,7 +138,6 @@ public class VendorInfo4 extends AppCompatActivity {
 
         d.setPositiveButton("Done", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                //do something with edt.getText().toString();
                 Intent intent=new Intent(VendorInfo4.this,VendorLogin.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
@@ -159,7 +154,6 @@ public class VendorInfo4 extends AppCompatActivity {
 
         String radioText=Rbtn.getText().toString();
         if(radioText.equals("YES,but Conditionally")){
-            //Toast.makeText(getApplicationContext(),"THIS IS  "+Rbtn.getText(),Toast.LENGTH_SHORT).show();
             showChangeLangDialog();
             DeliveryInfo="YES,but Conditionally";
 
@@ -187,20 +181,12 @@ public class VendorInfo4 extends AppCompatActivity {
         final View dialogView = inflater.inflate(R.layout.custom_dialog, null);
         dialogBuilder.setView(dialogView);
 
-//        final EditText minAmount = (EditText) dialogView.findViewById(R.id.edit1);
-//        final EditText distance = (EditText) dialogView.findViewById(R.id.edit2);
-//        final EditText chargesOtherwise = (EditText) dialogView.findViewById(R.id.edit3);
 
         dialogBuilder.setTitle("Yes, but Conditionally");
         dialogBuilder.setMessage("Conditions");
         dialogBuilder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                //do something with edt.getText().toString();
-//                if(edt1.getText().toString().equals("")||edt2.getText().toString().equals("")||edt3.getText().toString().equals("")){
-//                    Toast.makeText(getApplicationContext(),"Please enter all values",Toast.LENGTH_SHORT).show();
-//
-//
-//                }
+
             }
         });
         dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -236,4 +222,3 @@ public class VendorInfo4 extends AppCompatActivity {
     }
 
 }
-//////

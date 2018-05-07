@@ -1,12 +1,11 @@
 package com.example.a1505197.deliveringurway;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -35,7 +34,6 @@ public class Vendorinfo1 extends AppCompatActivity {
                 String Address=getintent.getStringExtra("Address");
                 String PhoneNumber=getintent.getStringExtra("PhoneNumber");
                 String Type=getintent.getStringExtra("type");
-                Toast.makeText(getApplicationContext(),"j"+Type,Toast.LENGTH_LONG).show();
 
                 Intent intent=new Intent(Vendorinfo1.this,VendorInfo4.class);
                 intent.putExtra("nightDelivery",nightDelivery);
@@ -81,4 +79,3 @@ public class Vendorinfo1 extends AppCompatActivity {
        });
     }
 }
-//////
