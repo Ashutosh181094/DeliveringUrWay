@@ -29,7 +29,7 @@ public class UserSideVendorData extends AppCompatActivity {
         userSideVendorDataRecyclerView=findViewById(R.id.userSideVendorDataRecyclerView);
         userSideProductDescription=new ArrayList<>();
         Intent intent=getIntent();
-        String phno=intent.getStringExtra("VendorPhoneNumber");
+        final String phno=intent.getStringExtra("VendorPhoneNumber");
         userSideProductDescription=new ArrayList<>();
         Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child("+91"+phno);
         Vendortotaldata.addValueEventListener(new ValueEventListener() {
@@ -45,7 +45,7 @@ public class UserSideVendorData extends AppCompatActivity {
                         userSideProductDescription.add(productDescription);
                     }
 
-                    dataAdapter = new UserSideVendorDataAdapter(UserSideVendorData.this, userSideProductDescription);
+                    dataAdapter = new UserSideVendorDataAdapter(UserSideVendorData.this, userSideProductDescription,phno);
                     userSideVendorDataRecyclerView.setAdapter(dataAdapter);
                     userSideVendorDataRecyclerView.setHasFixedSize(true);
                     GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getApplicationContext(), 2);

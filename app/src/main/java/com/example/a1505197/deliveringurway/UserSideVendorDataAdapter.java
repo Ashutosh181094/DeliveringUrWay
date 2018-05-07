@@ -19,11 +19,13 @@ public class UserSideVendorDataAdapter extends RecyclerView.Adapter<UserSideVend
     Context context;
     ArrayList<ProductDescription> data;
     LayoutInflater inflater;
+    String phoneNumber;
 
-    public UserSideVendorDataAdapter(Context context, ArrayList<ProductDescription> data)
+    public UserSideVendorDataAdapter(Context context, ArrayList<ProductDescription> data,String phnoneNumber)
     {
         this.context=context;
         this.data=data;
+        this.phoneNumber=phnoneNumber;
         inflater=LayoutInflater.from(context);
 
     }
@@ -69,7 +71,11 @@ public class UserSideVendorDataAdapter extends RecyclerView.Adapter<UserSideVend
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int pos;
+                    pos=getAdapterPosition();
                     Intent intent=new Intent(context,AboutProduct.class);
+                    intent.putExtra("productName",data.get(pos).product_name);
+                    intent.putExtra("phoneNumber",phoneNumber);
                     context.startActivity(intent);
                 }
             });
