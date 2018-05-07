@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -19,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.stepstone.apprating.AppRatingDialog;
 import com.stepstone.apprating.listener.RatingDialogListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AboutProduct extends AppCompatActivity implements RatingDialogListener
@@ -30,6 +33,10 @@ RatingBar ratingBar;
 DatabaseReference databaseReferenceRatings;
 String productName,phoneNumber;
 FirebaseUser username;
+CommentAdapter commentAdapter;
+ArrayList<Rating> ratings;
+RecyclerView recyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +44,38 @@ FirebaseUser username;
         setContentView(R.layout.activity_about_product);
         btnRating=findViewById(R.id.btn_rating);
         Intent intent=getIntent();
+        ratings=new ArrayList<>();
         productName=intent.getStringExtra("productName");
         phoneNumber=intent.getStringExtra("phoneNumber");
         username= FirebaseAuth.getInstance().getCurrentUser();
+        recyclerView=findViewById(R.id.recyclerViewComments);
+        databaseReferenceRatings=FirebaseDatabase.getInstance().getReference().child("+91"+phoneNumber).child(productName);
+        databaseReferenceRatings.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                {
+                 ratings.clear();
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                    {
+                        Rating rating = dataSnapshot1.getValue(Rating.class);
+                        ratings.add(rating);
+                    }
+                    CommentAdapter commentsAdapter=new CommentAdapter(AboutProduct.this,ratings);
+                    recyclerView.setAdapter(commentsAdapter);
+                    recyclerView.setHasFixedSize(true);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+                    commentsAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         btnRating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,4 +114,5 @@ FirebaseUser username;
     public void onNegativeButtonClicked() {
 
     }
+
 }
