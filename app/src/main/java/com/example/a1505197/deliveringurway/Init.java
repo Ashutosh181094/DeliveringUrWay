@@ -18,4 +18,4 @@ public class Init {
     public static final int CAMERA_REQUEST_CODE=5;
     public static final int PICKFILE_REQUEST_CODE=8;
 }
-////
+//
