@@ -1,10 +1,15 @@
 package com.example.a1505197.deliveringurway;
 
+import android.app.Service;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +21,12 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.IOException;
 import java.net.ConnectException;
+import java.net.HttpURLConnection;
+import java.net.InetAddress;
+import java.net.URL;
+import java.net.UnknownHostException;
 
 public class VendorInfo4 extends AppCompatActivity {
     RadioGroup rg;
@@ -36,6 +46,7 @@ public class VendorInfo4 extends AppCompatActivity {
     EditText chargesOtherwise;
     String Type;
     static  int i=0;
+    boolean wifi,mobile;
 
 
     @Override
@@ -69,18 +80,25 @@ public class VendorInfo4 extends AppCompatActivity {
                 paytmAccepted=getintent.getIntExtra("paytmAccepted",0);
                 Type=getintent.getStringExtra("type");
                 try {
-                    vendordata = FirebaseDatabase.getInstance().getReference("vendors");
-                    deliveryInfo = FirebaseDatabase.getInstance().getReference("deliveryInfo");
-                    VendorInformation vendorInformation = new VendorInformation(nightdelivery, paytmAccepted, nameOFB, OwnerOfB, Address, PhoneNumber, DeliveryInfo, Type);
+                    if(checkConn()) {
+                        vendordata = FirebaseDatabase.getInstance().getReference("vendors");
+                        deliveryInfo = FirebaseDatabase.getInstance().getReference("deliveryInfo");
+                        VendorInformation vendorInformation = new VendorInformation(nightdelivery, paytmAccepted, nameOFB, OwnerOfB, Address, PhoneNumber, DeliveryInfo, Type);
 
-                    vendordata.child("" + i).setValue(vendorInformation);
-                    if (DeliveryInfo.compareTo("YES,but Conditionally") == 0) {
-                        deliveryInfo.child(PhoneNumber).setValue(deliveryInformation);
+                        vendordata.child("" + i).setValue(vendorInformation);
+                        if (DeliveryInfo.compareTo("YES,but Conditionally") == 0) {
+                            deliveryInfo.child(PhoneNumber).setValue(deliveryInformation);
+                        }
+                        i++;
+
+                        makeDialog();
+
                     }
-                    i++;
-                    makeDialog();
-                }catch (NullPointerException e){
-                    Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
+                    else {
+                        Toast.makeText(getApplicationContext(),"Not connected",Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),"Error:  "+e.toString(),Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
 
@@ -97,6 +115,44 @@ public class VendorInfo4 extends AppCompatActivity {
 
 
     }
+    //Internet checking function
+    public boolean isInternetAvailable() {
+        try {
+            final InetAddress address = InetAddress.getByName("www.google.com");
+            Toast.makeText(getApplicationContext(),""+!address.equals(""),Toast.LENGTH_LONG).show();
+            return !address.equals("");
+        } catch (UnknownHostException e) {
+            // Log error
+        }
+        return false;
+    }
+
+
+    //
+    boolean checkConn(){
+
+        ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Service.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
+        if(networkInfo!=null&&networkInfo.isConnected()){
+            wifi=networkInfo.getType()==ConnectivityManager.TYPE_WIFI;
+            mobile=networkInfo.getType()==ConnectivityManager.TYPE_MOBILE;
+            if(wifi){
+                //Toast.makeText(getApplicationContext(),"WIFI",Toast.LENGTH_LONG).show();
+            }
+            if (mobile){
+               // Toast.makeText(getApplicationContext(),"Mobile",Toast.LENGTH_LONG).show();
+            }
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+
+
+
     void makeDialog(){
         AlertDialog.Builder d = new AlertDialog.Builder(this);
         d.setTitle("Registered");
