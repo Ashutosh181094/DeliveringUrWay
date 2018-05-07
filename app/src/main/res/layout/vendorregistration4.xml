@@ -47,7 +47,8 @@
                 android:onClick="rbClick"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="NO" />
+                android:text="NO"
+                android:checked="true"/>
             <!--jajaj -->
             <RadioButton
                 android:id="@+id/radioButtonYES"
