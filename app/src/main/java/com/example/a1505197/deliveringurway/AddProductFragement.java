@@ -1,9 +1,7 @@
 package com.example.a1505197.deliveringurway;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -45,7 +43,7 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
     StorageReference storePhoto;
     ProgressDialog progressDialog;
     FirebaseUser user;
-   static int i=0;
+
 
     @Nullable
     @Override
@@ -116,7 +114,7 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
                         Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
                         dismissDialog();
                         ProductDescription pdescription=new ProductDescription(sname,scost,sdescription,taskSnapshot.getDownloadUrl().toString());
-                        productinfo.child(user.getPhoneNumber()).child(""+i++).setValue(pdescription);
+                        productinfo.child(user.getPhoneNumber()).child(sname).setValue(pdescription);
                         Intent intent=new Intent(getContext(),VendorData.class);
                         startActivity(intent);
 
@@ -174,18 +172,13 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
     @Override
     public void onStop() {
         super.onStop();
-        SharedPreferences sp = getActivity().getSharedPreferences("IValue", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putInt("i", i);
-        editor.commit();
 
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        SharedPreferences sp =getActivity().getSharedPreferences("IValue", Activity.MODE_PRIVATE);
-        int Value = sp.getInt("your_int_key", -1);
+
     }
 }
 ////

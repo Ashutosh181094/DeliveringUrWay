@@ -1,7 +1,6 @@
 package com.example.a1505197.deliveringurway;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -49,8 +48,7 @@ public class VendorData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendordata);
-        SharedPreferences sp = getPreferences(MODE_PRIVATE);
-        i = sp.getInt("iValue", 0);
+
         Toast.makeText(VendorData.this,""+i,Toast.LENGTH_LONG).show();
         toolbar = (Toolbar) findViewById(R.id.customToolbarLayout);
         VendorRecyclerView=findViewById(R.id.vendorrecycler);
@@ -74,11 +72,8 @@ public class VendorData extends AppCompatActivity {
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                     {
                         ProductDescription productDescription = dataSnapshot1.getValue(ProductDescription.class);
-                        i++;
                         data.add(productDescription);
                     }
-                    Totaldata totaldata=new Totaldata();
-                    totaldata.setProductsdata(data);
                     adapter = new VendorDataAdapter(VendorData.this, data);
                     VendorRecyclerView.setAdapter(adapter);
                     VendorRecyclerView.setHasFixedSize(true);
@@ -216,9 +211,7 @@ public class VendorData extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
-        SharedPreferences.Editor spe = getPreferences(MODE_PRIVATE).edit();
-        spe.putInt("iValue", i);
-        spe.commit();
+
     }
 }
 //

@@ -42,7 +42,6 @@ public class UserSideVendorData extends AppCompatActivity {
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                     {
                         ProductDescription productDescription = dataSnapshot1.getValue(ProductDescription.class);
-                        i++;
                         userSideProductDescription.add(productDescription);
                     }
 

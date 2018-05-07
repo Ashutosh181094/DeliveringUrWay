@@ -17,7 +17,7 @@ public class UserSideClothVendors extends AppCompatActivity {
     RecyclerView VendorRecyclerView;
     ArrayList<VendorInformation> vendorInformations;
     DatabaseReference Vendorcontactinfo;
-    public static int i=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +38,6 @@ public class UserSideClothVendors extends AppCompatActivity {
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                     {
                         VendorInformation vendorInformation = dataSnapshot1.getValue(VendorInformation.class);
-                        i++;
                         if(vendorInformation.type.compareTo("Clothing")==0)
                         {
                             vendorInformations.add(vendorInformation);

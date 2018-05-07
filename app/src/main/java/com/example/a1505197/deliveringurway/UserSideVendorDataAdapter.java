@@ -69,7 +69,7 @@ public class UserSideVendorDataAdapter extends RecyclerView.Adapter<UserSideVend
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent=new Intent(context,TabFragments.class);
+                    Intent intent=new Intent(context,AboutProduct.class);
                     context.startActivity(intent);
                 }
             });
