@@ -27,9 +27,11 @@ public class Register extends AppCompatActivity
     String name,email,password,confirmpassword;
     ProgressBar progressBar;
     TextView tvRegister;
+    static Register INSTANCE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        INSTANCE=this;
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.activity_register);
@@ -163,6 +165,15 @@ public class Register extends AppCompatActivity
     public void onStart() {
         super.onStart();
 
+    }
+    public static Register getActivityInstance()
+    {
+        return INSTANCE;
+    }
+
+    public String getData()
+    {
+        return this.etName.getText().toString();
     }
 
 
