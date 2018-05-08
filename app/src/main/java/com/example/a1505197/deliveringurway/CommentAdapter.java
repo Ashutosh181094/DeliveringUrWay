@@ -37,6 +37,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.VendorVi
 
 
         holder.tvComment.setText(data.get(position).comments);
+        holder.tvComment.setTextSize(15);
 
 
     }
