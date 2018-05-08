@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mAuth=FirebaseAuth.getInstance();
         tvFood=findViewById(R.id.tvFood);
         tvClothes=findViewById(R.id.tvClothing);
-        userName=Register.getActivityInstance().getData();
+       // userName=Register.getActivityInstance().getData();
+        /*
         userCircleImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
+        */
 
         carouselView = (CarouselView) findViewById(R.id.carouselView);
         toolbar = (Toolbar) findViewById(R.id.customToolbarLayout);

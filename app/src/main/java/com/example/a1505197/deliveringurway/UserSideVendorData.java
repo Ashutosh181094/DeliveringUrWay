@@ -31,7 +31,7 @@ public class UserSideVendorData extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("PRODUCT");
+        getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -57,10 +57,10 @@ public class UserSideVendorData extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 mViewPager.setCurrentItem(tab.getPosition());
                 if(tab.getPosition()==0)
-                    getSupportActionBar().setTitle("PRODUCT");
+                    getSupportActionBar().setTitle("");
                 else
                 if(tab.getPosition()==1)
-                    getSupportActionBar().setTitle("CONTACT");
+                    getSupportActionBar().setTitle("");
 
             }
 

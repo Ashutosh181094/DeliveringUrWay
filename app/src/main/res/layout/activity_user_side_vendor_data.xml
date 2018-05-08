@@ -15,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="#08ffff"
+        android:background="@null"
+
 
         android:minHeight="?attr/actionBarSize"
         />
@@ -25,8 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:background="#08ffff"
-
+        android:background="@android:color/transparent"
+        android:layout_marginTop="25dp"
         android:minHeight="?attr/actionBarSize"
         />
 
