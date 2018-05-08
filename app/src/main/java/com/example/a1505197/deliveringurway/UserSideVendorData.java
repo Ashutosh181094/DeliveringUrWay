@@ -2,9 +2,13 @@ package com.example.a1505197.deliveringurway;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,54 +20,60 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class UserSideVendorData extends AppCompatActivity {
-    RecyclerView userSideVendorDataRecyclerView;
-    ArrayList<ProductDescription> userSideProductDescription;
-    DatabaseReference Vendortotaldata;
-    UserSideVendorDataAdapter dataAdapter;
-    int i=0;
+    Pager pager;
+    private ViewPager mViewPager;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_side_vendor_data);
-        userSideVendorDataRecyclerView=findViewById(R.id.userSideVendorDataRecyclerView);
-        userSideProductDescription=new ArrayList<>();
-        Intent intent=getIntent();
-        final String phno=intent.getStringExtra("VendorPhoneNumber");
-        userSideProductDescription=new ArrayList<>();
-        Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child("+91"+phno);
-        Vendortotaldata.addValueEventListener(new ValueEventListener() {
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("PRODUCT");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists())
-                {
-
-                    userSideProductDescription.clear();
-                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
-                    {
-                        ProductDescription productDescription = dataSnapshot1.getValue(ProductDescription.class);
-                        userSideProductDescription.add(productDescription);
-                    }
-
-                    dataAdapter = new UserSideVendorDataAdapter(UserSideVendorData.this, userSideProductDescription,phno);
-                    userSideVendorDataRecyclerView.setAdapter(dataAdapter);
-                    userSideVendorDataRecyclerView.setHasFixedSize(true);
-                    GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getApplicationContext(), 2);
-                    userSideVendorDataRecyclerView.setLayoutManager(mgridlayoutmanager);
-                    dataAdapter.notifyDataSetChanged();
-
-                }
-            }
-
-
-            @Override
-            public void onCancelled(DatabaseError databaseError)
-            {
-                Toast.makeText(UserSideVendorData.this,"Database error",Toast.LENGTH_LONG).show();
-
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                finish();
             }
         });
 
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.addTab(tabLayout.newTab().setText("PRODUCT"));
+        tabLayout.addTab(tabLayout.newTab().setText("CONTACT"));
+
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        pager = new Pager(getSupportFragmentManager(), 2);
+        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        mViewPager.setAdapter(pager);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+                if(tab.getPosition()==0)
+                    getSupportActionBar().setTitle("PRODUCT");
+                else
+                if(tab.getPosition()==1)
+                    getSupportActionBar().setTitle("CONTACT");
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
 
 

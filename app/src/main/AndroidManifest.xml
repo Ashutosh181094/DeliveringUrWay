@@ -41,7 +41,8 @@
         <activity android:name=".UserSideClothVendors" />
         <activity android:name=".UserSideVendorData" />
         <activity android:name=".VendorProductDescription" />
-        <activity android:name=".AboutProduct"></activity>
+        <activity android:name=".AboutProduct" />
+        <activity android:name=".More"></activity>
     </application>
 
 </manifest>
