@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +41,8 @@ public class UserSideFoodVendors extends AppCompatActivity {
                         if(vendorInformation.type.compareTo("Food")==0)
                         {
                             vendorInformations.add(vendorInformation);
+                            Toast.makeText(getApplicationContext(),""+vendorInformation.business_name,Toast.LENGTH_SHORT).show();
+
                         }
 
 

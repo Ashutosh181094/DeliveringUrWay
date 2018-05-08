@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/items_bg"
     tools:context="com.example.a1505197.deliveringurway.VendorData">
 <!---->
     <!---->
@@ -12,13 +13,20 @@
         android:layout_height="match_parent"
         android:id="@+id/fragment_container">
     </FrameLayout>
-    <include layout="@layout/customtoolbar"
-        android:id="@+id/customToolbar"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/logOut"
+        android:src="@drawable/logout"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/vendorrecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/customToolbar">
+        android:layout_marginTop="90dp"
+        >
 
     </android.support.v7.widget.RecyclerView>
 

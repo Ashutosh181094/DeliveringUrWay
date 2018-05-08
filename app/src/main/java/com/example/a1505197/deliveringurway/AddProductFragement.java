@@ -117,6 +117,7 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
                         productinfo.child(user.getPhoneNumber()).child(sname).setValue(pdescription);
                         Intent intent=new Intent(getContext(),VendorData.class);
                         startActivity(intent);
+                        getFragmentManager().popBackStack();
 
 
                     }
@@ -152,11 +153,7 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
         }
     }
 
-    @Override
-    public Uri getImageUri(Uri Imageuri) {
 
-        return Imageuri;
-    }
     public void createProgressDialog()
     {
         progressDialog=new ProgressDialog(getContext());

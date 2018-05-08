@@ -1,13 +1,15 @@
 package com.example.a1505197.deliveringurway;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,11 +20,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
@@ -38,8 +46,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final int REQUEST_CODE=1;
     CircleImageView userCircleImage;
     DatabaseReference userData;
+    TextView name;
+    FirebaseUser user;
+    StorageReference storeUserPhoto;
+
+
+    private View navHeader;
     int[] sampleImages = {R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut};
      String userName="";
+     NavigationView navigation_header;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,30 +64,58 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mAuth=FirebaseAuth.getInstance();
         tvFood=findViewById(R.id.tvFood);
         tvClothes=findViewById(R.id.tvClothing);
-       // userName=Register.getActivityInstance().getData();
-        /*
+        userName=sendMessage.message;
+        Toast.makeText(getApplicationContext(),""+userName,Toast.LENGTH_SHORT).show();
+        userData= FirebaseDatabase.getInstance().getReference("users");
+        user=mAuth.getCurrentUser();
+
+
+
+        navigation_header=findViewById(R.id.nav_view);
+
+
+        navHeader = navigation_header.getHeaderView(0);
+        userCircleImage=navHeader.findViewById(R.id.imageViewUser);
+        name=navHeader.findViewById(R.id.textViewName);
+
+
+
+
         userCircleImage.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                for(int i = 0; i< Init.PERMISSIONS.length; i++)
-                {
-                    String[] permission={Init.PERMISSIONS[i]};
-                    if(checkPermissions(permission))
-                    {
-                        if(i==Init.PERMISSIONS.length-1)
-                        {
-                            ChangePhotoDialog dialog=new ChangePhotoDialog();
-
-                        }
+            public void onClick(View v)
+            {
+               final CharSequence[] item={"Camera","Gallery","Cancel"};
+                AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Add Users Image");
+                builder.setItems(item, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                     if(item[which].equals("Camera"))
+                     {
+                         Intent cameraIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                         startActivityForResult(cameraIntent,Init.CAMERA_REQUEST_CODE);
+                     }
+                     else
+                         if(item[which].equals("Gallery"))
+                         {
+                             Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
+                             intent.setType("image/*");
+                             startActivityForResult(intent,Init.PICKFILE_REQUEST_CODE);
+                         }
+                         else
+                             if(item[which].equals("Cancel"))
+                             {
+                                 dialog.dismiss();
+                             }
                     }
-                    else
-                    {
-                        verifyPermissions(permission);
-                    }
-                }
+                });
+                builder.show();
             }
         });
-        */
+
+
+
 
         carouselView = (CarouselView) findViewById(R.id.carouselView);
         toolbar = (Toolbar) findViewById(R.id.customToolbarLayout);
@@ -79,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         carouselView.setImageListener(imageListener);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("DUR WAY");
-        getSupportActionBar().setElevation(10f);
+         getSupportActionBar().setElevation(10f);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -105,6 +149,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
+        storephoto();
+    }
+
+    private void storephoto()
+    {
+
     }
 
     @Override
@@ -223,40 +273,51 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
     }
-    public void verifyPermissions(String[] permissions)
-    {
-        ActivityCompat.requestPermissions(MainActivity.this,permissions,REQUEST_CODE);
-    }
-    public boolean checkPermissions(String[] permission)
-    {
-        int permissionRequest=ActivityCompat.checkSelfPermission(MainActivity.this,permission[0]);
-        if(permissionRequest!= PackageManager.PERMISSION_GRANTED)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
+
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-    public Bitmap compressBitmap(Bitmap bitmap, int quality)
-    {
-        ByteArrayOutputStream stream=new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,quality,stream);
-        return bitmap;
-    }
-    private  void initimageLoader()
-    {
-        UniversalImageLoader universalImageLoader=new UniversalImageLoader(MainActivity.this);
-        ImageLoader.getInstance().init(universalImageLoader.getConfig());
-    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==Init.CAMERA_REQUEST_CODE&&resultCode== Activity.RESULT_OK)
+        {
+            Bitmap bitmap=(Bitmap)data.getExtras().get("data");
+            userCircleImage.setImageBitmap(bitmap);
+        }
+        if (requestCode==Init.PICKFILE_REQUEST_CODE && resultCode == Activity.RESULT_OK)
+        {
+            Uri selectedImageUri=data.getData();
+           userCircleImage.setImageURI(selectedImageUri);
+        }
+        storeUserPhoto= FirebaseStorage.getInstance().getReference(user.getEmail());
+        userCircleImage.setDrawingCacheEnabled(true);
+        userCircleImage.buildDrawingCache();
+        Bitmap bitmap = userCircleImage.getDrawingCache();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data1 = baos.toByteArray();
 
 
+        UploadTask uploadTask = storeUserPhoto.putBytes(data1);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+
+                UserInfo userInfo =new UserInfo(userName,taskSnapshot.getDownloadUrl().toString(),user.getEmail());
+                userData.push().setValue(UserInfo.class);
+            }
+        });
+    }
 
 
 }
+
+
+
+
 ///

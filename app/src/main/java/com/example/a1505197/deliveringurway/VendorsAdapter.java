@@ -38,11 +38,7 @@ public class VendorsAdapter extends RecyclerView.Adapter<VendorsAdapter.VendorVi
     public void onBindViewHolder(VendorViewHolder holder, int position)
     {
 
-
         holder.VendorName.setText(data.get(position).business_name);
-
-
-
     }
 
     @Override
