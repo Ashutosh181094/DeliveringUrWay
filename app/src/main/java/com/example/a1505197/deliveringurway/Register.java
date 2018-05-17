@@ -69,6 +69,8 @@ public class Register extends AppCompatActivity
                if (isStringNull(name)||isStringNull(email)||isStringNull(password)||isStringNull(confirmpassword))
                {
                    Toast.makeText(Register.this,"Fill in all the fields",Toast.LENGTH_LONG).show();
+                   hideProgressBar();
+
                }
                else
                    if (!isStringEqual(password,confirmpassword))
@@ -91,6 +93,9 @@ public class Register extends AppCompatActivity
                                sendVerificationEmail();
                             Toast.makeText(Register.this,"Verification link has been sent to registered Email",Toast.LENGTH_LONG).show();
                               hideProgressBar();
+                              Intent intent=new Intent(Register.this,Login.class);
+                              startActivity(intent);
+                              finish();
                            }
                            else
                            {

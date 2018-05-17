@@ -309,7 +309,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
 
                 UserInfo userInfo =new UserInfo(userName,taskSnapshot.getDownloadUrl().toString(),user.getEmail());
-                userData.push().setValue(UserInfo.class);
+                userData.push().setValue(userInfo);
             }
         });
     }

@@ -26,7 +26,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.VendorVi
     @Override
     public VendorViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View view= inflater.inflate(R.layout.commentcardview,parent,false);
+        View view= inflater.inflate(R.layout.single_row,parent,false);
         CommentAdapter.VendorViewHolder holder=new  CommentAdapter.VendorViewHolder(view);
         return holder;
     }
@@ -53,7 +53,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.VendorVi
 
         public VendorViewHolder(View itemView) {
             super(itemView);
-            tvComment=itemView.findViewById(R.id.tvComment);
+            tvComment=itemView.findViewById(R.id.textView);
 
         }
     }

@@ -75,16 +75,20 @@ public class Login extends AppCompatActivity
                 showProgressBar();
                 if(isStringNull(email)||isStringNull(password))
                 {
+
                     Toast.makeText(Login.this,"Fill in all the fields",Toast.LENGTH_LONG).show();
                 }
                 else
                 {
                     mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful())
+                        public void onComplete(@NonNull Task<AuthResult> task)
+                        {
+                            FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+                            if(task.isSuccessful()&&user.isEmailVerified())
                             {
-                                 Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_LONG).show();
+
+                                Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_LONG).show();
 
                                  hideProgressBar();
                                 Intent intent=new Intent(Login.this,MainActivity.class);
@@ -95,7 +99,11 @@ public class Login extends AppCompatActivity
                             }
                             else
                             {
-                                Toast.makeText(Login.this,"Login Failed",Toast.LENGTH_LONG).show();
+
+
+                                    Toast.makeText(Login.this,"Login Failed",Toast.LENGTH_LONG).show();
+
+
                                 //if the authentication is not sucessful
                                 hideProgressBar();
                             }
