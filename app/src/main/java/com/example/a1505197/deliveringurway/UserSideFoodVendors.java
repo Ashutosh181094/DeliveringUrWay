@@ -46,6 +46,7 @@ public class UserSideFoodVendors extends AppCompatActivity {
                         }
 
 
+
                     }
                     Totaldata totaldata=new Totaldata();
                     totaldata.setVendorsdata(vendorInformations);

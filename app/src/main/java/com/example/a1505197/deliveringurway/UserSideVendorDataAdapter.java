@@ -3,6 +3,7 @@ package com.example.a1505197.deliveringurway;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,9 +41,10 @@ public class UserSideVendorDataAdapter extends RecyclerView.Adapter<UserSideVend
     @Override
     public void onBindViewHolder(VendorViewHolder holder, int position)
     {
+        String p_name=data.get(position).product_name;
+        String pname=getSafeSubstring(p_name,10)+"...";
 
-
-        holder.productname.setText(data.get(position).product_name);
+        holder.productname.setText(pname);
         holder.price.setText(data.get(position).cost);
         Picasso.with(context)
                 .load(data.get(position).image_url)
@@ -80,6 +82,14 @@ public class UserSideVendorDataAdapter extends RecyclerView.Adapter<UserSideVend
                 }
             });
         }
+    }
+    public String getSafeSubstring(String s, int maxLength){
+        if(!TextUtils.isEmpty(s)){
+            if(s.length() >= maxLength){
+                return s.substring(0, maxLength);
+            }
+        }
+        return s;
     }
 }
 //
