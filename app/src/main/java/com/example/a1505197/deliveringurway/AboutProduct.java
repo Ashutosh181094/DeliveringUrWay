@@ -37,6 +37,8 @@ FirebaseUser username;
 CommentAdapter commentAdapter;
 ArrayList<Rating> ratings;
 RecyclerView recyclerView;
+String Comment;
+int Rating;
 
 
     @Override
@@ -106,10 +108,31 @@ RecyclerView recyclerView;
     }
 
     @Override
-    public void onPositiveButtonClicked(int ratingValue, String comment) {
-        databaseReferenceRatings= FirebaseDatabase.getInstance().getReference().child("+91"+phoneNumber).child(productName);
-       Rating rating=new Rating(username.getEmail(),comment,ratingValue);
-       databaseReferenceRatings.push().setValue(rating);
+    public void onPositiveButtonClicked(int ratingValue, String comment)
+    {
+        Rating=ratingValue;
+        Comment=Comment+comment;
+        DatabaseReference userImagedata=FirebaseDatabase.getInstance().getReference("users").child(username.getUid());
+        userImagedata.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists())
+                {
+                    UserInfo userInfo=dataSnapshot.getValue(UserInfo.class);
+                    databaseReferenceRatings= FirebaseDatabase.getInstance().getReference().child("+91"+phoneNumber).child(productName);
+                    Rating rating=new Rating(username.getEmail(),Comment,userInfo.image_url,Rating);
+                    databaseReferenceRatings.push().setValue(rating);
+                    Comment="";
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     @Override

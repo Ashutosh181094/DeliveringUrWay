@@ -5,7 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -38,6 +41,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.VendorVi
 
         holder.tvComment.setText(data.get(position).comments);
         holder.tvComment.setTextSize(15);
+        Picasso.with(context)
+                .load(data.get(position).image_url)
+                .fit()
+                .centerCrop()
+                .into(holder.userImage);
 
 
     }
@@ -50,10 +58,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.VendorVi
     public class VendorViewHolder extends RecyclerView.ViewHolder
     {
        TextView tvComment;
+       ImageView userImage;
 
         public VendorViewHolder(View itemView) {
             super(itemView);
             tvComment=itemView.findViewById(R.id.textView);
+            userImage=itemView.findViewById(R.id.imageView);
 
         }
     }

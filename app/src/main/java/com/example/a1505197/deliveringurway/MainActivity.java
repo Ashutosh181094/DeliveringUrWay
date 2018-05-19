@@ -26,11 +26,15 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView tvFood,tvClothes;
     private static final int REQUEST_CODE=1;
     CircleImageView userCircleImage;
-    DatabaseReference userData;
+    DatabaseReference userData,userDataFetch;
     TextView name;
     FirebaseUser user;
     StorageReference storeUserPhoto;
@@ -68,7 +72,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toast.makeText(getApplicationContext(),""+userName,Toast.LENGTH_SHORT).show();
         userData= FirebaseDatabase.getInstance().getReference("users");
         user=mAuth.getCurrentUser();
-
+        if(userName!=null) {
+            UserInfo userInfo = new UserInfo(userName, "https://firebasestorage.googleapis.com/v0/b/deliveringurway.appspot.com/o/user.png?alt=media&token=abc01b91-0d12-4235-afc5-1c70abf7402b", user.getEmail());
+            userData.child(user.getUid()).setValue(userInfo);
+        }
 
 
         navigation_header=findViewById(R.id.nav_view);
@@ -272,6 +279,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         {
 
         }
+        userDataFetch=FirebaseDatabase.getInstance().getReference("users").child(user.getUid());
+        userDataFetch.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                {
+                    UserInfo userInfo=dataSnapshot.getValue(UserInfo.class);
+                    Picasso.with(MainActivity.this)
+                            .load(userInfo.image_url)
+                            .fit()
+                            .centerCrop()
+                            .into(userCircleImage);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     @Override
@@ -307,12 +336,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
-
-                UserInfo userInfo =new UserInfo(userName,taskSnapshot.getDownloadUrl().toString(),user.getEmail());
-                userData.push().setValue(userInfo);
+                userData.child(user.getUid()).child("image_url").setValue(taskSnapshot.getDownloadUrl().toString());
             }
         });
     }
+
 
 
 }
