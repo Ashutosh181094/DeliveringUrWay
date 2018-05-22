@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/viewContactToolbar">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/mAppBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:popupTheme="@style/Theme.Design.NoActionBar"
+        app:elevation="0dp"
+        android:elevation="0dp"
+        >
     <android.support.v7.widget.Toolbar
+        android:id="@+id/customToolbarLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/customToolbarLayout"
-        android:background="@android:color/transparent">
-
-    </android.support.v7.widget.Toolbar>
+        android:elevation="0dp"
+        android:background="@android:color/transparent"
+        app:popupTheme="@style/Theme.Design.NoActionBar" />
+    </android.support.design.widget.AppBarLayout>
 
 </LinearLayout>
+
     <!---->
     <!-- -->
     <!-- -->

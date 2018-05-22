@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private View navHeader;
-    int[] sampleImages = {R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut};
+    int[] sampleImages = {R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.bg};
      String userName="";
      NavigationView navigation_header;
 
@@ -125,14 +125,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         carouselView = (CarouselView) findViewById(R.id.carouselView);
-        toolbar = (Toolbar) findViewById(R.id.customToolbarLayout);
         carouselView.setPageCount(sampleImages.length);
         carouselView.setImageListener(imageListener);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("DUR WAY");
-         getSupportActionBar().setElevation(10f);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
