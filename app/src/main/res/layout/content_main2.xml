@@ -5,8 +5,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <include layout="@layout/customtoolbar"
-        android:id="@+id/toolbar"></include>
+        android:id="@+id/toolbar"
+        android:visibility="invisible">
+
+    </include>
 
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
@@ -17,7 +23,9 @@
         app:radius="6dp"
         app:slideInterval="3000"
         app:strokeColor="#FF777777"
-        app:strokeWidth="1dp"/>
+        app:strokeWidth="1dp"
+        />
+    </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="70dp"
