@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
+    android:layout_height="230dp"
     android:background="@drawable/side_nav_bar"
     android:gravity="center"
     android:orientation="vertical"
@@ -10,22 +10,25 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageViewUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/nav_header_desc"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="30dp"
         android:src="@drawable/user" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="@string/nav_header_title"
+        android:layout_below="@+id/imageViewUser"
+        android:gravity="center"
+        android:text="Name"
+        android:textSize="25dp"
         android:id="@+id/textViewName"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 
-</LinearLayout>
+</RelativeLayout>
     <!---->
     <!-- -->
     <!-- -->
