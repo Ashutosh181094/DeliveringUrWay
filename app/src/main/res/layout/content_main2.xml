@@ -8,8 +8,27 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+   <android.support.design.widget.AppBarLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@android:color/transparent"
+       android:elevation="10dp">
 
-    <com.synnapps.carouselview.CarouselView
+       <android.support.v7.widget.Toolbar
+           android:layout_height="wrap_content"
+           android:layout_width="match_parent"
+           android:background="@null"
+           android:elevation="10dp">
+
+       </android.support.v7.widget.Toolbar>
+   </android.support.design.widget.AppBarLayout>
+
+
+    </LinearLayout>
+        <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
         android:layout_height="200dp"

@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private View navHeader;
-    int[] sampleImages = {R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.index, R.drawable.bg};
+    int[] sampleImages = {R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.bg};
      String userName="";
      NavigationView navigation_header;
 
