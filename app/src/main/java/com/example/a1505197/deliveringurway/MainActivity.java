@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private View navHeader;
-    int[] sampleImages = {R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.hut, R.drawable.bg};
+    int[] sampleImages = {R.drawable.hut, R.drawable.find_your_favourite, R.drawable.explore, R.drawable.business_online, R.drawable.pink};
      String userName="";
      NavigationView navigation_header;
 
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         carouselView.setImageListener(imageListener);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("DUR WAY");
+        getSupportActionBar().setTitle("");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
