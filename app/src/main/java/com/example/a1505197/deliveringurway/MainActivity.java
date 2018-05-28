@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView name;
     FirebaseUser user;
     StorageReference storeUserPhoto;
-
+    RelativeLayout rlFood,rlClothes;
 
     private View navHeader;
     int[] sampleImages = {R.drawable.hut, R.drawable.find_your_favourite, R.drawable.explore, R.drawable.business_online, R.drawable.pink};
@@ -68,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mAuth=FirebaseAuth.getInstance();
         tvFood=findViewById(R.id.tvFood);
         tvClothes=findViewById(R.id.tvClothing);
+        rlFood=findViewById(R.id.containerFOOD);
+        rlClothes=findViewById(R.id.containerCLOTHING);
         userName=sendMessage.message;
         Toast.makeText(getApplicationContext(),""+userName,Toast.LENGTH_SHORT).show();
         userData= FirebaseDatabase.getInstance().getReference("users");
@@ -139,14 +142,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        tvFood.setOnClickListener(new View.OnClickListener() {
+        rlFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,UserSideFoodVendors.class);
                 startActivity(intent);
             }
         });
-        tvClothes.setOnClickListener(new View.OnClickListener() {
+        rlClothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,UserSideClothVendors.class);

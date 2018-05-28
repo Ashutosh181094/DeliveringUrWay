@@ -41,44 +41,76 @@
         app:elevation="0dp"
         />
     </RelativeLayout>
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:paddingLeft="20dp"
-        android:drawableLeft="@drawable/fork"
-        android:text="Order Food"
-        android:drawablePadding="65dp"
-        android:textSize="30dp"
-        android:textColor="@color/White"
-        android:paddingTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:padding="4dp">
+    <RelativeLayout
+        android:layout_width="155dp"
+        android:layout_height="160dp"
+        android:elevation="5dp"
+        android:background="@drawable/rounded_corners"
+        android:layout_margin="10dp"
+        android:id="@+id/containerFOOD">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fork"
+            android:id="@+id/FoodIcon"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="60dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/FoodIcon"
+        android:text="Food"
+        android:textSize="20sp"
+
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+
+
         android:id="@+id/tvFood"
+        android:background="@drawable/rounded_corners"></TextView>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="155dp"
+        android:layout_height="160dp"
+        android:elevation="5dp"
         android:background="@drawable/rounded_corners"
-
-
-
-        />
+        android:layout_margin="10dp"
+        android:id="@+id/containerCLOTHING"
+        >
+     <ImageView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:src="@drawable/clothingicon"
+         android:id="@+id/ClotingIcon"
+         android:layout_marginTop="40dp"
+         android:layout_marginLeft="60dp"
+         />
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:drawableLeft="@drawable/clothingicon"
-        android:paddingLeft="20dp"
-        android:drawablePadding="80dp"
-        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ClotingIcon"
+        android:text="Fashion"
+        android:textSize="20sp"
 
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:text="Clothing"
-        android:textSize="30dp"
-        android:textColor="@color/White"
-        android:background="@drawable/rounded_corners"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
 
         android:id="@+id/tvClothing"
 
         />
+    </RelativeLayout>
+    </LinearLayout>
+
 </LinearLayout>
     <!---->
     <!-- -->

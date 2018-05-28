@@ -13,13 +13,15 @@
         android:layout_height="match_parent"
         android:id="@+id/fragment_container">
     </FrameLayout>
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="280dp"
-        android:layout_marginTop="20dp"
         android:id="@+id/logOut"
-        android:src="@drawable/logout"/>
+        android:layout_width="35dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="20dp"
+
+        android:src="@drawable/logout" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/vendorrecycler"
