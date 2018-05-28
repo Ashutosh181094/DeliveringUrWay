@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,14 +32,17 @@ ImageView imageView;
 CollapsingToolbarLayout collapsingToolbarLayout;
 FloatingActionButton btnRating;
 RatingBar ratingBar;
-DatabaseReference databaseReferenceRatings;
+DatabaseReference databaseReferenceRatings,discriptionreference;
 String productName,phoneNumber;
 FirebaseUser username;
 CommentAdapter commentAdapter;
 ArrayList<Rating> ratings;
 RecyclerView recyclerView;
 String Comment;
-int Rating;
+TextView Description;
+int Rating,Ratingsum=0;
+    ArrayList<ProductDescription> userSideProductDescription;
+    DatabaseReference Vendortotaldata;
 
 
     @Override
@@ -47,11 +51,16 @@ int Rating;
         setContentView(R.layout.activity_about_product);
         btnRating=findViewById(R.id.btn_rating);
         Intent intent=getIntent();
+        ratingBar=findViewById(R.id.ratingBar);
+        Description=findViewById(R.id.product_description);
         ratings=new ArrayList<>();
         productName=intent.getStringExtra("productName");
         phoneNumber=intent.getStringExtra("phoneNumber");
         username= FirebaseAuth.getInstance().getCurrentUser();
         recyclerView=findViewById(R.id.recyclerViewComments);
+        userSideProductDescription=new ArrayList<>();
+
+
         databaseReferenceRatings=FirebaseDatabase.getInstance().getReference().child("+91"+phoneNumber).child(productName);
         databaseReferenceRatings.addValueEventListener(new ValueEventListener() {
             @Override
@@ -63,15 +72,18 @@ int Rating;
                     {
                         Rating rating = dataSnapshot1.getValue(Rating.class);
                         ratings.add(rating);
+                        Ratingsum=Ratingsum+rating.rating;
                     }
+
                     Toast.makeText(getApplicationContext(),""+ratings.size(),Toast.LENGTH_LONG).show();
                     CommentAdapter commentsAdapter=new CommentAdapter(AboutProduct.this,ratings);
                     recyclerView.setAdapter(commentsAdapter);
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
+                    ratingBar.setRating(Ratingsum/(ratings.size()));
                     commentsAdapter.notifyDataSetChanged();
                 }
+
             }
 
             @Override
@@ -80,10 +92,40 @@ int Rating;
             }
         });
 
+
+
         btnRating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showRatingDialog();
+            }
+        });
+
+        Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child("+91"+phoneNumber).child(productName);
+        Vendortotaldata.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                {
+
+                    userSideProductDescription.clear();
+
+                        ProductDescription productDescription = dataSnapshot.getValue(ProductDescription.class);
+                        userSideProductDescription.add(productDescription);
+                        Description.setText(userSideProductDescription.get(0).description);
+
+
+
+
+                }
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+                Toast.makeText(getApplicationContext(),"Database error",Toast.LENGTH_LONG).show();
+
             }
         });
     }
@@ -111,7 +153,7 @@ int Rating;
     public void onPositiveButtonClicked(int ratingValue, String comment)
     {
         Rating=ratingValue;
-        Comment=Comment+comment;
+        Comment=comment;
         DatabaseReference userImagedata=FirebaseDatabase.getInstance().getReference("users").child(username.getUid());
         userImagedata.addValueEventListener(new ValueEventListener() {
             @Override
@@ -141,4 +183,4 @@ int Rating;
     }
 
 }
-//
+////
