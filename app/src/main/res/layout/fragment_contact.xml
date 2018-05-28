@@ -1,15 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ContactFragment">
+    android:id="@+id/contact_details_scroll_view"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:id="@+id/contact_details_card_relative_layout">
 
-</FrameLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:elevation="5dp"
+            android:layout_margin="5dp"
+            android:padding="25dp"
+            android:id="@+id/contact_details_address_card_view">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_address_title"
+                    android:text="Address"
+                    android:textColor="@color/Black"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_address_text"
+                    android:layout_below="@+id/contact_details_address_title"
+                    android:text="address of vendor goes here"
+                    android:layout_marginTop="5dp"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/contact_details_delivery_details_card"
+            android:layout_below="@id/contact_details_address_card_view"
+            android:layout_margin="5dp"
+            android:padding="25dp"
+            android:elevation="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_delivery_detail_title"
+                    android:text="Delivery Details"
+                    android:textColor="@color/Black"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_delivery_free_detail_text"
+                    android:layout_below="@+id/contact_details_delivery_detail_title"
+                    android:text="Do we provide Free Delivery ?"
+                    android:layout_marginTop="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_delivery_free_detail_textAnswer"
+                    android:layout_below="@+id/contact_details_delivery_detail_title"
+                    android:layout_toRightOf="@+id/contact_details_delivery_free_detail_text"
+                    android:text="Yes, but contitionally"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="15dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_delivery_conditional_detail_text"
+                    android:layout_below="@+id/contact_details_delivery_free_detail_text"
+                    android:text="Minimum order price :"
+                    android:layout_marginTop="5dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_delivery_Conditonally_detail_min_price_textAnswer"
+                    android:layout_below="@+id/contact_details_delivery_free_detail_text"
+                    android:layout_toRightOf="@+id/contact_details_delivery_conditional_detail_text"
+                    android:text="100"
+                    android:layout_marginStart="86dp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_delivery_conditional_detail_min_dist_text"
+                    android:layout_below="@+id/contact_details_delivery_conditional_detail_text"
+                    android:text="Minimum distance :"
+                    android:layout_marginTop="5dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_delivery_Conditonally_detail_min_dist_textAnswer"
+                    android:layout_below="@+id/contact_details_delivery_conditional_detail_text"
+                    android:layout_toRightOf="@+id/contact_details_delivery_conditional_detail_min_dist_text"
+                    android:text="5km"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_delivery_conditional_detail_charges_otherwise_text"
+                    android:layout_below="@+id/contact_details_delivery_conditional_detail_min_dist_text"
+                    android:text="Charges otherwise :"
+                    android:layout_marginTop="5dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_delivery_Conditonally_detail_charges_otherwise_textAnswer"
+                    android:layout_below="@+id/contact_details_delivery_conditional_detail_min_dist_text"
+                    android:layout_toRightOf="@+id/contact_details_delivery_conditional_detail_charges_otherwise_text"
+                    android:text="50/km"
+                    android:layout_marginStart="99dp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"/>
+
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:elevation="5dp"
+            android:layout_margin="5dp"
+            android:padding="25dp"
+            android:id="@+id/contact_details_payment_card_view"
+            android:layout_below="@id/contact_details_delivery_details_card">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_payment_title"
+                    android:text="Payment options"
+                    android:textColor="@color/Black"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_paytm_text"
+                    android:layout_below="@+id/contact_details_payment_title"
+                    android:text="PAYTM cash accepted?"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_payment_title_textAnswer"
+                    android:layout_below="@+id/contact_details_payment_title"
+                    android:layout_toRightOf="@+id/contact_details_paytm_text"
+                    android:text="YES"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:elevation="5dp"
+            android:layout_margin="5dp"
+            android:padding="25dp"
+            android:id="@+id/contact_details_contact_card_view"
+            android:layout_below="@id/contact_details_payment_card_view">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_contact_title"
+                    android:text="Contact"
+                    android:textColor="@color/Black"
+                    android:textSize="18sp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_details_contact_text"
+                    android:layout_below="@+id/contact_details_contact_title"
+                    android:text="Phone Number"
+                    android:background="@color/White"
+                    android:layout_marginTop="15dp"/>
+
+
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
     <!-- -->
