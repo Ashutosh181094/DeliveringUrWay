@@ -35,7 +35,8 @@
                     android:id="@+id/contact_details_address_text"
                     android:layout_below="@+id/contact_details_address_title"
                     android:text="address of vendor goes here"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/Black"/>
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
@@ -181,6 +182,7 @@
                     android:layout_below="@+id/contact_details_payment_title"
                     android:layout_toRightOf="@+id/contact_details_paytm_text"
                     android:text="YES"
+                    android:textColor="@color/Black"
                     android:layout_marginStart="70dp"
                     android:layout_marginTop="5dp"
                     android:textStyle="bold"/>
@@ -216,8 +218,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/contact_details_contact_text"
                     android:layout_below="@+id/contact_details_contact_title"
-                    android:text="Phone Number"
-                    android:background="@color/White"
+                    android:text="CALL"
+                    android:background="#39f704"
                     android:layout_marginTop="15dp"/>
 
 
