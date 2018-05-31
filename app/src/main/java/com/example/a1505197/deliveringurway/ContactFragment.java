@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class ContactFragment extends Fragment
 {
-    TextView Address,paymentOption;
+    TextView Address,paymentOption,lateNightDeliveryAnswer;
     Button ContactPhone;
     ArrayList<VendorInformation> vendorInformations;
     DatabaseReference Vendorcontactinfo;
@@ -37,6 +37,7 @@ public class ContactFragment extends Fragment
         final String phno=intent.getStringExtra("VendorPhoneNumber");
         Address=view.findViewById(R.id.contact_details_address_text);
         paymentOption=view.findViewById(R.id.contact_details_payment_title_textAnswer);
+        lateNightDeliveryAnswer=view.findViewById(R.id.contact_details_late_night_delivery_answer);
         ContactPhone=view.findViewById(R.id.contact_details_contact_text);
         Vendorcontactinfo = FirebaseDatabase.getInstance().getReference("vendors");
         Vendorcontactinfo.addValueEventListener(new ValueEventListener()
@@ -65,6 +66,13 @@ public class ContactFragment extends Fragment
                     else
                     {
                         paymentOption.setText("NO");
+                    }
+                    if(vendorInformations.get(0).night_delivery==1){
+                        lateNightDeliveryAnswer.setText("YES");
+
+                    }
+                    else {
+                        lateNightDeliveryAnswer.setText("NO");
                     }
                    ContactPhone.setOnClickListener(new View.OnClickListener() {
                        @Override

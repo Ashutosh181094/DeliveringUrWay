@@ -35,14 +35,13 @@
                     android:id="@+id/contact_details_address_text"
                     android:layout_below="@+id/contact_details_address_title"
                     android:text="address of vendor goes here"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/Black"/>
+                    android:layout_marginTop="5dp"/>
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:id="@+id/contact_details_delivery_details_card"
             android:layout_below="@id/contact_details_address_card_view"
             android:layout_margin="5dp"
@@ -69,6 +68,7 @@
                     android:layout_below="@+id/contact_details_delivery_detail_title"
                     android:text="Do we provide Free Delivery ?"
                     android:layout_marginTop="15dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -78,12 +78,31 @@
                     android:text="Yes, but contitionally"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="15dp"
+
                     android:textStyle="bold"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Is Late night Delivery available?"
+                    android:id="@+id/contact_details_late_night_delivery_text"
+                    android:layout_below="@id/contact_details_delivery_free_detail_text"
+                    android:layout_marginTop="25dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="YES"
+                    android:layout_marginStart="30dp"
+                    android:id="@+id/contact_details_late_night_delivery_answer"
+                    android:layout_below="@id/contact_details_delivery_free_detail_text"
+                    android:layout_marginTop="25dp"
+                    android:layout_toRightOf="@id/contact_details_late_night_delivery_text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/contact_details_delivery_conditional_detail_text"
-                    android:layout_below="@+id/contact_details_delivery_free_detail_text"
+                    android:layout_below="@+id/contact_details_late_night_delivery_text"
                     android:text="Minimum order price :"
                     android:layout_marginTop="5dp"
                     />
@@ -92,7 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/contact_details_delivery_Conditonally_detail_min_price_textAnswer"
-                    android:layout_below="@+id/contact_details_delivery_free_detail_text"
+                    android:layout_below="@+id/contact_details_late_night_delivery_text"
                     android:layout_toRightOf="@+id/contact_details_delivery_conditional_detail_text"
                     android:text="100"
                     android:layout_marginStart="86dp"
@@ -182,7 +201,6 @@
                     android:layout_below="@+id/contact_details_payment_title"
                     android:layout_toRightOf="@+id/contact_details_paytm_text"
                     android:text="YES"
-                    android:textColor="@color/Black"
                     android:layout_marginStart="70dp"
                     android:layout_marginTop="5dp"
                     android:textStyle="bold"/>
@@ -218,8 +236,9 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/contact_details_contact_text"
                     android:layout_below="@+id/contact_details_contact_title"
-                    android:text="CALL"
-                    android:background="#39f704"
+                    android:text="Phone Number"
+                    android:background="@color/green2"
+                    android:textColor="@color/White"
                     android:layout_marginTop="15dp"/>
 
 

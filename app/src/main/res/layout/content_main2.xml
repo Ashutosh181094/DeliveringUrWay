@@ -42,18 +42,20 @@
         />
     </RelativeLayout>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
         android:padding="4dp">
     <RelativeLayout
-        android:layout_width="155dp"
+        android:layout_width="150dp"
         android:layout_height="160dp"
         android:elevation="5dp"
         android:background="@drawable/rounded_corners"
         android:layout_margin="10dp"
-        android:id="@+id/containerFOOD">
+        android:id="@+id/containerFOOD"
+        android:focusable="true"
+        android:clickable="true">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,13 +82,14 @@
 
 
     <RelativeLayout
-        android:layout_width="155dp"
+        android:layout_width="150dp"
         android:layout_height="160dp"
         android:elevation="5dp"
         android:background="@drawable/rounded_corners"
         android:layout_margin="10dp"
         android:id="@+id/containerCLOTHING"
-        >
+        android:focusable="true"
+        android:clickable="true">
      <ImageView
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"

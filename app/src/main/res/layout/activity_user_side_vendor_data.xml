@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/vendor_listings_bg"
+    android:background="@drawable/items_bg"
     tools:context="com.example.a1505197.deliveringurway.UserSideVendorData">
 
     <android.support.v7.widget.Toolbar
