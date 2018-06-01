@@ -41,12 +41,23 @@
         app:elevation="0dp"
         />
     </RelativeLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:layout_gravity="center_horizontal">
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_gravity="center_horizontal"
-        android:padding="4dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_gravity="center_horizontal"
+    android:padding="4dp"
+    android:id="@+id/_main_content_linear_layout1">
     <RelativeLayout
         android:layout_width="150dp"
         android:layout_height="160dp"
@@ -64,19 +75,19 @@
             android:layout_marginTop="40dp"
             android:layout_marginLeft="60dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/FoodIcon"
-        android:text="Food"
-        android:textSize="20sp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/FoodIcon"
+            android:text="Food"
+            android:textSize="20sp"
 
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
 
 
-        android:id="@+id/tvFood"
-        android:background="@drawable/rounded_corners"></TextView>
+            android:id="@+id/tvFood"
+            android:background="@drawable/rounded_corners"></TextView>
 
     </RelativeLayout>
 
@@ -90,29 +101,108 @@
         android:id="@+id/containerCLOTHING"
         android:focusable="true"
         android:clickable="true">
-     <ImageView
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:src="@drawable/clothingicon"
-         android:id="@+id/ClotingIcon"
-         android:layout_marginTop="40dp"
-         android:layout_marginLeft="60dp"
-         />
-    <TextView
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/clothingicon"
+            android:id="@+id/ClotingIcon"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="60dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ClotingIcon"
+            android:text="Fashion"
+            android:textSize="20sp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+
+            android:id="@+id/tvClothing"
+
+            />
+    </RelativeLayout>
+</LinearLayout>
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ClotingIcon"
-        android:text="Fashion"
-        android:textSize="20sp"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:padding="4dp"
+        android:id="@+id/_main_content_linear_layout2">
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="160dp"
+            android:elevation="5dp"
+            android:background="@drawable/rounded_corners"
+            android:layout_margin="10dp"
+            android:id="@+id/containerRENTAL"
+            android:focusable="true"
+            android:clickable="true">
 
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
+            <ImageView
+                android:id="@+id/BikeIcon"
+                android:layout_width="33dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/bike_icon_png"
+                />
 
-        android:id="@+id/tvClothing"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/BikeIcon"
+                android:text="Rentals"
+                android:textSize="20sp"
 
-        />
-    </RelativeLayout>
+                android:layout_centerHorizontal="true"
+                android:layout_margin="20dp"
+
+
+                android:id="@+id/tvRentals"
+                android:background="@drawable/rounded_corners">
+
+            </TextView>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="160dp"
+            android:elevation="5dp"
+            android:background="@drawable/rounded_corners"
+            android:layout_margin="10dp"
+            android:id="@+id/containerCOMINGSOON"
+            android:focusable="true"
+            android:clickable="true">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/ComingSoonIcon"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="60dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ComingSoonIcon"
+                android:text="Coming Soon"
+                android:textSize="15sp"
+
+                android:layout_centerHorizontal="true"
+                android:layout_margin="20dp"
+
+                android:id="@+id/tvComingSoon"
+
+                />
+        </RelativeLayout>
     </LinearLayout>
+     </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>
     <!---->
