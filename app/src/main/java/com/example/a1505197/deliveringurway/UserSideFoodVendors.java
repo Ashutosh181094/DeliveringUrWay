@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,7 +23,7 @@ public class UserSideFoodVendors extends AppCompatActivity {
         setContentView(R.layout.activity_user_side_vendors);
         VendorRecyclerView=findViewById(R.id.userSideRecyclerView);
         vendorInformations=new ArrayList<>();
-        Vendorcontactinfo = FirebaseDatabase.getInstance().getReference("vendors");
+        Vendorcontactinfo = FirebaseDatabase.getInstance().getReference("vendors").child("Food");
         Vendorcontactinfo.addValueEventListener(new ValueEventListener()
         {
             @Override
@@ -41,15 +40,13 @@ public class UserSideFoodVendors extends AppCompatActivity {
                         if(vendorInformation.type.compareTo("Food")==0)
                         {
                             vendorInformations.add(vendorInformation);
-                            Toast.makeText(getApplicationContext(),""+vendorInformation.business_name,Toast.LENGTH_SHORT).show();
 
                         }
 
 
 
                     }
-                    Totaldata totaldata=new Totaldata();
-                    totaldata.setVendorsdata(vendorInformations);
+
                     VendorsAdapter vendorsAdapter=new VendorsAdapter(UserSideFoodVendors.this,vendorInformations);
                     VendorRecyclerView.setAdapter(vendorsAdapter);
                    VendorRecyclerView.setHasFixedSize(true);

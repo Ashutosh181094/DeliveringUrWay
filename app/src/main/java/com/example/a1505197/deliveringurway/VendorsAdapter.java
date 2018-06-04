@@ -59,6 +59,8 @@ public class VendorsAdapter extends RecyclerView.Adapter<VendorsAdapter.VendorVi
                 @Override
                 public void onClick(View v) {
                 int position=getAdapterPosition();
+                VendorType vendorType=new VendorType();
+                vendorType.setType(data.get(position).type);
                     Intent intent=new Intent(context,UserSideVendorData.class);
                     intent.putExtra("VendorPhoneNumber",data.get(position).phone_number);
                     context.startActivity(intent);

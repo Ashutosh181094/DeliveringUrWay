@@ -24,7 +24,7 @@ public class UserSideClothVendors extends AppCompatActivity {
         setContentView(R.layout.activity_user_side_vendors);
         VendorRecyclerView=findViewById(R.id.userSideRecyclerView);
         vendorInformations=new ArrayList<>();
-        Vendorcontactinfo = FirebaseDatabase.getInstance().getReference("vendors");
+        Vendorcontactinfo = FirebaseDatabase.getInstance().getReference("vendors").child("Clothing");
         Vendorcontactinfo.addValueEventListener(new ValueEventListener()
         {
             @Override

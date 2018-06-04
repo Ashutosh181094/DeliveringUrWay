@@ -39,7 +39,9 @@ public class ContactFragment extends Fragment
         paymentOption=view.findViewById(R.id.contact_details_payment_title_textAnswer);
         lateNightDeliveryAnswer=view.findViewById(R.id.contact_details_late_night_delivery_answer);
         ContactPhone=view.findViewById(R.id.contact_details_contact_text);
-        Vendorcontactinfo = FirebaseDatabase.getInstance().getReference("vendors");
+        VendorType vendorType=new VendorType();
+        String Type=vendorType.getType();
+        Vendorcontactinfo = FirebaseDatabase.getInstance().getReference("vendors").child(""+Type);
         Vendorcontactinfo.addValueEventListener(new ValueEventListener()
         {
             @Override

@@ -19,7 +19,7 @@ public class VendorInfo2 extends AppCompatActivity {
    String OwnerOfB="";
     CircleImageView Arrow2;
     Spinner type;
-    String categories[]={"Food","Clothing"};
+    String categories[]={"Food","Clothing","Rental"};
     String Type="";
 
     @Override
@@ -44,10 +44,12 @@ public class VendorInfo2 extends AppCompatActivity {
                {
                    Type="Food";
                }
-               else
+               else if (position==1)
                {
                    Type="Clothing";
                }
+               else
+                   Type="Rental";
            }
 
            @Override

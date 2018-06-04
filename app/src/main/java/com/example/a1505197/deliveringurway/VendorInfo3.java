@@ -71,13 +71,29 @@ public class VendorInfo3 extends AppCompatActivity {
                         vPhoneNumber.setError("Invalid mobile number.10 digits allowed");
                     }
                     else {
-                        Intent intent = new Intent(VendorInfo3.this, Vendorinfo1.class);
-                        intent.putExtra("Address", sAddress);
-                        intent.putExtra("PhoneNumber", sPhoneNumber);
-                        intent.putExtra("nameOfB", nameOfB);
-                        intent.putExtra("OwnerOfB", OwnerOfB);
-                        intent.putExtra("type",Type);
-                        startActivity(intent);
+
+                        if(Type.equals("Rental"))
+                        {
+                            Intent intent = new Intent(VendorInfo3.this, RentalVendorDetails.class);
+                            intent.putExtra("Address", sAddress);
+                            intent.putExtra("PhoneNumber", sPhoneNumber);
+                            intent.putExtra("nameOfB", nameOfB);
+                            intent.putExtra("OwnerOfB", OwnerOfB);
+                            intent.putExtra("type",Type);
+                            startActivity(intent);
+
+
+                        }
+                        else
+                        {
+                            Intent intent = new Intent(VendorInfo3.this, Vendorinfo1.class);
+                            intent.putExtra("Address", sAddress);
+                            intent.putExtra("PhoneNumber", sPhoneNumber);
+                            intent.putExtra("nameOfB", nameOfB);
+                            intent.putExtra("OwnerOfB", OwnerOfB);
+                            intent.putExtra("type",Type);
+                            startActivity(intent);
+                        }
                     }
                 }
             }

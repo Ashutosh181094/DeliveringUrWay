@@ -10,6 +10,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 class Pager extends FragmentStatePagerAdapter {
     int mNumOfTabs;
+    ContactRental tab2;
+    ContactFragment tab3;
 
     public Pager(FragmentManager fm, int NumOfTabs) {
         super(fm);
@@ -24,8 +26,20 @@ class Pager extends FragmentStatePagerAdapter {
                 ProductFragment tab1 = new ProductFragment();
                 return tab1;
             case 1:
-                ContactFragment tab2 = new ContactFragment();
-                return tab2;
+
+                VendorType vendorType=new VendorType();
+                String Type=vendorType.getType();
+                if(Type.equals("Rental"))
+                {
+                    tab2=new ContactRental();
+                    return tab2;
+                }
+                else
+                    {
+                    tab3 = new ContactFragment();
+                        return tab3;
+                }
+
             default:
                 return null;
         }

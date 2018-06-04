@@ -12,6 +12,7 @@ public class UserSideVendorData extends AppCompatActivity {
     Pager pager;
     private ViewPager mViewPager;
     Toolbar toolbar;
+    private static final String TAG = "UserSideVendorData";
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -36,7 +37,6 @@ public class UserSideVendorData extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("CONTACT"));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
         pager = new Pager(getSupportFragmentManager(), 2);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(pager);

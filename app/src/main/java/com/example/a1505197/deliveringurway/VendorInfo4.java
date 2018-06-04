@@ -70,7 +70,7 @@ public class VendorInfo4 extends AppCompatActivity {
                 Type=getintent.getStringExtra("type");
                 try {
                     if(checkConn()) {
-                        vendordata = FirebaseDatabase.getInstance().getReference("vendors");
+                        vendordata = FirebaseDatabase.getInstance().getReference("vendors").child(""+Type);
                         deliveryInfo = FirebaseDatabase.getInstance().getReference("deliveryInfo");
                         VendorInformation vendorInformation = new VendorInformation(nightdelivery, paytmAccepted, nameOFB, OwnerOfB, Address, PhoneNumber, DeliveryInfo, Type);
 

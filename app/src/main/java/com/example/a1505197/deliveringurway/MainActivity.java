@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView name;
     FirebaseUser user;
     StorageReference storeUserPhoto;
-    RelativeLayout rlFood,rlClothes;
+    RelativeLayout rlFood,rlClothes,rlRental;
 
     private View navHeader;
     int[] sampleImages = {R.drawable.hut, R.drawable.business_online, R.drawable.explore, R.drawable.find_your_favourite, R.drawable.pink};
@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tvClothes=findViewById(R.id.tvClothing);
         rlFood=findViewById(R.id.containerFOOD);
         rlClothes=findViewById(R.id.containerCLOTHING);
+        rlRental=findViewById(R.id.containerRENTAL);
         userName=sendMessage.message;
         Toast.makeText(getApplicationContext(),""+userName,Toast.LENGTH_SHORT).show();
         userData= FirebaseDatabase.getInstance().getReference("users");
@@ -153,6 +154,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,UserSideClothVendors.class);
+                startActivity(intent);
+            }
+        });
+        rlRental.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,UserSideRentalVendors.class);
                 startActivity(intent);
             }
         });
@@ -272,6 +280,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if(user.getEmail().equals(""))
         {
             Intent intent=new Intent(MainActivity.this,VendorData.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         }
