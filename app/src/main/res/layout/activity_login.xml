@@ -59,7 +59,7 @@
             android:layout_weight="0.38" />
     </LinearLayout>
 
-
+    <!-- -->
 
     <Button
         android:id="@+id/btn_login"
