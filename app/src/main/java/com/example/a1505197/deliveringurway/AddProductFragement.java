@@ -178,4 +178,4 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
 
     }
 }
-////
+//////

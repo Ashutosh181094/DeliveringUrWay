@@ -11,3 +11,4 @@ public class UserSideRentalVendors extends AppCompatActivity {
         setContentView(R.layout.activity_user_side_rental_vendors);
     }
 }
+//

@@ -267,27 +267,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    protected void onStart()
-    {
+    protected void onStart() throws NullPointerException {
         super.onStart();
-        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-        if(user==null)
-        {
-            Intent intent=new Intent(MainActivity.this,Login.class);
-            startActivity(intent);
-            finish();
-        }
-        else if(user.getEmail().equals(""))
-        {
-            Intent intent=new Intent(MainActivity.this,VendorData.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        }
-        else
-        {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        if (user == null) {
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);
+            finish();
         }
+
+        else if (user.getEmail().equals("")) {
+                Intent intent = new Intent(MainActivity.this, VendorData.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+
         userDataFetch=FirebaseDatabase.getInstance().getReference("users").child(user.getUid());
         userDataFetch.addValueEventListener(new ValueEventListener() {
             @Override
