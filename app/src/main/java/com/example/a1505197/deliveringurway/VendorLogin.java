@@ -75,7 +75,8 @@ public class VendorLogin extends AppCompatActivity {
         });
         Verify.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 PhoneAuthCredential credential=PhoneAuthProvider.getCredential(mVerificationId,OTP.getText().toString());
                 signInWithPhoneAuthCredential(credential);
             }
@@ -149,13 +150,16 @@ public class VendorLogin extends AppCompatActivity {
                 });
     }
 //
-    private void showProgressBar(){
+    private void showProgressBar()
+    {
         progressBar.setVisibility(View.VISIBLE);
 
     }
 
-    private void hideProgressBar(){
-        if(progressBar.getVisibility() == View.VISIBLE){
+    private void hideProgressBar()
+    {
+        if(progressBar.getVisibility() == View.VISIBLE)
+        {
             progressBar.setVisibility(View.INVISIBLE);
         }
     }
