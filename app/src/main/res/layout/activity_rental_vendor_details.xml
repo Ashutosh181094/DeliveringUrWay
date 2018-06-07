@@ -36,13 +36,12 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
+         />
     <TextView
         android:id="@+id/perDayCost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cost/Hour"
+        android:text="Cost/Day"
         android:gravity="center"
         android:textSize="30dp"
         android:textColor="@color/Black"
@@ -56,8 +55,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
+         />
 
 
 

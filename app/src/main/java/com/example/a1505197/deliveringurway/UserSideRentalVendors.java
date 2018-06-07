@@ -39,7 +39,7 @@ public class UserSideRentalVendors extends AppCompatActivity {
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                     {
                         RentalVendorObject vendorInformation = dataSnapshot1.getValue(RentalVendorObject.class);
-                        if(vendorInformation.typeofproduct.compareTo("Rentals")==0)
+                        if(vendorInformation.typeofproduct.compareTo("Rental")==0)
                         {
                             vendorInformations.add(vendorInformation);
                         }

@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             finish();
         }
 
-        else if (user.getEmail().equals("")) {
+        else if (user!=null && user.getEmail().equals("")) {
                 Intent intent = new Intent(MainActivity.this, VendorData.class);
                 startActivity(intent);
                 finish();

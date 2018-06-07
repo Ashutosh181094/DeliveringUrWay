@@ -16,7 +16,7 @@ public class RentalVendorDetails extends AppCompatActivity {
 
     EditText perDayCost,perHourCost;
     CircleImageView Arrow;
-    String sperDayCost="",sperHourCost="";
+    String sperDayCost,sperHourCost;
     DatabaseReference Rentalvendordata;
 
 
@@ -26,12 +26,15 @@ public class RentalVendorDetails extends AppCompatActivity {
         setContentView(R.layout.activity_rental_vendor_details);
         perDayCost=findViewById(R.id.editPerDayCost);
         perHourCost=findViewById(R.id.editCostPerHour);
-        sperDayCost=perDayCost.getText().toString();
-        sperHourCost=perHourCost.getText().toString();
+
+
         Arrow=(CircleImageView) findViewById(R.id.arrow3);
         Arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sperDayCost=perDayCost.getText().toString();
+                sperHourCost=perHourCost.getText().toString();
+                Toast.makeText(getApplicationContext(), ""+sperDayCost, Toast.LENGTH_SHORT).show();
 
                 Intent getintent=getIntent();
                 String nameOfB=getintent.getStringExtra("nameOfB");
