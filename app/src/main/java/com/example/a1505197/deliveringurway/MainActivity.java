@@ -21,7 +21,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -73,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         rlClothes=findViewById(R.id.containerCLOTHING);
         rlRental=findViewById(R.id.containerRENTAL);
         userName=sendMessage.message;
-        Toast.makeText(getApplicationContext(),""+userName,Toast.LENGTH_SHORT).show();
         userData= FirebaseDatabase.getInstance().getReference("users");
         user=mAuth.getCurrentUser();
         if(userName!=null) {
@@ -277,9 +275,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             finish();
         }
 
-        else if (user.getEmail().equals("")) {
+        else if (user.getEmail()==null) {
                 Intent intent = new Intent(MainActivity.this, VendorData.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
@@ -296,7 +293,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             .fit()
                             .centerCrop()
                             .into(userCircleImage);
+                    name.setText(userInfo.name);
                 }
+
 
             }
 

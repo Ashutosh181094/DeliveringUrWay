@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -27,6 +28,7 @@ public class Register extends AppCompatActivity
     String name,email,password,confirmpassword;
     ProgressBar progressBar;
     TextView tvRegister;
+    private static final String TAG = "Register";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,13 +91,14 @@ public class Register extends AppCompatActivity
                        {
                            showProgressBar();
                            if (task.isSuccessful())
-                           {    hideProgressBar();
+                           {
+                               hideProgressBar();
                                sendVerificationEmail();
+                               FirebaseAuth.getInstance().signOut();
+                               redirectLoginScreen();
                             Toast.makeText(Register.this,"Verification link has been sent to registered Email",Toast.LENGTH_LONG).show();
                               hideProgressBar();
-                              Intent intent=new Intent(Register.this,Login.class);
-                              startActivity(intent);
-                              finish();
+
                            }
                            else
                            {
@@ -170,6 +173,13 @@ public class Register extends AppCompatActivity
     public void onStart() {
         super.onStart();
 
+    }
+    private void redirectLoginScreen(){
+        Log.d(TAG, "redirectLoginScreen: redirecting to login screen.");
+
+        Intent intent = new Intent(Register.this, Login.class);
+        startActivity(intent);
+        finish();
     }
 
 

@@ -118,7 +118,9 @@ public class VendorData extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
          user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
+
+        if (user == null)
+        {
             Intent intent = new Intent(VendorData.this, Login.class);
             startActivity(intent);
             finish();

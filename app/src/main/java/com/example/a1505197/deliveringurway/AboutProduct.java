@@ -56,6 +56,7 @@ int Rating,Ratingsum=0;
         ratings=new ArrayList<>();
         productName=intent.getStringExtra("productName");
         phoneNumber=intent.getStringExtra("phoneNumber");
+        Toast.makeText(getApplicationContext(),""+productName+""+phoneNumber,Toast.LENGTH_SHORT).show();
         username= FirebaseAuth.getInstance().getCurrentUser();
         recyclerView=findViewById(R.id.recyclerViewComments);
         userSideProductDescription=new ArrayList<>();

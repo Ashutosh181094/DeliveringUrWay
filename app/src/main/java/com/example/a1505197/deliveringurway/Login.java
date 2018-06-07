@@ -1,9 +1,11 @@
 package com.example.a1505197.deliveringurway;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,6 +31,7 @@ public class Login extends AppCompatActivity
     Button SignIn,SignUp,bForgotPassword;
     TextView tvForgotPassword,LoginVendor;
     ProgressBar progressBar;
+    CardView cardView;
     private MorphAnimation morphAnimationLogin;
 
     private static final String TAG = "Login";
@@ -42,6 +45,7 @@ public class Login extends AppCompatActivity
         View loginContainer = findViewById(R.id.form_btn);
         TextView Forgotpass = (TextView) findViewById(R.id.button_inside_group);
         ViewGroup loginViews = (ViewGroup) findViewById(R.id.login_views);
+        cardView=findViewById(R.id.form_btn);
         final FrameLayout rootView = (FrameLayout) findViewById(R.id.root_view);
         SignIn= (Button) findViewById(R.id.btn_login);
         SignUp= (Button) findViewById(R.id.btn_register);
@@ -62,16 +66,22 @@ public class Login extends AppCompatActivity
         rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cardView.setCardBackgroundColor(Color.TRANSPARENT);
+
                 morphAnimationLogin.morphIntoButton();
             }
         });
         Forgotpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!morphAnimationLogin.isPressed()) {
+                if (!morphAnimationLogin.isPressed())
+                {
+                    cardView.setCardBackgroundColor(getResources().getColor(R.color.White));
                     morphAnimationLogin.morphIntoForm();
                 } else {
+                    cardView.setCardBackgroundColor(Color.TRANSPARENT);
                     morphAnimationLogin.morphIntoButton();
+
                 }
             }
         });
@@ -118,20 +128,24 @@ public class Login extends AppCompatActivity
             public void onClick(View view) {
                 email=etemail.getText().toString();
                 password=etpassword.getText().toString();
+
                 showProgressBar();
                 if(isStringNull(email)||isStringNull(password))
                 {
 
                     Toast.makeText(Login.this,"Fill in all the fields",Toast.LENGTH_LONG).show();
                 }
-                else
+
+                    else
+
                 {
+
                     mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task)
                         {
                             FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-                            if(task.isSuccessful())
+                            if(task.isSuccessful()&&user.isEmailVerified())
                             {
 
                                 Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_LONG).show();
@@ -139,7 +153,7 @@ public class Login extends AppCompatActivity
                                  hideProgressBar();
                                 Intent intent=new Intent(Login.this,MainActivity.class);
                                 startActivity(intent);
-
+                                finish();
 
                                 //if the authentication is successfull
                             }
@@ -148,6 +162,7 @@ public class Login extends AppCompatActivity
 
 
                                     Toast.makeText(Login.this,"Login Failed",Toast.LENGTH_LONG).show();
+                                FirebaseAuth.getInstance().signOut();
 
 
                                 //if the authentication is not sucessful
