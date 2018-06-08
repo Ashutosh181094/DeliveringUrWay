@@ -94,7 +94,7 @@
                     android:id="@+id/rental_contact_details_late_night_delivery_text24hrs"
                     android:layout_below="@+id/rental_contact_details_late_night_delivery_text12hrs"
                     android:layout_marginTop="5dp"/>
-
+<!---->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
