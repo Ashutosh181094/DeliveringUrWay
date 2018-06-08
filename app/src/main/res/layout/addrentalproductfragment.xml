@@ -1,0 +1,108 @@
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/vendorImage"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="30dp"
+                        android:src="@drawable/hut"
+                        />
+
+                    <ImageView
+                        android:id="@+id/ivCamera"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignRight="@+id/vendorImage"
+                        android:layout_below="@+id/vendorImage"
+                        android:paddingTop="10dp"
+                        android:src="@drawable/ic_camera" />
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ivCamera"
+                        android:text="Name"
+                        android:textColor="@color/Black"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="20dp"/>
+
+                    <EditText
+                        android:id="@+id/etName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvName"
+                        />
+                    <TextView
+                        android:id="@+id/etCostPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etName"
+                        android:text="Cost/hour"
+                        android:textColor="@color/Black"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="20dp"/>
+
+                    <EditText
+                        android:id="@+id/etCost"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etCostPrice"
+                        android:inputType="number" />
+
+                    <TextView
+                        android:id="@+id/tvdescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etCost"
+                        android:text="Cost/day"
+                        android:textColor="@color/Black"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="20dp"/>
+
+                    <EditText
+                        android:id="@+id/etdescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvdescription" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etdescription"
+                        android:layout_marginLeft="120dp"
+                        android:text="Upload"
+                        android:id="@+id/btnUpload"
+                        android:background="@drawable/loginbutton"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginBottom="10dp"/>
+                </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
