@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rental_contact_details_scroll_view"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:id="@+id/retntal_contact_details_card_relative_layout">
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:elevation="5dp"
+            android:layout_margin="5dp"
+            android:padding="25dp"
+            android:id="@+id/rental_contact_details_address_card_view">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_address_title"
+                    android:text="Address"
+                    android:textColor="@color/Black"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_address_text"
+                    android:layout_below="@+id/rental_contact_details_address_title"
+                    android:text="address of vendor goes here"
+                    android:layout_marginTop="5dp"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rental_contact_details_delivery_details_card"
+            android:layout_below="@id/rental_contact_details_address_card_view"
+            android:layout_margin="5dp"
+            android:padding="25dp"
+            android:elevation="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_delivery_detail_title"
+                    android:text="Rental Details"
+                    android:textColor="@color/Black"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_delivery_free_detail_text"
+                    android:layout_below="@+id/rental_contact_details_delivery_detail_title"
+                    android:text="Rate per hour"
+                    android:layout_marginTop="15dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_delivery_free_detail_textAnswer"
+                    android:layout_below="@+id/rental_contact_details_delivery_detail_title"
+                    android:layout_toRightOf="@+id/rental_contact_details_delivery_free_detail_text"
+                    android:text="X"
+                    android:layout_marginStart="140dp"
+                    android:layout_marginTop="15dp"
+
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rent for 12 hours?"
+                    android:id="@+id/rental_contact_details_late_night_delivery_text12hrs"
+                    android:layout_below="@id/rental_contact_details_delivery_free_detail_text"
+                    android:layout_marginTop="5dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rent for 24 hours?"
+                    android:id="@+id/rental_contact_details_late_night_delivery_text24hrs"
+                    android:layout_below="@+id/rental_contact_details_late_night_delivery_text12hrs"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XX"
+                    android:layout_marginStart="108dp"
+                    android:id="@+id/rental_contact_details_late_night_delivery_answer"
+                    android:layout_below="@id/rental_contact_details_delivery_free_detail_text"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/rental_contact_details_late_night_delivery_text12hrs"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XXX"
+                    android:layout_marginStart="108dp"
+                    android:id="@+id/rental_contact_details_late_night_delivery_answer24hrs"
+                    android:layout_below="@id/rental_contact_details_late_night_delivery_text12hrs"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/rental_contact_details_late_night_delivery_text24hrs"/>
+
+
+
+
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:layout_margin="5dp"
+            android:padding="25dp"
+            android:id="@+id/rental_contact_details_payment_card_view"
+            android:layout_below="@id/rental_contact_details_delivery_details_card">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_payment_title"
+                    android:text="Payment options"
+                    android:textColor="@color/Black"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_paytm_text"
+                    android:layout_below="@+id/rental_contact_details_payment_title"
+                    android:text="PAYTM cash accepted?"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_payment_title_textAnswer"
+                    android:layout_below="@+id/rental_contact_details_payment_title"
+                    android:layout_toRightOf="@+id/rental_contact_details_paytm_text"
+                    android:text="YES"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:elevation="5dp"
+            android:layout_margin="5dp"
+            android:padding="25dp"
+            android:id="@+id/rental_contact_details_rental_conditions_card_view"
+            android:layout_below="@id/rental_contact_details_payment_card_view">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_Conditions_title"
+                    android:text="Vehicle will be issued on providing the following:"
+                    android:textColor="@color/red1"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rental_contact_details_Conditions_text"
+                android:layout_below="@+id/rental_contact_details_Conditions_title"
+                android:text="Orginal ID card"
+                android:layout_marginTop="5dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_Conditions_text2"
+                    android:layout_below="@+id/rental_contact_details_Conditions_text"
+                    android:text="Original Driving License"
+                    android:layout_marginTop="5dp"/>
+
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:layout_margin="5dp"
+            android:padding="25dp"
+            android:id="@+id/rental_contact_details_contact_card_view"
+            android:layout_below="@id/rental_contact_details_rental_conditions_card_view">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_contact_title"
+                    android:text="Contact"
+                    android:textColor="@color/Black"
+                    android:textSize="18sp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_contact_text"
+                    android:layout_below="@+id/rental_contact_details_contact_title"
+                    android:text="Phone Number"
+                    android:background="@color/green2"
+                    android:textColor="@color/White"
+                    android:layout_marginTop="15dp"/>
+
+
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:layout_margin="5dp"
+            android:padding="25dp"
+            android:id="@+id/rental_contact_details_note_card_view"
+            android:layout_below="@id/rental_contact_details_contact_card_view">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_note_title"
+                    android:text="Note"
+                    android:textColor="@color/Black"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_note_text"
+                    android:layout_below="@id/rental_contact_details_note_title"
+                    android:text="All repair costs must be borne by the customer in case of any damage to the vehicle"
+                    android:textColor="@color/Black"
+                    android:textSize="12sp"/>
+
+
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
+    <!-- -->
+    <!-- -->
+    <!-- -->
