@@ -78,4 +78,4 @@ public class VendorInfo2 extends AppCompatActivity {
         });
     }
 }
-//////////
+////////////

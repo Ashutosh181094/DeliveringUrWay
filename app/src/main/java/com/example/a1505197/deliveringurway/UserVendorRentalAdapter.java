@@ -74,4 +74,4 @@ public class UserVendorRentalAdapter extends RecyclerView.Adapter<UserVendorRent
     }
 }
 ////////
-//
+////

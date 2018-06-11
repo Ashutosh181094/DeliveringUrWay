@@ -214,4 +214,4 @@ public class AddClothProductFragment extends Fragment implements ChangePhotoDial
 
     }
 }
-//
+////
