@@ -63,3 +63,4 @@ public class ClothProductDescription
         this.image_url = image_url;
     }
 }
+//

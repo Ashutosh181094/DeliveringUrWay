@@ -53,3 +53,4 @@ public class RentalProductDescription
         this.image_url = image_url;
     }
 }
+//
