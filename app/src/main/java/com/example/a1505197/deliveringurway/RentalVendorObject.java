@@ -12,21 +12,18 @@ public class RentalVendorObject
     String address;
     String phone_number;
     String typeofproduct;
-    String per_day_cost;
-    String per_hour_cost;
-public RentalVendorObject()
-{
+     int pay_tm_accepted;
 
-}
+    public RentalVendorObject() {
+    }
 
-    public RentalVendorObject(String business_name, String owner_name, String address, String phone_number, String typeofproduct, String per_day_cost, String per_hour_cost) {
+    public RentalVendorObject(String business_name, String owner_name, String address, String phone_number, String typeofproduct, int pay_tm_accepted) {
         this.business_name = business_name;
         this.owner_name = owner_name;
         this.address = address;
         this.phone_number = phone_number;
         this.typeofproduct = typeofproduct;
-        this.per_day_cost = per_day_cost;
-        this.per_hour_cost = per_hour_cost;
+        this.pay_tm_accepted = pay_tm_accepted;
     }
 
     public String getBusiness_name() {
@@ -69,20 +66,12 @@ public RentalVendorObject()
         this.typeofproduct = typeofproduct;
     }
 
-    public String getPer_day_cost() {
-        return per_day_cost;
+    public int getPay_tm_accepted() {
+        return pay_tm_accepted;
     }
 
-    public void setPer_day_cost(String per_day_cost) {
-        this.per_day_cost = per_day_cost;
-    }
-
-    public String getPer_hour_cost() {
-        return per_hour_cost;
-    }
-
-    public void setPer_hour_cost(String per_hour_cost) {
-        this.per_hour_cost = per_hour_cost;
+    public void setPay_tm_accepted(int pay_tm_accepted) {
+        this.pay_tm_accepted = pay_tm_accepted;
     }
 }
 ////

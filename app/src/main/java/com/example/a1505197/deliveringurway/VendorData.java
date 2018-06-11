@@ -13,6 +13,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,8 +32,9 @@ public class VendorData extends AppCompatActivity {
     RecyclerView VendorRecyclerView;
     FirebaseAuth mAuth;
     FloatingActionButton addVendordata;
-    DatabaseReference Vendortotaldata;
+    DatabaseReference Vendortotaldata,VendorTypeInfo;
     ArrayList<ProductDescription> data;
+    ArrayList<RetrieveVendorType> vendortype;
     FirebaseUser user;
     ImageView logOut;
 
@@ -61,6 +63,7 @@ public class VendorData extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         data=new ArrayList<>();
+        vendortype=new ArrayList<>();
         Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child(user.getPhoneNumber());
         Vendortotaldata.addValueEventListener(new ValueEventListener() {
             @Override
@@ -95,6 +98,7 @@ public class VendorData extends AppCompatActivity {
 
 
 
+
         mAuth=FirebaseAuth.getInstance();
         addVendordata=findViewById(R.id.addVendorData);
         initimageLoader();
@@ -102,11 +106,58 @@ public class VendorData extends AppCompatActivity {
         @Override
         public void onClick(View v)
         {
-            AddProductFragement fragment=new AddProductFragement();
-            FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-            transaction.replace(android.R.id.content,fragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
+            VendorTypeInfo=FirebaseDatabase.getInstance().getReference("VendorsType").child(""+user.getPhoneNumber());
+            VendorTypeInfo.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists())
+                    {
+                        vendortype.clear();
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                        {
+                            RetrieveVendorType retrieveVendorType= dataSnapshot1.getValue(RetrieveVendorType.class);
+                            vendortype.add(retrieveVendorType);
+
+                        }
+                        Toast.makeText(getApplicationContext(),""+vendortype.get(0).type,Toast.LENGTH_LONG).show();
+                    }
+                    if (vendortype.get(0).type.equals("Food"))
+                    {
+                        AddFoodProductFragement fragment=new AddFoodProductFragement();
+                        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+                        transaction.replace(android.R.id.content,fragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+
+
+                    }
+                    else
+                    if(vendortype.get(0).type.equals("Clothing"))
+                    {
+                        AddClothProductFragment fragment=new AddClothProductFragment();
+                        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+                        transaction.replace(android.R.id.content,fragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+
+                    }
+                    else
+                    {
+                        AddRentalProductFragment fragment=new AddRentalProductFragment();
+                        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+                        transaction.replace(android.R.id.content,fragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
 
 
         }

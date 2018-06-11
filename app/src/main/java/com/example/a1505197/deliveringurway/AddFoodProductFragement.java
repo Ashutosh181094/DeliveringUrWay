@@ -32,7 +32,7 @@ import java.io.ByteArrayOutputStream;
  * Created by 1505197 on 3/12/2018.
  */
 
-public class AddProductFragement extends Fragment implements ChangePhotoDialog.OnPhotoRecievedListener {
+public class AddFoodProductFragement extends Fragment implements ChangePhotoDialog.OnPhotoRecievedListener {
    ImageView vendorImage;
    ImageView image;
     private String mSelectedImagePath;
@@ -69,7 +69,7 @@ public class AddProductFragement extends Fragment implements ChangePhotoDialog.O
                         {
                             ChangePhotoDialog dialog=new ChangePhotoDialog();
                             dialog.show(getFragmentManager(),getString(R.string.change_photo_dialog));
-                            dialog.setTargetFragment(AddProductFragement.this,0);
+                            dialog.setTargetFragment(AddFoodProductFragement.this,0);
                         }
                     }
                     else

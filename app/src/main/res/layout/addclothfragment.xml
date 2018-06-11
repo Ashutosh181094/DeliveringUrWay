@@ -84,14 +84,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/SizeChart"
                         android:layout_marginTop="10dp"
-                        android:id="@+id/spinner">
+                        android:id="@+id/spinnerSizeChart">
 
                     </Spinner>
                     <TextView
                         android:id="@+id/tvdescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/spinner"
+                        android:layout_below="@+id/spinnerSizeChart"
                         android:text="Description"
                         android:textColor="@color/Black"
                         android:textSize="20dp"

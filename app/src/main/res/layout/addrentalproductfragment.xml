@@ -52,7 +52,7 @@
                         android:layout_below="@+id/tvName"
                         />
                     <TextView
-                        android:id="@+id/etCostPrice"
+                        android:id="@+id/tvCostPerHour"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/etName"
@@ -62,32 +62,32 @@
                         android:layout_marginLeft="20dp"/>
 
                     <EditText
-                        android:id="@+id/etCost"
+                        android:id="@+id/etCostPerHour"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/etCostPrice"
+                        android:layout_below="@+id/tvCostPerHour"
                         android:inputType="number" />
 
                     <TextView
-                        android:id="@+id/tvdescription"
+                        android:id="@+id/tvCostPerDay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/etCost"
+                        android:layout_below="@+id/etCostPerHour"
                         android:text="Cost/day"
                         android:textColor="@color/Black"
                         android:textSize="20dp"
                         android:layout_marginLeft="20dp"/>
 
                     <EditText
-                        android:id="@+id/etdescription"
+                        android:id="@+id/etCostPerDay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvdescription" />
+                        android:layout_below="@+id/tvCostPerDay" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/etdescription"
+                        android:layout_below="@+id/etCostPerDay"
                         android:layout_marginLeft="120dp"
                         android:text="Upload"
                         android:id="@+id/btnUpload"

@@ -37,8 +37,8 @@ public class AddRentalProductFragment extends Fragment implements ChangePhotoDia
     ImageView image;
     private String mSelectedImagePath;
     DatabaseReference productinfo;
-    EditText name,cost,description;
-    String sname,scost,sdescription;
+    EditText name,costperhour,costperday;
+    String sname,scostperhour,scostperday;
     Button buttonUpload;
     StorageReference storePhoto;
     ProgressDialog progressDialog;
@@ -48,12 +48,14 @@ public class AddRentalProductFragment extends Fragment implements ChangePhotoDia
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.activity_add_product,container,false);
+        View view=inflater.inflate(R.layout.addrentalproductfragment,container,false);
         image=view.findViewById(R.id.ivCamera);
         vendorImage=view.findViewById(R.id.vendorImage);
         name=view.findViewById(R.id.etName);
-        cost=view.findViewById(R.id.etCost);
-        description=view.findViewById(R.id.etdescription);
+        costperday=view.findViewById(R.id.etCostPerDay);
+        costperhour=view.findViewById(R.id.etCostPerHour);
+
+
 
 
         buttonUpload=view.findViewById(R.id.btnUpload);
@@ -84,9 +86,8 @@ public class AddRentalProductFragment extends Fragment implements ChangePhotoDia
             public void onClick(View v) {
 
                 sname=name.getText().toString();
-                scost=cost.getText().toString();
-                sdescription=description.getText().toString();
-
+                scostperday=costperday.getText().toString();
+                scostperhour=costperhour.getText().toString();
                 user= FirebaseAuth.getInstance().getCurrentUser();
                 productinfo= FirebaseDatabase.getInstance().getReference("productinfo");
                 storePhoto= FirebaseStorage.getInstance().getReference(user.getPhoneNumber()+"/"+sname);
@@ -113,7 +114,7 @@ public class AddRentalProductFragment extends Fragment implements ChangePhotoDia
                         Uri downloadUrl = taskSnapshot.getDownloadUrl();
                         Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
                         dismissDialog();
-                        ProductDescription pdescription=new ProductDescription(sname,scost,sdescription,taskSnapshot.getDownloadUrl().toString());
+                        RentalProductDescription pdescription=new RentalProductDescription(sname,scostperhour,scostperday,taskSnapshot.getDownloadUrl().toString());
                         productinfo.child(user.getPhoneNumber()).child(sname).setValue(pdescription);
                         Intent intent=new Intent(getContext(),VendorData.class);
                         startActivity(intent);

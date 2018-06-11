@@ -19,52 +19,35 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/perHourCost"
+        android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cost/Hour"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:textColor="@color/Black"
         android:layout_marginTop="30dp"
-        />
-
-    <EditText
-        android:id="@+id/editCostPerHour"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
-         />
-    <TextView
-        android:id="@+id/perDayCost"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cost/Day"
         android:gravity="center"
-        android:textSize="30dp"
+        android:text="Is Paytm accepted as mode of payment?"
         android:textColor="@color/Black"
-        android:layout_marginTop="30dp"
-        />
-
-    <EditText
-        android:id="@+id/editPerDayCost"
-        android:layout_width="match_parent"
+        android:textSize="24sp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
-         />
+        android:orientation="horizontal">
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:thumb="@drawable/thumbsad"
+            android:id="@+id/switchPaytm"
+            android:layout_marginTop="20dp"
+            />
 
-
+    </LinearLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/arrow3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="70dp"
         android:src="@drawable/arrow" />
 
 

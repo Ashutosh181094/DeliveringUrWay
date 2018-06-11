@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     RelativeLayout rlFood,rlClothes,rlRental;
 
     private View navHeader;
-    int[] sampleImages = {R.drawable.hut, R.drawable.business_online, R.drawable.explore, R.drawable.find_your_favourite, R.drawable.pink};
+    int[] sampleImages = {R.drawable.getdiscoverd,  R.drawable.explore, R.drawable.find_your_favourite,R.drawable.business_online, R.drawable.rentvehicles,R.drawable.havefood};
      String userName="";
      NavigationView navigation_header;
 
