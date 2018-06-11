@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/rental_contact_details_scroll_view"
@@ -39,92 +38,7 @@
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rental_contact_details_delivery_details_card"
-            android:layout_below="@id/rental_contact_details_address_card_view"
-            android:layout_margin="5dp"
-            android:padding="25dp"
-            android:elevation="5dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#FFFFFF"
-                android:padding="5dp"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/rental_contact_details_delivery_detail_title"
-                    android:text="Rental Details"
-                    android:textColor="@color/Black"
-                    android:textSize="18sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/rental_contact_details_delivery_free_detail_text"
-                    android:layout_below="@+id/rental_contact_details_delivery_detail_title"
-                    android:text="Rate per hour"
-                    android:layout_marginTop="15dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/rental_contact_details_delivery_free_detail_textAnswer"
-                    android:layout_below="@+id/rental_contact_details_delivery_detail_title"
-                    android:layout_toRightOf="@+id/rental_contact_details_delivery_free_detail_text"
-                    android:text="X"
-                    android:layout_marginStart="140dp"
-                    android:layout_marginTop="15dp"
-
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rent for 12 hours?"
-                    android:id="@+id/rental_contact_details_late_night_delivery_text12hrs"
-                    android:layout_below="@id/rental_contact_details_delivery_free_detail_text"
-                    android:layout_marginTop="5dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rent for 24 hours?"
-                    android:id="@+id/rental_contact_details_late_night_delivery_text24hrs"
-                    android:layout_below="@+id/rental_contact_details_late_night_delivery_text12hrs"
-                    android:layout_marginTop="5dp"/>
-<!---->
-                <!---->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="XX"
-                    android:layout_marginStart="108dp"
-                    android:id="@+id/rental_contact_details_late_night_delivery_answer"
-                    android:layout_below="@id/rental_contact_details_delivery_free_detail_text"
-                    android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@id/rental_contact_details_late_night_delivery_text12hrs"/>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="XXX"
-                    android:layout_marginStart="108dp"
-                    android:id="@+id/rental_contact_details_late_night_delivery_answer24hrs"
-                    android:layout_below="@id/rental_contact_details_late_night_delivery_text12hrs"
-                    android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@id/rental_contact_details_late_night_delivery_text24hrs"/>
-
-
-
-
-
-            </RelativeLayout>
-
-
-        </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -133,7 +47,8 @@
             android:layout_margin="5dp"
             android:padding="25dp"
             android:id="@+id/rental_contact_details_payment_card_view"
-            android:layout_below="@id/rental_contact_details_delivery_details_card">
+            android:layout_below="@id/rental_contact_details_address_card_view"
+            >
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -193,12 +108,12 @@
                     android:textSize="16sp"
                     android:textStyle="bold"/>
                 <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/rental_contact_details_Conditions_text"
-                android:layout_below="@+id/rental_contact_details_Conditions_title"
-                android:text="Orginal ID card"
-                android:layout_marginTop="5dp"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rental_contact_details_Conditions_text"
+                    android:layout_below="@+id/rental_contact_details_Conditions_title"
+                    android:text="Orginal ID card"
+                    android:layout_marginTop="5dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
