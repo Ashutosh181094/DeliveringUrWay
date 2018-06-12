@@ -6,7 +6,7 @@
     android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/login_bg"
     android:animateLayoutChanges="true">
 
     <LinearLayout
@@ -17,6 +17,7 @@
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         android:weightSum="1"
+        android:layout_marginTop="30dp"
         android:id="@+id/linearLayout">
 
         <ImageView
@@ -31,14 +32,14 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/edittextshape"
+
             android:textSize="20sp"
             android:padding="10dp"
             android:hint="email"
             android:inputType="textEmailAddress"
             android:textColor="@color/White"
-            android:textColorHint="@color/Black"
-            android:alpha="0.5"
+            android:textColorHint="@color/grey1"
+
             />
 
 
@@ -48,13 +49,13 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:hint="password"
-            android:background="@drawable/edittextshape"
+
             android:id="@+id/etPassword"
             android:layout_marginTop="15dp"
             android:textColor="@color/White"
-            android:alpha="0.5"
+
             android:textSize="20sp"
-            android:textColorHint="@color/Black"
+            android:textColorHint="@color/grey1"
             android:padding="10dp"
             android:layout_weight="0.38" />
     </LinearLayout>

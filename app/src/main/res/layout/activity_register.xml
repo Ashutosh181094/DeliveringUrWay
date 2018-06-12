@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg"
+    android:background="@drawable/signup_bg"
     android:orientation="vertical"
     >
     <ScrollView
@@ -40,48 +40,52 @@
             android:paddingTop="50dp"
             android:text="SignUp"
             android:textColor="@color/White"
-            android:textSize="40dp" />
+            android:textSize="40dp"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"/>
 
 <!--jajaj -->
+
         <EditText
             android:id="@+id/etname"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="45dp"
             android:padding="10dp"
-            android:alpha="0.15"
-            android:background="@drawable/edittextshape"
-
+            android:backgroundTint="@color/White"
+            android:textColorHint="@color/grey1"
 
             android:hint="Name"
 
             android:inputType="textEmailAddress"
-            android:textColor="#0900b7"
+            android:textColor="@color/White"
             android:textSize="20sp" />
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/edittextshape"
+
             android:textSize="20sp"
             android:padding="10dp"
             android:hint="Email Id"
 
             android:inputType="textEmailAddress"
-            android:textColor="#0900b7"
-            android:alpha="0.15"/>
+            android:textColor="@color/White"
+            android:textColorHint="@color/grey1"
+            android:backgroundTint="@color/White"
+          />
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:alpha="0.15"
-            android:background="@drawable/edittextshape"
+
             android:hint="Password"
             android:inputType="textPassword"
-
+            android:textColorHint="@color/grey1"
+            android:backgroundTint="@color/White"
             android:padding="10dp"
             android:textColor="#1800fc"
             android:textSize="20sp" />
@@ -94,11 +98,12 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:hint="Confirm Password"
-            android:background="@drawable/edittextshape"
+
             android:id="@+id/etConfirmPassword"
             android:layout_marginTop="15dp"
-            android:textColor="#0900b7"
-            android:alpha="0.15"
+            android:textColor="@color/White"
+            android:textColorHint="@color/grey1"
+            android:backgroundTint="@color/White"
             android:textSize="20sp"
             android:padding="10dp"
             android:layout_weight="0.38" />
@@ -115,7 +120,7 @@
         android:layout_width="195dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
-        android:background="@drawable/loginbutton"
+        android:background="@drawable/register_button"
         android:padding="12dp"
         android:text="Register"
         android:textColor="@color/White"
