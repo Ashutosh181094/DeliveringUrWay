@@ -2,10 +2,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/vendorlogin"
     android:fitsSystemWindows="true">
 <!---->
     <!---->
+    <TextView
+        android:id="@+id/vendor_login_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_thin"
+        android:text="Vendor Login"
+        android:textColor="@color/White"
+        android:textSize="40sp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,6 +24,7 @@
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         android:weightSum="1"
+        android:layout_below="@+id/vendor_login_heading"
         android:id="@+id/linearLayout">
 
         <ProgressBar
@@ -33,26 +44,29 @@
             android:id="@+id/etPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:alpha="0.2"
-            android:background="@drawable/edittextshape"
+
+            android:backgroundTint="@color/White"
             android:hint="Phone Number"
             android:inputType="phone"
             android:padding="10dp"
-            android:textColor="#ef0d0d"
-            android:textSize="20sp" />
+            android:textColorHint="@color/grey1"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/etOTP"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/edittextshape"
+
             android:textSize="20sp"
             android:padding="10dp"
             android:hint="Enter OTP"
             android:inputType="phone"
             android:visibility="gone"
-            android:textColor="#ef0d0d"
-            android:alpha="0.2"/>
+            android:textColor="@color/White"
+            android:backgroundTint="@color/White"
+            android:textColorHint="@color/grey1"/>
 
 
 

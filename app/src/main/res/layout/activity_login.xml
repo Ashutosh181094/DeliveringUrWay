@@ -21,10 +21,10 @@
         android:id="@+id/linearLayout">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:id="@+id/logo"
+            android:layout_width="11dp"
             android:layout_height="75dp"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/logo"/>
+            android:layout_gravity="center_horizontal" />
 
 
         <EditText
