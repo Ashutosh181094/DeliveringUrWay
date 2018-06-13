@@ -102,7 +102,7 @@ public class Login extends AppCompatActivity
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(getApplicationContext(), "Email sent", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "Email sent.", Toast.LENGTH_LONG).show();
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Email not sent", Toast.LENGTH_LONG).show();
                                     }

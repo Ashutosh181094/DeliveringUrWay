@@ -165,6 +165,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         storephoto();
     }
 
+    //menu
+
+
+
+
+
+
     private void storephoto()
     {
 
@@ -238,6 +245,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
          Logout();
         }
         if (item.getItemId() == R.id.action_settings) {
+            Intent i=new Intent(getApplicationContext(),AboutUs.class);
+            startActivity(i);
             return true;
         }
 

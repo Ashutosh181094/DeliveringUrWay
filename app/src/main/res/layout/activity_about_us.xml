@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".AboutUs">
+
+    <LinearLayout
+        android:id="@+id/aboutus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:background="#40495B"
+        android:orientation="vertical"
+        android:padding="50dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="About Us"
+            android:textColor="@color/White"
+            android:textSize="30sp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="90dp"
+        android:id="@+id/about_applogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/aboutus"
+
+
+        >
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Team"
+        android:layout_below="@+id/about_applogo"
+        android:textSize="35sp"
+        android:id="@+id/tvteam"
+        android:fontFamily="@font/roboto_thin"
+        android:textColor="@color/Black"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/tvteam">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        app:cardCornerRadius="5dp"
+        android:id="@+id/card_ashutosh"
+        android:layout_below="@+id/about_applogo">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ashutos_relative"
+            android:layout_margin="5dp">
+
+            <ImageView
+                android:id="@+id/ashutosh_image"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/ashutosh" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ashutosh Rai"
+                android:textSize="30sp"
+                android:id="@+id/ashutosh_name"
+                android:layout_toEndOf="@+id/ashutosh_image"
+                android:layout_marginStart="30dp"
+                android:textColor="#1E1E1E"
+                android:fontFamily="@font/roboto_thin"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ashutoshrai181094@gmail.com"
+                android:textSize="15sp"
+                android:layout_below="@+id/ashutosh_name"
+                android:layout_toEndOf="@+id/ashutosh_image"
+                android:layout_marginStart="30dp"
+                android:fontFamily="@font/roboto_thin"
+                />
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        app:cardCornerRadius="5dp"
+        android:id="@+id/card_vivek"
+        android:layout_below="@+id/card_ashutosh">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/vivek_relative"
+            android:layout_margin="5dp">
+
+            <ImageView
+                android:id="@+id/vivek_image"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/artboard_1_copydeveloper_team" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vivek Sharma"
+                android:textSize="30sp"
+                android:layout_toEndOf="@+id/vivek_image"
+                android:layout_marginStart="30dp"
+                android:fontFamily="@font/roboto_thin"
+                android:id="@+id/vivek_name"
+                android:textColor="#1E1E1E"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="vivekkumarsharma9746@gmail.com"
+                android:textSize="15sp"
+                android:layout_below="@+id/vivek_name"
+                android:layout_toEndOf="@+id/vivek_image"
+                android:layout_marginStart="30dp"
+                android:fontFamily="@font/roboto_thin"
+                />
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

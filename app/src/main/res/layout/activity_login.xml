@@ -144,7 +144,8 @@
                 android:layout_marginRight="10dp"
                 android:hint="Your Email"
                 android:textColorHint="@color/grey1"
-                android:textColor="@color/White"
+                android:textColor="@color/Black"
+
                 android:visibility="gone" />
 
 
