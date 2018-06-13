@@ -47,7 +47,6 @@
         <activity android:name=".UserSideVendorData" />
         <activity android:name=".VendorProductDescription" />
         <activity android:name=".AboutProduct" />
-        <activity android:name=".More" />
         <activity android:name=".RentalVendorDetails" />
         <activity android:name=".UserSideRentalVendors" />
         <activity android:name=".AboutUs"></activity>

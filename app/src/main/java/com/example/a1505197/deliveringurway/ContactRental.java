@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class ContactRental extends Fragment {
+public class ContactRental extends Fragment
+{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

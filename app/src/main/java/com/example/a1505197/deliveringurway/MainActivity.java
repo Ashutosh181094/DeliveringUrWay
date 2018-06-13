@@ -276,6 +276,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() throws NullPointerException {
         super.onStart();
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user == null) {
@@ -283,8 +284,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
             finish();
         }
-
-        else if (user!=null && user.getEmail().equals("")) {
+        else if (user.getPhoneNumber()!=null) {
                 Intent intent = new Intent(MainActivity.this, VendorData.class);
                 startActivity(intent);
                 finish();
