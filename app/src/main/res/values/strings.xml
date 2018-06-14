@@ -17,6 +17,7 @@
     <string-array name="city_list_spinner">
         <item>Select your City</item>
         <item>Bhubaneswar</item>
+        <item>More cities Coming Soon</item>
     </string-array>
 
 </resources>
