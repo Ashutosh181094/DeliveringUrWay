@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -284,7 +285,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
             finish();
         }
-        else if (user.getPhoneNumber()!=null) {
+        else if (user.getEmail()==null||user.getEmail().equals(""))
+        {
+
+            Toast.makeText(this, "hah"+user.getPhoneNumber(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, VendorData.class);
                 startActivity(intent);
                 finish();
