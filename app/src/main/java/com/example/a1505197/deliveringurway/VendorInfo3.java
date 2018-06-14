@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -19,8 +21,9 @@ public class VendorInfo3 extends AppCompatActivity {
     String sAddress,sPhoneNumber;
     EditText vAddress,vPhoneNumber;
     TextView tvAddress;
+    LinearLayout linearLayoutMap;
     int PLACE_PICKER_REQUEST=1;
-
+    Button mapButton;
 
 
     @Override
@@ -30,7 +33,9 @@ public class VendorInfo3 extends AppCompatActivity {
         vAddress=findViewById(R.id.editAddress);
         vPhoneNumber=findViewById(R.id.editPhoneNumber);
         tvAddress=findViewById(R.id.tvAddress);
-        tvAddress.setOnClickListener(new View.OnClickListener() {
+        linearLayoutMap=findViewById(R.id.linear_layout_map);
+        mapButton=findViewById(R.id.map_button);
+        mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PlacePicker.IntentBuilder builder=new PlacePicker.IntentBuilder();
