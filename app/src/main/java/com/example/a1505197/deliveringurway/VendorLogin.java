@@ -114,7 +114,7 @@ public class VendorLogin extends AppCompatActivity {
         Signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),VendorInfo2.class);
+                Intent intent=new Intent(getApplicationContext(),VendorSelectCity.class);
                 startActivity(intent);
                 finish();
             }

@@ -50,7 +50,8 @@
         <activity android:name=".More" />
         <activity android:name=".RentalVendorDetails" />
         <activity android:name=".UserSideRentalVendors" />
-        <activity android:name=".AboutUs"></activity>
+        <activity android:name=".AboutUs" />
+        <activity android:name=".VendorSelectCity"></activity>
     </application>
 
 </manifest> <!--  -->

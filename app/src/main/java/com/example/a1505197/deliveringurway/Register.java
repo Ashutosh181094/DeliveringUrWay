@@ -46,7 +46,7 @@ public class Register extends AppCompatActivity
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Register.this,VendorInfo2.class);
+                Intent intent=new Intent(Register.this,VendorSelectCity.class);
                 startActivity(intent);
             }
         });

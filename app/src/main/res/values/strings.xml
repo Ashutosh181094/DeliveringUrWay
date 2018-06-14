@@ -14,5 +14,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="about">About</string>
+    <string-array name="city_list_spinner">
+        <item>Select your City</item>
+        <item>Bhubaneswar</item>
+    </string-array>
 
 </resources>
