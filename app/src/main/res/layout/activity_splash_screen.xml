@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreenActivity"
+    android:background="#336E7B">
+
+    <TextView
+    android:id="@+id/dizbiz_welcome_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="40dp"
+    android:fontFamily="@font/roboto_light"
+    android:text="Welcome to DizBiz"
+    android:textColor="@color/White"
+    android:textSize="35sp" />
+    <ImageView
+        android:id="@+id/dizbizlogo_splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dizbiz_logo_plain"
+        android:layout_centerInParent="true"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+        android:text="Made by KIITians"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/White"
+        android:textSize="20sp"
+        android:fontFamily="@font/roboto_thin"
+        android:layout_marginBottom="20dp"/>
+
+</RelativeLayout>
