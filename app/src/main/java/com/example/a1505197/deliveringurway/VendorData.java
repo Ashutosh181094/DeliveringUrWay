@@ -1,5 +1,7 @@
 package com.example.a1505197.deliveringurway;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -50,7 +52,27 @@ public class VendorData extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Logout();
+                AlertDialog.Builder builder = new AlertDialog.Builder(VendorData.this);
+                builder.setCancelable(false);
+                builder.setMessage("Do you want to Logout?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Logout();
+                        //if user pressed "yes", then he is allowed to exit from application
+                        //finish();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //if user select "No", just cancel this dialog and continue with app
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+                //Logout();
             }
         });
 

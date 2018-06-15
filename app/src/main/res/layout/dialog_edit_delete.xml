@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
-    android:layout_height="300dp"
-    android:background="@color/White">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/White"
+    android:paddingHorizontal="40dp">
     <Button
         android:id="@+id/btn_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       android:layout_marginTop="60dp"
+
         android:layout_centerHorizontal="true"
         android:text="Edit"
-        android:background="@drawable/edit_btn"
+        android:background="@color/White"
+
         />
     <Button
         android:id="@+id/btn_delete"
@@ -20,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Delete"
         android:layout_marginTop="30dp"
-        android:background="@drawable/delete_btn"
+        android:background="@color/White"
         android:layout_centerHorizontal="true"
 
 
