@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.a1505197.deliveringurway.UserSideFoodVendors"
+    android:background="@drawable/vendor_listings_bg"
     >
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/userSideRecyclerView"
-        android:layout_marginTop="90dp">
+        android:layout_marginTop="110dp">
 
     </android.support.v7.widget.RecyclerView>
 
