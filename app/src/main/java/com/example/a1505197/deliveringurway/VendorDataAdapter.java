@@ -1,7 +1,9 @@
 package com.example.a1505197.deliveringurway;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
@@ -161,12 +163,46 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
                     button_delete.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-                            DatabaseReference deletedata=FirebaseDatabase.getInstance().getReference("productinfo").child(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
-                            DatabaseReference deleteproductCommentsandRating=FirebaseDatabase.getInstance().getReference(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
-                            deletedata.removeValue();
-                            deleteproductCommentsandRating.removeValue();
-                            dialog.dismiss();
+
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                            builder.setCancelable(false);
+                            builder.setMessage("Confirm Delete Product?");
+                            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog1, int which) {
+
+                                    FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+                                    DatabaseReference deletedata=FirebaseDatabase.getInstance().getReference("productinfo").child(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
+                                    DatabaseReference deleteproductCommentsandRating=FirebaseDatabase.getInstance().getReference(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
+                                    deletedata.removeValue();
+                                    deleteproductCommentsandRating.removeValue();
+                                    dialog1.dismiss();
+                                    //if user pressed "yes", then he is allowed to exit from application
+                                    //finish();
+                                }
+                            });
+                            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog1, int which) {
+                                    //if user select "No", just cancel this dialog and continue with app
+                                    dialog1.cancel();
+                                }
+                            });
+                            AlertDialog alert = builder.create();
+                            alert.show();
+
+
+//
+//                            FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+//                            DatabaseReference deletedata=FirebaseDatabase.getInstance().getReference("productinfo").child(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
+//                            DatabaseReference deleteproductCommentsandRating=FirebaseDatabase.getInstance().getReference(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
+//                            deletedata.removeValue();
+//                            deleteproductCommentsandRating.removeValue();
+//                            dialog.dismiss();
+
+
+
                         }
                     });
 
