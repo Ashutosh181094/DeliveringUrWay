@@ -33,7 +33,7 @@ public class VendorData extends AppCompatActivity {
     FirebaseAuth mAuth;
     FloatingActionButton addVendordata;
     DatabaseReference Vendortotaldata,VendorTypeInfo;
-    ArrayList<ProductDescription> data;
+    ArrayList<FoodProductDescription> data;
     ArrayList<RetrieveVendorType> vendortype;
     FirebaseUser user;
     ImageView logOut;
@@ -74,8 +74,8 @@ public class VendorData extends AppCompatActivity {
                     data.clear();
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                     {
-                        ProductDescription productDescription = dataSnapshot1.getValue(ProductDescription.class);
-                        data.add(productDescription);
+                        FoodProductDescription foodProductDescription = dataSnapshot1.getValue(FoodProductDescription.class);
+                        data.add(foodProductDescription);
                     }
                     adapter = new VendorDataAdapter(VendorData.this, data);
                     VendorRecyclerView.setAdapter(adapter);

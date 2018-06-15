@@ -25,4 +25,4 @@ public class RetrieveVendorType
         this.type = type;
     }
 }
-////
+//////

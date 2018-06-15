@@ -32,7 +32,7 @@ ImageView imageView;
 CollapsingToolbarLayout collapsingToolbarLayout;
 FloatingActionButton btnRating;
 RatingBar ratingBar;
-DatabaseReference databaseReferenceRatings,discriptionreference;
+DatabaseReference databaseReferenceRatings;
 String productName,phoneNumber;
 FirebaseUser username;
 CommentAdapter commentAdapter;
@@ -41,7 +41,9 @@ RecyclerView recyclerView;
 String Comment;
 TextView Description;
 int Rating,Ratingsum=0;
-    ArrayList<ProductDescription> userSideProductDescription;
+    ArrayList<FoodProductDescription> userSideFoodProductDescription;
+    ArrayList<ClothProductDescription> clothProductDescriptions;
+    ArrayList<RentalProductDescription> rentalProductDescriptions;
     DatabaseReference Vendortotaldata;
 
 
@@ -59,7 +61,9 @@ int Rating,Ratingsum=0;
         Toast.makeText(getApplicationContext(),""+productName+""+phoneNumber,Toast.LENGTH_SHORT).show();
         username= FirebaseAuth.getInstance().getCurrentUser();
         recyclerView=findViewById(R.id.recyclerViewComments);
-        userSideProductDescription=new ArrayList<>();
+        userSideFoodProductDescription =new ArrayList<>();
+        clothProductDescriptions=new ArrayList<>();
+        rentalProductDescriptions=new ArrayList<>();
 
 
         databaseReferenceRatings=FirebaseDatabase.getInstance().getReference().child("+91"+phoneNumber).child(productName);
@@ -106,18 +110,36 @@ int Rating,Ratingsum=0;
         Vendortotaldata.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                VendorType vendorType=new VendorType();
+                String Type=vendorType.getType();
+
                 if (dataSnapshot.exists())
                 {
+               if(Type.equals("Food"))
+               {
+                   userSideFoodProductDescription.clear();
 
-                    userSideProductDescription.clear();
+                   FoodProductDescription foodProductDescription = dataSnapshot.getValue(FoodProductDescription.class);
+                   userSideFoodProductDescription.add(foodProductDescription);
+                   Description.setText(userSideFoodProductDescription.get(0).description);
+               }
+               else
+                   if(Type.equals("Clothing"))
+                   {
+                       clothProductDescriptions.clear();
 
-                        ProductDescription productDescription = dataSnapshot.getValue(ProductDescription.class);
-                        userSideProductDescription.add(productDescription);
-                        Description.setText(userSideProductDescription.get(0).description);
+                       ClothProductDescription clothProductDescription = dataSnapshot.getValue(ClothProductDescription.class);
+                       clothProductDescriptions.add(clothProductDescription);
+                       Description.setText(clothProductDescriptions.get(0).size_available+"\n"+clothProductDescriptions.get(0).description);
+                   }
+                   else
+                   {
+                       rentalProductDescriptions.clear();
 
-
-
-
+                       RentalProductDescription rentalProductDescription = dataSnapshot.getValue(RentalProductDescription.class);
+                       rentalProductDescriptions.add(rentalProductDescription);
+                       Description.setText("Cost/Day->"+rentalProductDescriptions.get(0).cost_per_day+"\nCost/Hour->"+rentalProductDescriptions.get(0).cost_per_hour);
+                   }
                 }
             }
 
@@ -184,4 +206,4 @@ int Rating,Ratingsum=0;
     }
 
 }
-///////////
+////////////

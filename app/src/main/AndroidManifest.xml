@@ -42,7 +42,6 @@
         <activity android:name=".UserSideFoodVendors" />
         <activity android:name=".UserSideClothVendors" />
         <activity android:name=".UserSideVendorData" />
-        <activity android:name=".VendorProductDescription" />
         <activity android:name=".AboutProduct" />
         <activity android:name=".RentalVendorDetails" />
         <activity android:name=".UserSideRentalVendors" />

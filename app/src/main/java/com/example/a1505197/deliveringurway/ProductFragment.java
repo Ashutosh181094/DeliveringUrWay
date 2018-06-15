@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class ProductFragment extends Fragment
 {
     RecyclerView userSideVendorDataRecyclerView;
-    ArrayList<ProductDescription> userSideProductDescription;
+    ArrayList<FoodProductDescription> userSideFoodProductDescription;
     DatabaseReference Vendortotaldata;
     UserSideVendorDataAdapter dataAdapter;
     int i=0;
@@ -33,10 +33,10 @@ public class ProductFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_product,container,false);
         userSideVendorDataRecyclerView=view.findViewById(R.id.userSideVendorDataRecyclerView);
-        userSideProductDescription=new ArrayList<>();
+        userSideFoodProductDescription =new ArrayList<>();
         Intent intent=getActivity().getIntent();
         final String phno=intent.getStringExtra("VendorPhoneNumber");
-        userSideProductDescription=new ArrayList<>();
+        userSideFoodProductDescription =new ArrayList<>();
         Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child("+91"+phno);
         Vendortotaldata.addValueEventListener(new ValueEventListener() {
             @Override
@@ -44,14 +44,14 @@ public class ProductFragment extends Fragment
                 if (dataSnapshot.exists())
                 {
 
-                    userSideProductDescription.clear();
+                    userSideFoodProductDescription.clear();
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                     {
-                        ProductDescription productDescription = dataSnapshot1.getValue(ProductDescription.class);
-                        userSideProductDescription.add(productDescription);
+                        FoodProductDescription foodProductDescription = dataSnapshot1.getValue(FoodProductDescription.class);
+                        userSideFoodProductDescription.add(foodProductDescription);
                     }
 
-                    dataAdapter = new UserSideVendorDataAdapter(getActivity(), userSideProductDescription,phno);
+                    dataAdapter = new UserSideVendorDataAdapter(getActivity(), userSideFoodProductDescription,phno);
                     userSideVendorDataRecyclerView.setAdapter(dataAdapter);
                     userSideVendorDataRecyclerView.setHasFixedSize(true);
                     GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getActivity(), 2);

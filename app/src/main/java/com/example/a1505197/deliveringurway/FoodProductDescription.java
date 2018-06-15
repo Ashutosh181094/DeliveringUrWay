@@ -4,18 +4,18 @@ package com.example.a1505197.deliveringurway;
  * Created by 1505197 on 3/20/2018.
  */
 
-public class ProductDescription
+public class FoodProductDescription
 {
     String product_name;
     String cost;
     String description;
     String image_url;
-    public ProductDescription()
+    public FoodProductDescription()
     {
 
     }
 
-    public ProductDescription(String product_name, String cost, String description, String image_url) {
+    public FoodProductDescription(String product_name, String cost, String description, String image_url) {
         this.product_name = product_name;
         this.cost = cost;
         this.description = description;

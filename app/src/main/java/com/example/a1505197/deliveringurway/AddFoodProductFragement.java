@@ -113,7 +113,7 @@ public class AddFoodProductFragement extends Fragment implements ChangePhotoDial
                         Uri downloadUrl = taskSnapshot.getDownloadUrl();
                         Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
                         dismissDialog();
-                        ProductDescription pdescription=new ProductDescription(sname,scost,sdescription,taskSnapshot.getDownloadUrl().toString());
+                        FoodProductDescription pdescription=new FoodProductDescription(sname,scost,sdescription,taskSnapshot.getDownloadUrl().toString());
                         productinfo.child(user.getPhoneNumber()).child(sname).setValue(pdescription);
                         Intent intent=new Intent(getContext(),VendorData.class);
                         startActivity(intent);

@@ -67,4 +67,4 @@ public class UserSideRentalVendors extends AppCompatActivity {
     }
     }
 
-///////
+/////////

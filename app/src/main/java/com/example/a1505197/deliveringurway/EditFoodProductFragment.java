@@ -11,12 +11,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,68 +29,34 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 
 /**
- * Created by 1505197 on 6/8/2018.
+ * Created by 1505197 on 6/15/2018.
  */
 
-public class AddClothProductFragment extends Fragment implements ChangePhotoDialog.OnPhotoRecievedListener
+public class EditFoodProductFragment extends Fragment implements ChangePhotoDialog.OnPhotoRecievedListener
 {
     ImageView vendorImage;
     ImageView image;
     private String mSelectedImagePath;
     DatabaseReference productinfo;
-    EditText name,cost,description,sizeAvailable;
-    String sname,scost,sdescription,Size;
+    EditText cost,description;
+    String sname,scost,sdescription;
     Button buttonUpload;
     StorageReference storePhoto;
     ProgressDialog progressDialog;
     FirebaseUser user;
-    String categories[]={"S","M","L","XL"};
-    Spinner size;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.addclothfragment,container,false);
+        View view=inflater.inflate(R.layout.edit_food_product_fragment,container,false);
         image=view.findViewById(R.id.ivCamera);
         vendorImage=view.findViewById(R.id.vendorImage);
-        name=view.findViewById(R.id.etName);
         cost=view.findViewById(R.id.etCost);
         description=view.findViewById(R.id.etdescription);
-        size=view.findViewById(R.id.spinnerSizeChart);
-        ArrayAdapter dataAdapter=new ArrayAdapter(getActivity(),R.layout.support_simple_spinner_dropdown_item,categories);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
-        size.setAdapter(dataAdapter);
-       size.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-           @Override
-           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               if(position==0)
-               {
-                  Size ="Size Available->S";
-               }
-               else if (position==1)
-               {
-                   Size="Size Available->M";
-               }
-               else if(position==2) {
-                   Size = "Size Available->L";
-               }
-               else
-               {
-                   Size="Size Available->Xl";
-               }
-           }
-
-           @Override
-           public void onNothingSelected(AdapterView<?> parent) {
-
-           }
-       });
-
-
-
-            buttonUpload=view.findViewById(R.id.btnUpload);
+        buttonUpload=view.findViewById(R.id.btnUpload);
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +69,7 @@ public class AddClothProductFragment extends Fragment implements ChangePhotoDial
                         {
                             ChangePhotoDialog dialog=new ChangePhotoDialog();
                             dialog.show(getFragmentManager(),getString(R.string.change_photo_dialog));
-                            dialog.setTargetFragment(AddClothProductFragment.this,0);
+                            dialog.setTargetFragment(EditFoodProductFragment.this,0);
                         }
                     }
                     else
@@ -119,8 +82,8 @@ public class AddClothProductFragment extends Fragment implements ChangePhotoDial
         buttonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                sname=name.getText().toString();
+                GetEditProductNameInFragment getEditProductNameInFragment=new GetEditProductNameInFragment();
+                sname=getEditProductNameInFragment.getName();
                 scost=cost.getText().toString();
                 sdescription=description.getText().toString();
 
@@ -150,7 +113,7 @@ public class AddClothProductFragment extends Fragment implements ChangePhotoDial
                         Uri downloadUrl = taskSnapshot.getDownloadUrl();
                         Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
                         dismissDialog();
-                        ClothProductDescription pdescription=new ClothProductDescription(sname,scost,Size,sdescription,taskSnapshot.getDownloadUrl().toString());
+                        FoodProductDescription pdescription=new FoodProductDescription(sname,scost,sdescription,taskSnapshot.getDownloadUrl().toString());
                         productinfo.child(user.getPhoneNumber()).child(sname).setValue(pdescription);
                         Intent intent=new Intent(getContext(),VendorData.class);
                         startActivity(intent);
@@ -215,4 +178,3 @@ public class AddClothProductFragment extends Fragment implements ChangePhotoDial
 
     }
 }
-////

@@ -10,4 +10,4 @@ public class sendMessage
         public static String message;   //global variable
 
 }
-//////////
+////////////

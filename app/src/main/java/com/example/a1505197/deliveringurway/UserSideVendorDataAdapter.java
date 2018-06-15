@@ -18,11 +18,11 @@ import java.util.ArrayList;
 public class UserSideVendorDataAdapter extends RecyclerView.Adapter<UserSideVendorDataAdapter.VendorViewHolder>
 {
     Context context;
-    ArrayList<ProductDescription> data;
+    ArrayList<FoodProductDescription> data;
     LayoutInflater inflater;
     String phoneNumber;
 
-    public UserSideVendorDataAdapter(Context context, ArrayList<ProductDescription> data,String phnoneNumber)
+    public UserSideVendorDataAdapter(Context context, ArrayList<FoodProductDescription> data, String phnoneNumber)
     {
         this.context=context;
         this.data=data;

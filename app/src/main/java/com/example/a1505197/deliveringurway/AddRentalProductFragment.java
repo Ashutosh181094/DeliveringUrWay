@@ -179,4 +179,4 @@ public class AddRentalProductFragment extends Fragment implements ChangePhotoDia
 
     }
 }
-////
+//////

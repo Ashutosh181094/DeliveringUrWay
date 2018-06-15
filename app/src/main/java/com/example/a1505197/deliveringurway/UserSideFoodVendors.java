@@ -17,6 +17,7 @@ public class UserSideFoodVendors extends AppCompatActivity {
     RecyclerView VendorRecyclerView;
     ArrayList<VendorInformation> vendorInformations;
     DatabaseReference Vendorcontactinfo;
+    DatabaseReference databaseReferenceTotalRating;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

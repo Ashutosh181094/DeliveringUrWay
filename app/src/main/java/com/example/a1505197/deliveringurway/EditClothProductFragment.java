@@ -32,16 +32,16 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 
 /**
- * Created by 1505197 on 6/8/2018.
+ * Created by 1505197 on 6/15/2018.
  */
 
-public class AddClothProductFragment extends Fragment implements ChangePhotoDialog.OnPhotoRecievedListener
+public class EditClothProductFragment extends Fragment implements ChangePhotoDialog.OnPhotoRecievedListener
 {
     ImageView vendorImage;
     ImageView image;
     private String mSelectedImagePath;
     DatabaseReference productinfo;
-    EditText name,cost,description,sizeAvailable;
+    EditText cost,description,sizeAvailable;
     String sname,scost,sdescription,Size;
     Button buttonUpload;
     StorageReference storePhoto;
@@ -53,10 +53,9 @@ public class AddClothProductFragment extends Fragment implements ChangePhotoDial
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.addclothfragment,container,false);
+        View view=inflater.inflate(R.layout.edit_cloth_product_fragment,container,false);
         image=view.findViewById(R.id.ivCamera);
         vendorImage=view.findViewById(R.id.vendorImage);
-        name=view.findViewById(R.id.etName);
         cost=view.findViewById(R.id.etCost);
         description=view.findViewById(R.id.etdescription);
         size=view.findViewById(R.id.spinnerSizeChart);
@@ -65,35 +64,35 @@ public class AddClothProductFragment extends Fragment implements ChangePhotoDial
 
 
         size.setAdapter(dataAdapter);
-       size.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-           @Override
-           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               if(position==0)
-               {
-                  Size ="Size Available->S";
-               }
-               else if (position==1)
-               {
-                   Size="Size Available->M";
-               }
-               else if(position==2) {
-                   Size = "Size Available->L";
-               }
-               else
-               {
-                   Size="Size Available->Xl";
-               }
-           }
+        size.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0)
+                {
+                    Size ="Size Available->S";
+                }
+                else if (position==1)
+                {
+                    Size="Size Available->M";
+                }
+                else if(position==2) {
+                    Size = "Size Available->L";
+                }
+                else
+                {
+                    Size="Size Available->Xl";
+                }
+            }
 
-           @Override
-           public void onNothingSelected(AdapterView<?> parent) {
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-           }
-       });
+            }
+        });
 
 
 
-            buttonUpload=view.findViewById(R.id.btnUpload);
+        buttonUpload=view.findViewById(R.id.btnUpload);
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +105,7 @@ public class AddClothProductFragment extends Fragment implements ChangePhotoDial
                         {
                             ChangePhotoDialog dialog=new ChangePhotoDialog();
                             dialog.show(getFragmentManager(),getString(R.string.change_photo_dialog));
-                            dialog.setTargetFragment(AddClothProductFragment.this,0);
+                            dialog.setTargetFragment(EditClothProductFragment.this,0);
                         }
                     }
                     else
@@ -120,7 +119,8 @@ public class AddClothProductFragment extends Fragment implements ChangePhotoDial
             @Override
             public void onClick(View v) {
 
-                sname=name.getText().toString();
+                GetEditProductNameInFragment getEditProductNameInFragment=new GetEditProductNameInFragment();
+                sname=getEditProductNameInFragment.getName();
                 scost=cost.getText().toString();
                 sdescription=description.getText().toString();
 
@@ -215,4 +215,3 @@ public class AddClothProductFragment extends Fragment implements ChangePhotoDial
 
     }
 }
-////
