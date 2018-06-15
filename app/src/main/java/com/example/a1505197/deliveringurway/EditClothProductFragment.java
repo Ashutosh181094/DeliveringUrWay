@@ -1,7 +1,6 @@
 package com.example.a1505197.deliveringurway;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -152,8 +151,7 @@ public class EditClothProductFragment extends Fragment implements ChangePhotoDia
                         dismissDialog();
                         ClothProductDescription pdescription=new ClothProductDescription(sname,scost,Size,sdescription,taskSnapshot.getDownloadUrl().toString());
                         productinfo.child(user.getPhoneNumber()).child(sname).setValue(pdescription);
-                        Intent intent=new Intent(getContext(),VendorData.class);
-                        startActivity(intent);
+
                         getFragmentManager().popBackStack();
 
 

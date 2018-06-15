@@ -166,6 +166,7 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
                             DatabaseReference deleteproductCommentsandRating=FirebaseDatabase.getInstance().getReference(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
                             deletedata.removeValue();
                             deleteproductCommentsandRating.removeValue();
+                            dialog.dismiss();
                         }
                     });
 
