@@ -38,6 +38,10 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:inputType="textPersonName"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:background="@drawable/edit_text_shape"
+        android:paddingLeft="8dp"
         />
 
     <TextView
@@ -48,7 +52,8 @@
         android:gravity="center"
         android:textSize="30dp"
         android:textColor="@color/Black"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        />
 
     <EditText
         android:id="@+id/ownerOfBusiness"
@@ -59,6 +64,10 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:inputType="textPersonName"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:background="@drawable/edit_text_shape"
+        android:paddingLeft="8dp"
          />
     <LinearLayout
         android:layout_width="wrap_content"

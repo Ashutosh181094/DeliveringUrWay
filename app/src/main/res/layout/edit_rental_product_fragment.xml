@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/etCostPerDay"
                     android:layout_marginLeft="120dp"
-                    android:text="Upload"
+                    android:text="Update"
                     android:id="@+id/btnUpload"
                     android:background="@drawable/loginbutton"
                     android:layout_marginTop="40dp"
