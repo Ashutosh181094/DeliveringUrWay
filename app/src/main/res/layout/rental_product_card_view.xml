@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView android:layout_width="160dp"
+    android:layout_height="265dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="10dp"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="10dp"
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/product_card_Image"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product"
+            android:gravity="center"
+            android:textColor="@color/Black"
+            android:id="@+id/product_card_text_description"
+            android:layout_below="@+id/product_card_Image"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_card_view_PriceRupeeSymbol"
+            android:text="₹/hour"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@+id/product_card_text_description"
+            android:textSize="15sp"
+            android:textColor="@color/Black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/PriceEnteredCostPerHour"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/product_card_view_PriceRupeeSymbol"
+            android:layout_below="@id/product_card_text_description"
+            android:textColor="@color/Black"
+            android:textSize="15sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_card_view_PriceRupeeSymbol2"
+            android:text="₹/day"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@+id/product_card_view_PriceRupeeSymbol"
+            android:textSize="15sp"
+            android:textColor="@color/Black">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/PriceEnteredCostPerDay"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/product_card_view_PriceRupeeSymbol2"
+            android:layout_below="@id/product_card_view_PriceRupeeSymbol"
+            android:textColor="@color/Black"
+            android:textSize="15sp"/>
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->

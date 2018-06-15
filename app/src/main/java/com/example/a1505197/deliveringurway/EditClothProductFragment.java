@@ -150,7 +150,7 @@ public class EditClothProductFragment extends Fragment implements ChangePhotoDia
                         Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
                         dismissDialog();
                         ClothProductDescription pdescription=new ClothProductDescription(sname,scost,Size,sdescription,taskSnapshot.getDownloadUrl().toString());
-                        productinfo.child(user.getPhoneNumber()).child(sname).setValue(pdescription);
+                        productinfo.child("Clothing").child(user.getPhoneNumber()).child(sname).setValue(pdescription);
 
                         getFragmentManager().popBackStack();
 

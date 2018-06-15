@@ -145,6 +145,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         rlFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                VendorType vendorType=new VendorType();
+                vendorType.setType("Food");
                 Intent intent=new Intent(MainActivity.this,UserSideFoodVendors.class);
                 startActivity(intent);
             }
@@ -152,6 +154,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         rlClothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                VendorType vendorType=new VendorType();
+                vendorType.setType("Clothing");
                 Intent intent=new Intent(MainActivity.this,UserSideClothVendors.class);
                 startActivity(intent);
             }
@@ -159,6 +163,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         rlRental.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                VendorType vendorType=new VendorType();
+                vendorType.setType("Rental");
                 Intent intent=new Intent(MainActivity.this,UserSideRentalVendors.class);
                 startActivity(intent);
             }

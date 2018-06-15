@@ -36,6 +36,7 @@ public class VendorData extends AppCompatActivity {
     FloatingActionButton addVendordata;
     DatabaseReference Vendortotaldata,VendorTypeInfo;
     ArrayList<FoodProductDescription> data;
+    ArrayList<RentalProductDescription> data2;
     ArrayList<RetrieveVendorType> vendortype;
     FirebaseUser user;
     ImageView logOut;
@@ -85,37 +86,83 @@ public class VendorData extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         data=new ArrayList<>();
+        data2=new ArrayList<>();
         vendortype=new ArrayList<>();
-        Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child(user.getPhoneNumber());
-        Vendortotaldata.addValueEventListener(new ValueEventListener() {
+        VendorTypeInfo=FirebaseDatabase.getInstance().getReference("VendorsType").child(""+user.getPhoneNumber());
+        VendorTypeInfo.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-
-                    data.clear();
+                    vendortype.clear();
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                     {
-                        FoodProductDescription foodProductDescription = dataSnapshot1.getValue(FoodProductDescription.class);
-                        data.add(foodProductDescription);
-                    }
-                    adapter = new VendorDataAdapter(VendorData.this, data);
-                    VendorRecyclerView.setAdapter(adapter);
-                    VendorRecyclerView.setHasFixedSize(true);
-                    GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getApplicationContext(), 2);
-                    VendorRecyclerView.setLayoutManager(mgridlayoutmanager);
-                    adapter.notifyDataSetChanged();
+                        RetrieveVendorType retrieveVendorType= dataSnapshot1.getValue(RetrieveVendorType.class);
+                        vendortype.add(retrieveVendorType);
 
+                    }
                 }
+                Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child(""+vendortype.get(0).type).child(user.getPhoneNumber());
+                Vendortotaldata.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists())
+                        {
+                            if (vendortype.get(0).type.equals("Food"))
+                            {
+                                data.clear();
+                                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                                {
+                                    FoodProductDescription foodProductDescription = dataSnapshot1.getValue(FoodProductDescription.class);
+                                    data.add(foodProductDescription);
+                                }
+                                adapter = new VendorDataAdapter(VendorData.this, data);
+                                VendorRecyclerView.setAdapter(adapter);
+                                VendorRecyclerView.setHasFixedSize(true);
+                                GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getApplicationContext(), 2);
+                                VendorRecyclerView.setLayoutManager(mgridlayoutmanager);
+                                adapter.notifyDataSetChanged();
+
+                            }
+                            else
+                            {
+                                data2.clear();
+                                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                                {
+                                    RentalProductDescription rentalProductDescription= dataSnapshot1.getValue(RentalProductDescription.class);
+                                    data2.add(rentalProductDescription);
+                                }
+                               VendorDataRentalAdapter adapter2 = new VendorDataRentalAdapter(VendorData.this, data2);
+                                VendorRecyclerView.setAdapter(adapter2);
+                                VendorRecyclerView.setHasFixedSize(true);
+                                GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getApplicationContext(), 2);
+                                VendorRecyclerView.setLayoutManager(mgridlayoutmanager);
+                                adapter2.notifyDataSetChanged();
+                            }
+
+
+
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError)
+                    {
+
+                    }
+                });
+
+
+
             }
 
-
             @Override
-            public void onCancelled(DatabaseError databaseError)
-            {
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+
 
 
 

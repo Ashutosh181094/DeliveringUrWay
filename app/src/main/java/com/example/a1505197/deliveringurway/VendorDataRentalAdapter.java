@@ -26,16 +26,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.VendorViewHolder>
+public class VendorDataRentalAdapter extends RecyclerView.Adapter<VendorDataRentalAdapter.VendorViewHolder>
 {
     Context context;
-    List<FoodProductDescription> data;
+    List<RentalProductDescription> data;
     LayoutInflater inflater;
     DatabaseReference VendorTypeInfo;
     ArrayList<RetrieveVendorType> vendortype;
 
 
-    public VendorDataAdapter(Context context, List<FoodProductDescription> data)
+    public VendorDataRentalAdapter(Context context, List<RentalProductDescription> data)
     {
         this.context=context;
         this.data=data;
@@ -45,8 +45,8 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
     @Override
     public VendorViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View view= inflater.inflate(R.layout.product_card_view,parent,false);
-        VendorDataAdapter.VendorViewHolder holder=new  VendorDataAdapter.VendorViewHolder(view);
+        View view= inflater.inflate(R.layout.rental_product_card_view,parent,false);
+        VendorDataRentalAdapter.VendorViewHolder holder=new  VendorDataRentalAdapter.VendorViewHolder(view);
         return holder;
     }
 
@@ -56,7 +56,8 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
 
 
         holder.productname.setText(data.get(position).product_name);
-        holder.price.setText(data.get(position).cost);
+        holder.costperday.setText(data.get(position).cost_per_day);
+        holder.costperhour.setText(data.get(position).cost_per_hour);
         Picasso.with(context)
                 .load(data.get(position).image_url)
                 .fit()
@@ -73,13 +74,15 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
     public class VendorViewHolder extends RecyclerView.ViewHolder
     {
         TextView productname;
-        TextView price;
+        TextView costperhour;
+        TextView costperday;
         ImageView imageView;
 
         public VendorViewHolder(View itemView) {
             super(itemView);
             productname=itemView.findViewById(R.id.product_card_text_description);
-            price=itemView.findViewById(R.id.product_card_view_PriceRupeeSymbol);
+            costperhour=itemView.findViewById(R.id.PriceEnteredCostPerHour);
+            costperday=itemView.findViewById(R.id.PriceEnteredCostPerDay);
             imageView=itemView.findViewById(R.id.product_card_Image);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -162,7 +165,7 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
                         @Override
                         public void onClick(View v) {
                             FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-                            DatabaseReference deletedata=FirebaseDatabase.getInstance().getReference("productinfo").child(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
+                            DatabaseReference deletedata=FirebaseDatabase.getInstance().getReference("productinfo").child(""+vendortype.get(position).type).child(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
                             DatabaseReference deleteproductCommentsandRating=FirebaseDatabase.getInstance().getReference(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
                             deletedata.removeValue();
                             deleteproductCommentsandRating.removeValue();

@@ -36,8 +36,10 @@ public class ProductFragment extends Fragment
         userSideFoodProductDescription =new ArrayList<>();
         Intent intent=getActivity().getIntent();
         final String phno=intent.getStringExtra("VendorPhoneNumber");
+        VendorType vendorType=new VendorType();
+        String Type=vendorType.getType();
         userSideFoodProductDescription =new ArrayList<>();
-        Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child("+91"+phno);
+        Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child(""+Type).child("+91"+phno);
         Vendortotaldata.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

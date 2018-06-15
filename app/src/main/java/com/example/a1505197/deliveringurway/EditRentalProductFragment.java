@@ -114,7 +114,7 @@ public class EditRentalProductFragment extends Fragment implements ChangePhotoDi
                         Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
                         dismissDialog();
                         RentalProductDescription pdescription=new RentalProductDescription(sname,scostperhour,scostperday,taskSnapshot.getDownloadUrl().toString());
-                        productinfo.child(user.getPhoneNumber()).child(sname).setValue(pdescription);
+                        productinfo.child("Rental").child(user.getPhoneNumber()).child(sname).setValue(pdescription);
                         getFragmentManager().popBackStack();
 
 

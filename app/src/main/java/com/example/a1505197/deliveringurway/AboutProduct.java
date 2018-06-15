@@ -96,7 +96,8 @@ int Rating,Ratingsum=0;
 
             }
         });
-
+         VendorType vendorType=new VendorType();
+         String Type=vendorType.getType();
 
 
         btnRating.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +107,7 @@ int Rating,Ratingsum=0;
             }
         });
 
-        Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child("+91"+phoneNumber).child(productName);
+        Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child(""+Type).child("+91"+phoneNumber).child(productName);
         Vendortotaldata.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

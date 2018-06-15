@@ -113,7 +113,7 @@ public class EditFoodProductFragment extends Fragment implements ChangePhotoDial
                         Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
                         dismissDialog();
                         FoodProductDescription pdescription=new FoodProductDescription(sname,scost,sdescription,taskSnapshot.getDownloadUrl().toString());
-                        productinfo.child(user.getPhoneNumber()).child(sname).setValue(pdescription);
+                        productinfo.child("Food").child(user.getPhoneNumber()).child(sname).setValue(pdescription);
                         getFragmentManager().popBackStack();
 
 
