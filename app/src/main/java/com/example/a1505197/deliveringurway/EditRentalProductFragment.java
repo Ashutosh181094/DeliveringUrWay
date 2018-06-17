@@ -83,43 +83,108 @@ public class EditRentalProductFragment extends Fragment implements ChangePhotoDi
         buttonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               GetEditProductNameInFragment getEditProductNameInFragment=new GetEditProductNameInFragment();
-                sname=getEditProductNameInFragment.getName();
-                scostperday=costperday.getText().toString();
-                scostperhour=costperhour.getText().toString();
-                user= FirebaseAuth.getInstance().getCurrentUser();
-                productinfo= FirebaseDatabase.getInstance().getReference("productinfo");
-                storePhoto= FirebaseStorage.getInstance().getReference(user.getPhoneNumber()+"/"+sname);
-                // Get the data from an ImageView as bytes
-                vendorImage.setDrawingCacheEnabled(true);
-                vendorImage.buildDrawingCache();
-                Bitmap bitmap = vendorImage.getDrawingCache();
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] data = baos.toByteArray();
-                createProgressDialog();
 
-                UploadTask uploadTask = storePhoto.putBytes(data);
-                uploadTask.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                        dismissDialog();
-                    }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                        Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                        Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
-                        dismissDialog();
-                        RentalProductDescription pdescription=new RentalProductDescription(sname,scostperhour,scostperday,taskSnapshot.getDownloadUrl().toString());
-                        productinfo.child("Rental").child(user.getPhoneNumber()).child(sname).setValue(pdescription);
-                        getFragmentManager().popBackStack();
+                try {
 
 
-                    }
-                });
+
+
+
+                    GetEditProductNameInFragment getEditProductNameInFragment=new GetEditProductNameInFragment();
+                    sname=getEditProductNameInFragment.getName();
+                    scostperday=costperday.getText().toString();
+                    scostperhour=costperhour.getText().toString();
+                    user= FirebaseAuth.getInstance().getCurrentUser();
+                    productinfo= FirebaseDatabase.getInstance().getReference("productinfo");
+                    storePhoto= FirebaseStorage.getInstance().getReference(user.getPhoneNumber()+"/"+sname);
+                    // Get the data from an ImageView as bytes
+                    vendorImage.setDrawingCacheEnabled(true);
+                    vendorImage.buildDrawingCache();
+                    Bitmap bitmap = vendorImage.getDrawingCache();
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    byte[] data = baos.toByteArray();
+                    createProgressDialog();
+
+                    UploadTask uploadTask = storePhoto.putBytes(data);
+                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                            dismissDialog();
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                            Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
+                            dismissDialog();
+                            RentalProductDescription pdescription=new RentalProductDescription(sname,scostperhour,scostperday,taskSnapshot.getDownloadUrl().toString());
+                            productinfo.child("Rental").child(user.getPhoneNumber()).child(sname).setValue(pdescription);
+                            getFragmentManager().popBackStack();
+
+
+                        }
+                    });
+
+
+
+
+
+
+
+
+
+                } catch (NullPointerException e) {
+                    Toast.makeText(getContext(),e.toString(),Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+
+
+
+
+
+
+//
+//
+//                GetEditProductNameInFragment getEditProductNameInFragment=new GetEditProductNameInFragment();
+//                sname=getEditProductNameInFragment.getName();
+//                scostperday=costperday.getText().toString();
+//                scostperhour=costperhour.getText().toString();
+//                user= FirebaseAuth.getInstance().getCurrentUser();
+//                productinfo= FirebaseDatabase.getInstance().getReference("productinfo");
+//                storePhoto= FirebaseStorage.getInstance().getReference(user.getPhoneNumber()+"/"+sname);
+//                // Get the data from an ImageView as bytes
+//                vendorImage.setDrawingCacheEnabled(true);
+//                vendorImage.buildDrawingCache();
+//                Bitmap bitmap = vendorImage.getDrawingCache();
+//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//                byte[] data = baos.toByteArray();
+//                createProgressDialog();
+//
+//                UploadTask uploadTask = storePhoto.putBytes(data);
+//                uploadTask.addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception exception) {
+//                        // Handle unsuccessful uploads
+//                        dismissDialog();
+//                    }
+//                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                    @Override
+//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+//                        Uri downloadUrl = taskSnapshot.getDownloadUrl();
+//                        Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
+//                        dismissDialog();
+//                        RentalProductDescription pdescription=new RentalProductDescription(sname,scostperhour,scostperday,taskSnapshot.getDownloadUrl().toString());
+//                        productinfo.child("Rental").child(user.getPhoneNumber()).child(sname).setValue(pdescription);
+//                        getFragmentManager().popBackStack();
+//
+//
+//                    }
+//                });
 
 
 
