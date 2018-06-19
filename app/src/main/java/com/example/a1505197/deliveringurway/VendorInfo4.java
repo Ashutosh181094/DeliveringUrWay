@@ -25,7 +25,7 @@ public class VendorInfo4 extends AppCompatActivity {
     Integer r;
     Button registerButton;
     VendorInformation vendorInformation;
-    DatabaseReference vendordata,deliveryInfo,VendorTypeInfo;
+    DatabaseReference vendordata,deliveryInfo,VendorTypeInfo,registeredVendors;
     String nameOFB,OwnerOfB,Address,PhoneNumber;
     int nightdelivery,paytmAccepted;
     String id;
@@ -73,6 +73,7 @@ public class VendorInfo4 extends AppCompatActivity {
                         vendordata = FirebaseDatabase.getInstance().getReference("vendors").child(""+Type);
                         deliveryInfo = FirebaseDatabase.getInstance().getReference("deliveryInfo");
                         VendorTypeInfo=FirebaseDatabase.getInstance().getReference("VendorsType").child("+91"+PhoneNumber);
+                        registeredVendors=FirebaseDatabase.getInstance().getReference("registered");
 
 
                         VendorInformation vendorInformation = new VendorInformation(nightdelivery, paytmAccepted, nameOFB, OwnerOfB, Address, PhoneNumber, DeliveryInfo, Type);
@@ -81,6 +82,10 @@ public class VendorInfo4 extends AppCompatActivity {
 
                         RetrieveVendorType retrieveVendorType=new RetrieveVendorType(Type);
                         VendorTypeInfo.push().setValue(retrieveVendorType);
+
+
+                        RegisteredVendors vendors=new RegisteredVendors("+91"+PhoneNumber);
+                        registeredVendors.push().setValue(vendors);
 
                         if (DeliveryInfo.compareTo("YES,but Conditionally") == 0) {
                             deliveryInfo.child(PhoneNumber).setValue(deliveryInformation);

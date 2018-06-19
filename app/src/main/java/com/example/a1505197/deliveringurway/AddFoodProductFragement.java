@@ -85,40 +85,48 @@ public class AddFoodProductFragement extends Fragment implements ChangePhotoDial
                 sname=name.getText().toString();
                 scost=cost.getText().toString();
                 sdescription=description.getText().toString();
+                if(sname.equals("")||scost.equals("")||sdescription.equals(""))
+                {
+                    Toast.makeText(getActivity(), "Fill All the fields", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    user= FirebaseAuth.getInstance().getCurrentUser();
+                    productinfo= FirebaseDatabase.getInstance().getReference("productinfo");
+                    storePhoto= FirebaseStorage.getInstance().getReference(user.getPhoneNumber()+"/"+sname);
+                    // Get the data from an ImageView as bytes
+                    vendorImage.setDrawingCacheEnabled(true);
+                    vendorImage.buildDrawingCache();
+                    Bitmap bitmap = vendorImage.getDrawingCache();
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    byte[] data = baos.toByteArray();
+                    createProgressDialog();
 
-                 user= FirebaseAuth.getInstance().getCurrentUser();
-                productinfo= FirebaseDatabase.getInstance().getReference("productinfo");
-                storePhoto= FirebaseStorage.getInstance().getReference(user.getPhoneNumber()+"/"+sname);
-                // Get the data from an ImageView as bytes
-                vendorImage.setDrawingCacheEnabled(true);
-                vendorImage.buildDrawingCache();
-                Bitmap bitmap = vendorImage.getDrawingCache();
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] data = baos.toByteArray();
-                createProgressDialog();
-
-                UploadTask uploadTask = storePhoto.putBytes(data);
-                uploadTask.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                        dismissDialog();
-                    }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                        Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                        Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
-                        dismissDialog();
-                        FoodProductDescription pdescription=new FoodProductDescription(sname,scost,sdescription,taskSnapshot.getDownloadUrl().toString());
-                        productinfo.child("Food").child(user.getPhoneNumber()).child(sname).setValue(pdescription);
-                        getFragmentManager().popBackStack();
+                    UploadTask uploadTask = storePhoto.putBytes(data);
+                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                            dismissDialog();
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                            Toast.makeText(getContext(), "Photo Uploaded", Toast.LENGTH_SHORT).show();
+                            dismissDialog();
+                            FoodProductDescription pdescription=new FoodProductDescription(sname,scost,sdescription,taskSnapshot.getDownloadUrl().toString());
+                            productinfo.child("Food").child(user.getPhoneNumber()).child(sname).setValue(pdescription);
+                            getFragmentManager().popBackStack();
 
 
-                    }
-                });
+                        }
+                    });
+
+                }
+
 
 
 

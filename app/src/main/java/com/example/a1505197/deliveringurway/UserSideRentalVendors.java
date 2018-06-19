@@ -50,7 +50,6 @@ public class UserSideRentalVendors extends AppCompatActivity {
                     VendorRecyclerView.setAdapter(vendorsAdapter);
                     VendorRecyclerView.setHasFixedSize(true);
                     VendorRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
                     vendorsAdapter.notifyDataSetChanged();
 
                 }

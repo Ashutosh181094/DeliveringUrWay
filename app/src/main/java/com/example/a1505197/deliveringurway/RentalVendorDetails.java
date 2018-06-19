@@ -21,7 +21,8 @@ public class RentalVendorDetails extends AppCompatActivity {
     int payTmAccepted;
     Switch aSwitch;
     DatabaseReference Rentalvendordata;
-    DatabaseReference VendorTypeInfo;
+    DatabaseReference VendorTypeInfo,registeredVendors;
+
 
 
     @Override
@@ -67,6 +68,10 @@ public class RentalVendorDetails extends AppCompatActivity {
 
                 RetrieveVendorType retrieveVendorType=new RetrieveVendorType(Type);
                 VendorTypeInfo.push().setValue(retrieveVendorType);
+
+                registeredVendors=FirebaseDatabase.getInstance().getReference("registered");
+                RegisteredVendors vendors=new RegisteredVendors("+91"+PhoneNumber);
+                registeredVendors.push().setValue(vendors);
 
                 Toast.makeText(getApplicationContext(), "Registered", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(RentalVendorDetails.this,VendorLogin.class);

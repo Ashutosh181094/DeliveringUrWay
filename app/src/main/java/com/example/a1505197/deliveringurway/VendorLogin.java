@@ -20,7 +20,13 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class VendorLogin extends AppCompatActivity {
@@ -28,6 +34,8 @@ public class VendorLogin extends AppCompatActivity {
     EditText OTP;
     String sphoneNumber;
     Button sendOtp,Verify,Signup;
+    DatabaseReference registeredvendors;
+    ArrayList<RegisteredVendors> listregisteredVendors;
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCall;
     ProgressBar progressBar;
     FirebaseAuth mAuth;
@@ -47,30 +55,59 @@ public class VendorLogin extends AppCompatActivity {
         progressBar=findViewById(R.id.progressBar);
         mAuth=FirebaseAuth.getInstance();
         hideProgressBar();
+        listregisteredVendors=new ArrayList<>();
 
-        sendOtp.setOnClickListener(new View.OnClickListener() {
+        sendOtp.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
 
-                sphoneNumber = phoneNumber.getText().toString();
-                if (sphoneNumber.equals("")) {
-                    showError();
-                } else {
-                    showProgressBar();
-                    phoneNumber.setVisibility(View.GONE);
-                    sendOtp.setVisibility(View.GONE);
-                    Signup.setVisibility(View.GONE);
-                    Verify.setVisibility(View.VISIBLE);
-                    OTP.setVisibility(View.VISIBLE);
+                sphoneNumber = "+91"+phoneNumber.getText().toString();
+                registeredvendors= FirebaseDatabase.getInstance().getReference("registered");
+                registeredvendors.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                RegisteredVendors registeredVendors = dataSnapshot1.getValue(RegisteredVendors.class);
+                                if (registeredVendors.phone_number.equals(sphoneNumber)) {
+                                    listregisteredVendors.add(registeredVendors);
+                                }
+                            }
+                            if (sphoneNumber.equals("")) {
+                                showError();
+                            }
+                            else
+                            if(listregisteredVendors.size()==0)
+                            {
+                                Toast.makeText(VendorLogin.this, "You Have not registered yet", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                showProgressBar();
+                                phoneNumber.setVisibility(View.GONE);
+                                sendOtp.setVisibility(View.GONE);
+                                Signup.setVisibility(View.GONE);
+                                Verify.setVisibility(View.VISIBLE);
+                                OTP.setVisibility(View.VISIBLE);
 
-                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                            sphoneNumber,
-                            60,
-                            TimeUnit.SECONDS,
-                            VendorLogin.this,
-                            mCall
-                    );
-                }
+                                PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                                        sphoneNumber,
+                                        60,
+                                        TimeUnit.SECONDS,
+                                        VendorLogin.this,
+                                        mCall
+                                );
+                            }
+
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
             }
         });
         Verify.setOnClickListener(new View.OnClickListener() {
@@ -84,8 +121,8 @@ public class VendorLogin extends AppCompatActivity {
         mCall=new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
             public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-            hideProgressBar();
-            signInWithPhoneAuthCredential(phoneAuthCredential);
+                hideProgressBar();
+                signInWithPhoneAuthCredential(phoneAuthCredential);
             }
 
             @Override
@@ -149,7 +186,7 @@ public class VendorLogin extends AppCompatActivity {
                     }
                 });
     }
-//
+    //
     private void showProgressBar()
     {
         progressBar.setVisibility(View.VISIBLE);
