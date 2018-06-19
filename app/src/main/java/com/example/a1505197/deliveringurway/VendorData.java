@@ -106,8 +106,7 @@ public class VendorData extends AppCompatActivity {
                 Vendortotaldata.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists())
-                        {
+
                             if (vendortype.get(0).type.equals("Food")||vendortype.get(0).type.equals("Clothing"))
                             {
                                 data.clear();
@@ -138,11 +137,12 @@ public class VendorData extends AppCompatActivity {
                                 GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getApplicationContext(), 2);
                                 VendorRecyclerView.setLayoutManager(mgridlayoutmanager);
                                 adapter2.notifyDataSetChanged();
+
                             }
 
 
 
-                        }
+
                     }
 
 

@@ -40,6 +40,8 @@ public class VendorDataRentalAdapter extends RecyclerView.Adapter<VendorDataRent
         this.context=context;
         this.data=data;
         inflater=LayoutInflater.from(context);
+        Toast.makeText(context, ""+data.size(), Toast.LENGTH_SHORT).show();
+
 
     }
     @Override
@@ -164,8 +166,9 @@ public class VendorDataRentalAdapter extends RecyclerView.Adapter<VendorDataRent
                     button_delete.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            Toast.makeText(context, ""+data.size(), Toast.LENGTH_SHORT).show();
                             FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-                            DatabaseReference deletedata=FirebaseDatabase.getInstance().getReference("productinfo").child(""+vendortype.get(position).type).child(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
+                            DatabaseReference deletedata=FirebaseDatabase.getInstance().getReference("productinfo").child("Rental").child(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
                             DatabaseReference deleteproductCommentsandRating=FirebaseDatabase.getInstance().getReference(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
                             deletedata.removeValue();
                             deleteproductCommentsandRating.removeValue();

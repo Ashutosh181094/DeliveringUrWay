@@ -92,7 +92,6 @@ public class ProductFragment extends Fragment
                             RentalProductDescription rentalProductDescription= dataSnapshot1.getValue(RentalProductDescription.class);
                             userSideRentalProductDescription.add(rentalProductDescription);
                         }
-                        Toast.makeText(getActivity(), ""+userSideRentalProductDescription.size(), Toast.LENGTH_SHORT).show();
 
                         dataRentalAdapter = new UserSideVendorDataRentalAdapter(getActivity(), userSideRentalProductDescription,phno);
                         userSideVendorDataRecyclerView.setAdapter(dataRentalAdapter);
