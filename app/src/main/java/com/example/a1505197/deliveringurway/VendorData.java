@@ -37,6 +37,7 @@ public class VendorData extends AppCompatActivity {
     DatabaseReference Vendortotaldata,VendorTypeInfo;
     ArrayList<FoodProductDescription> data;
     ArrayList<RentalProductDescription> data2;
+    ArrayList<ClothProductDescription> data3;
     ArrayList<RetrieveVendorType> vendortype;
     FirebaseUser user;
     ImageView logOut;
@@ -44,7 +45,7 @@ public class VendorData extends AppCompatActivity {
 
 
     private static final int REQUEST_CODE=1;
-    VendorDataAdapter adapter;
+    VendorDataFoodAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +88,7 @@ public class VendorData extends AppCompatActivity {
 
         data=new ArrayList<>();
         data2=new ArrayList<>();
+        data3=new ArrayList<>();
         vendortype=new ArrayList<>();
         VendorTypeInfo=FirebaseDatabase.getInstance().getReference("VendorsType").child(""+user.getPhoneNumber());
         VendorTypeInfo.addValueEventListener(new ValueEventListener() {
@@ -107,7 +109,7 @@ public class VendorData extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                            if (vendortype.get(0).type.equals("Food")||vendortype.get(0).type.equals("Clothing"))
+                            if (vendortype.get(0).type.equals("Food"))
                             {
                                 data.clear();
                                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
@@ -115,7 +117,7 @@ public class VendorData extends AppCompatActivity {
                                     FoodProductDescription foodProductDescription = dataSnapshot1.getValue(FoodProductDescription.class);
                                     data.add(foodProductDescription);
                                 }
-                                adapter = new VendorDataAdapter(VendorData.this, data);
+                                adapter = new VendorDataFoodAdapter(VendorData.this, data);
                                 VendorRecyclerView.setAdapter(adapter);
                                 VendorRecyclerView.setHasFixedSize(true);
                                 GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getApplicationContext(), 2);
@@ -123,6 +125,23 @@ public class VendorData extends AppCompatActivity {
                                 adapter.notifyDataSetChanged();
 
                             }
+                            else
+                                if(vendortype.get(0).type.equals("Clothing"))
+                                {
+                                    data3.clear();
+                                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                                    {
+                                        ClothProductDescription clothProductDescription = dataSnapshot1.getValue(ClothProductDescription.class);
+                                        data3.add(clothProductDescription);
+                                    }
+                                     VendorDataClothAdapter clothadapter = new VendorDataClothAdapter(VendorData.this, data3);
+                                    VendorRecyclerView.setAdapter(clothadapter);
+                                    VendorRecyclerView.setHasFixedSize(true);
+                                    GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getApplicationContext(), 2);
+                                    VendorRecyclerView.setLayoutManager(mgridlayoutmanager);
+                                    clothadapter.notifyDataSetChanged();
+
+                                }
                             else
                             {
                                 data2.clear();

@@ -26,16 +26,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.VendorViewHolder>
+public class VendorDataFoodAdapter extends RecyclerView.Adapter<VendorDataFoodAdapter.VendorViewHolder>
 {
     Context context;
     List<FoodProductDescription> data;
     LayoutInflater inflater;
     DatabaseReference VendorTypeInfo;
     ArrayList<RetrieveVendorType> vendortype;
+    String Type;
 
 
-    public VendorDataAdapter(Context context, List<FoodProductDescription> data)
+    public VendorDataFoodAdapter(Context context, List<FoodProductDescription> data)
     {
         this.context=context;
         this.data=data;
@@ -46,7 +47,7 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
     public VendorViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View view= inflater.inflate(R.layout.product_card_view,parent,false);
-        VendorDataAdapter.VendorViewHolder holder=new  VendorDataAdapter.VendorViewHolder(view);
+        VendorDataFoodAdapter.VendorViewHolder holder=new  VendorDataFoodAdapter.VendorViewHolder(view);
         return holder;
     }
 
@@ -114,6 +115,7 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
 
                                         }
                                         Toast.makeText(context,""+vendortype.get(0).type,Toast.LENGTH_LONG).show();
+                                        Type=vendortype.get(0).type;
                                     }
                                     if (vendortype.get(0).type.equals("Food"))
                                     {
@@ -162,7 +164,7 @@ public class VendorDataAdapter extends RecyclerView.Adapter<VendorDataAdapter.Ve
                         @Override
                         public void onClick(View v) {
                             FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-                            DatabaseReference deletedata=FirebaseDatabase.getInstance().getReference("productinfo").child(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
+                            DatabaseReference deletedata=FirebaseDatabase.getInstance().getReference("productinfo").child(""+Type).child(""+data.get(position).product_name);
                             DatabaseReference deleteproductCommentsandRating=FirebaseDatabase.getInstance().getReference(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
                             deletedata.removeValue();
                             deleteproductCommentsandRating.removeValue();
