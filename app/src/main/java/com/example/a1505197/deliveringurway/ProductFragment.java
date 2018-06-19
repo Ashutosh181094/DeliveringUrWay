@@ -25,8 +25,13 @@ public class ProductFragment extends Fragment
 {
     RecyclerView userSideVendorDataRecyclerView;
     ArrayList<FoodProductDescription> userSideFoodProductDescription;
+    ArrayList<ClothProductDescription> userSideClothProductDescription;
+    ArrayList<RentalProductDescription> userSideRentalProductDescription;
+
     DatabaseReference Vendortotaldata;
-    UserSideVendorDataAdapter dataAdapter;
+    UserSideVendorDataFoodAdapter dataAdapter;
+    UserSideVendorDataClothAdapter dataClothAdapter;
+    UserSideVendorDataRentalAdapter dataRentalAdapter;
     int i=0;
     @Nullable
     @Override
@@ -34,32 +39,67 @@ public class ProductFragment extends Fragment
         View view=inflater.inflate(R.layout.fragment_product,container,false);
         userSideVendorDataRecyclerView=view.findViewById(R.id.userSideVendorDataRecyclerView);
         userSideFoodProductDescription =new ArrayList<>();
+        userSideClothProductDescription=new ArrayList<>();
+        userSideRentalProductDescription=new ArrayList<>();
         Intent intent=getActivity().getIntent();
         final String phno=intent.getStringExtra("VendorPhoneNumber");
         VendorType vendorType=new VendorType();
-        String Type=vendorType.getType();
+        final String Type=vendorType.getType();
         userSideFoodProductDescription =new ArrayList<>();
         Vendortotaldata= FirebaseDatabase.getInstance().getReference("productinfo").child(""+Type).child("+91"+phno);
         Vendortotaldata.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists())
-                {
-
-                    userSideFoodProductDescription.clear();
-                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                if (dataSnapshot.exists()) {
+                    if (Type.equals("Food"))
                     {
-                        FoodProductDescription foodProductDescription = dataSnapshot1.getValue(FoodProductDescription.class);
-                        userSideFoodProductDescription.add(foodProductDescription);
+                        userSideFoodProductDescription.clear();
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            FoodProductDescription foodProductDescription = dataSnapshot1.getValue(FoodProductDescription.class);
+                            userSideFoodProductDescription.add(foodProductDescription);
+                        }
+
+                        dataAdapter = new UserSideVendorDataFoodAdapter(getActivity(), userSideFoodProductDescription, phno);
+                        userSideVendorDataRecyclerView.setAdapter(dataAdapter);
+                        userSideVendorDataRecyclerView.setHasFixedSize(true);
+                        GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getActivity(), 2);
+                        userSideVendorDataRecyclerView.setLayoutManager(mgridlayoutmanager);
+                        dataAdapter.notifyDataSetChanged();
+
                     }
+                    else
+                    if(Type.equals("Clothing"))
+                    {
+                        userSideClothProductDescription.clear();
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            ClothProductDescription clothProductDescription = dataSnapshot1.getValue(ClothProductDescription.class);
+                            userSideClothProductDescription.add(clothProductDescription);
+                        }
 
-                    dataAdapter = new UserSideVendorDataAdapter(getActivity(), userSideFoodProductDescription,phno);
-                    userSideVendorDataRecyclerView.setAdapter(dataAdapter);
-                    userSideVendorDataRecyclerView.setHasFixedSize(true);
-                    GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getActivity(), 2);
-                    userSideVendorDataRecyclerView.setLayoutManager(mgridlayoutmanager);
-                    dataAdapter.notifyDataSetChanged();
+                        dataClothAdapter = new UserSideVendorDataClothAdapter(getActivity(), userSideClothProductDescription, phno);
+                        userSideVendorDataRecyclerView.setAdapter(dataClothAdapter);
+                        userSideVendorDataRecyclerView.setHasFixedSize(true);
+                        GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getActivity(), 2);
+                        userSideVendorDataRecyclerView.setLayoutManager(mgridlayoutmanager);
+                        dataClothAdapter.notifyDataSetChanged();
+                    }
+                    else
+                    if(Type.equals("Rental"))
+                    {
+                        userSideRentalProductDescription.clear();
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                        {
+                            RentalProductDescription rentalProductDescription= dataSnapshot1.getValue(RentalProductDescription.class);
+                            userSideRentalProductDescription.add(rentalProductDescription);
+                        }
 
+                        dataRentalAdapter = new UserSideVendorDataRentalAdapter(getActivity(), userSideRentalProductDescription);
+                        userSideVendorDataRecyclerView.setAdapter(dataRentalAdapter);
+                        userSideVendorDataRecyclerView.setHasFixedSize(true);
+                        GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getActivity(), 2);
+                        userSideVendorDataRecyclerView.setLayoutManager(mgridlayoutmanager);
+                        dataRentalAdapter.notifyDataSetChanged();
+                    }
                 }
             }
 

@@ -15,14 +15,14 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 
-public class UserSideVendorDataAdapter extends RecyclerView.Adapter<UserSideVendorDataAdapter.VendorViewHolder>
+public class UserSideVendorDataFoodAdapter extends RecyclerView.Adapter<UserSideVendorDataFoodAdapter.VendorViewHolder>
 {
     Context context;
     ArrayList<FoodProductDescription> data;
     LayoutInflater inflater;
     String phoneNumber;
 
-    public UserSideVendorDataAdapter(Context context, ArrayList<FoodProductDescription> data, String phnoneNumber)
+    public UserSideVendorDataFoodAdapter(Context context, ArrayList<FoodProductDescription> data, String phnoneNumber)
     {
         this.context=context;
         this.data=data;
@@ -34,7 +34,7 @@ public class UserSideVendorDataAdapter extends RecyclerView.Adapter<UserSideVend
     public VendorViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View view= inflater.inflate(R.layout.product_card_view,parent,false);
-        UserSideVendorDataAdapter.VendorViewHolder holder=new  UserSideVendorDataAdapter.VendorViewHolder(view);
+        UserSideVendorDataFoodAdapter.VendorViewHolder holder=new  UserSideVendorDataFoodAdapter.VendorViewHolder(view);
         return holder;
     }
 
