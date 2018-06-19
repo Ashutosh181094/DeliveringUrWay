@@ -1,15 +1,19 @@
 package com.example.a1505197.deliveringurway;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -103,8 +107,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void onClick(DialogInterface dialog, int which) {
                      if(item[which].equals("Camera"))
                      {
-                         Intent cameraIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                         startActivityForResult(cameraIntent,Init.CAMERA_REQUEST_CODE);
+                             if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_GRANTED)
+                             {
+                                 Intent cameraIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                                 startActivityForResult(cameraIntent,Init.CAMERA_REQUEST_CODE);
+                             }
+                             else
+                             {
+                                 requestCameraPermission();
+                             }
+
+
                      }
                      else
                          if(item[which].equals("Gallery"))
@@ -172,12 +185,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         storephoto();
     }
 
+    private void requestCameraPermission()
+    {
+        if(ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.CAMERA))
+        {
+         new AlertDialog.Builder(this)
+                 .setTitle("Permission")
+                 .setMessage("Allow Camera Permission")
+                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                     @Override
+                     public void onClick(DialogInterface dialog, int which)
+                     {
+                         ActivityCompat.requestPermissions(MainActivity.this,new String[] {Manifest.permission.CAMERA},REQUEST_CODE);
+
+                     }
+                 })
+                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                     @Override
+                     public void onClick(DialogInterface dialog, int which) {
+                      dialog.dismiss();
+                     }
+                 })
+                 .create().show();
+        }
+        else
+        {
+            ActivityCompat.requestPermissions(MainActivity.this,new String[] {Manifest.permission.CAMERA},REQUEST_CODE);
+        }
+    }
+
     //menu
 
 
-
-
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    {
+        if(requestCode==REQUEST_CODE)
+        {
+            if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED)
+            {
+                Intent cameraIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent,Init.CAMERA_REQUEST_CODE);
+            }
+        }
+    }
 
     private void storephoto()
     {
