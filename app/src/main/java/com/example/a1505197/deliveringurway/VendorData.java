@@ -109,6 +109,7 @@ public class VendorData extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
+
                             if (vendortype.get(0).type.equals("Food"))
                             {
                                 data.clear();
@@ -150,6 +151,7 @@ public class VendorData extends AppCompatActivity {
                                     RentalProductDescription rentalProductDescription= dataSnapshot1.getValue(RentalProductDescription.class);
                                     data2.add(rentalProductDescription);
                                 }
+                                Toast.makeText(VendorData.this, ""+data2.size(), Toast.LENGTH_SHORT).show();
                                VendorDataRentalAdapter adapter2 = new VendorDataRentalAdapter(VendorData.this, data2);
                                 VendorRecyclerView.setAdapter(adapter2);
                                 VendorRecyclerView.setHasFixedSize(true);

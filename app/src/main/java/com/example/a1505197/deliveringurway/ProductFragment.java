@@ -41,6 +41,7 @@ public class ProductFragment extends Fragment
         userSideFoodProductDescription =new ArrayList<>();
         userSideClothProductDescription=new ArrayList<>();
         userSideRentalProductDescription=new ArrayList<>();
+        Toast.makeText(getActivity(), "Why does", Toast.LENGTH_SHORT).show();
         Intent intent=getActivity().getIntent();
         final String phno=intent.getStringExtra("VendorPhoneNumber");
         VendorType vendorType=new VendorType();
@@ -58,13 +59,15 @@ public class ProductFragment extends Fragment
                             FoodProductDescription foodProductDescription = dataSnapshot1.getValue(FoodProductDescription.class);
                             userSideFoodProductDescription.add(foodProductDescription);
                         }
+                        if(getActivity()!=null) {
 
-                        dataAdapter = new UserSideVendorDataFoodAdapter(getActivity(), userSideFoodProductDescription, phno);
-                        userSideVendorDataRecyclerView.setAdapter(dataAdapter);
-                        userSideVendorDataRecyclerView.setHasFixedSize(true);
-                        GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getActivity(), 2);
-                        userSideVendorDataRecyclerView.setLayoutManager(mgridlayoutmanager);
-                        dataAdapter.notifyDataSetChanged();
+                            dataAdapter = new UserSideVendorDataFoodAdapter(getActivity(), userSideFoodProductDescription, phno);
+                            userSideVendorDataRecyclerView.setAdapter(dataAdapter);
+                            userSideVendorDataRecyclerView.setHasFixedSize(true);
+                            GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getActivity(), 2);
+                            userSideVendorDataRecyclerView.setLayoutManager(mgridlayoutmanager);
+                            dataAdapter.notifyDataSetChanged();
+                        }
 
                     }
                     else
@@ -75,13 +78,15 @@ public class ProductFragment extends Fragment
                             ClothProductDescription clothProductDescription = dataSnapshot1.getValue(ClothProductDescription.class);
                             userSideClothProductDescription.add(clothProductDescription);
                         }
+                        if(getActivity()!=null) {
 
-                        dataClothAdapter = new UserSideVendorDataClothAdapter(getActivity(), userSideClothProductDescription, phno);
-                        userSideVendorDataRecyclerView.setAdapter(dataClothAdapter);
-                        userSideVendorDataRecyclerView.setHasFixedSize(true);
-                        GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getActivity(), 2);
-                        userSideVendorDataRecyclerView.setLayoutManager(mgridlayoutmanager);
-                        dataClothAdapter.notifyDataSetChanged();
+                            dataClothAdapter = new UserSideVendorDataClothAdapter(getActivity(), userSideClothProductDescription, phno);
+                            userSideVendorDataRecyclerView.setAdapter(dataClothAdapter);
+                            userSideVendorDataRecyclerView.setHasFixedSize(true);
+                            GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getActivity(), 2);
+                            userSideVendorDataRecyclerView.setLayoutManager(mgridlayoutmanager);
+                            dataClothAdapter.notifyDataSetChanged();
+                        }
                     }
                     else
                     if(Type.equals("Rental"))
@@ -93,12 +98,14 @@ public class ProductFragment extends Fragment
                             userSideRentalProductDescription.add(rentalProductDescription);
                         }
 
-                        dataRentalAdapter = new UserSideVendorDataRentalAdapter(getActivity(), userSideRentalProductDescription,phno);
-                        userSideVendorDataRecyclerView.setAdapter(dataRentalAdapter);
-                        userSideVendorDataRecyclerView.setHasFixedSize(true);
-                        GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getActivity(), 2);
-                        userSideVendorDataRecyclerView.setLayoutManager(mgridlayoutmanager);
-                        dataRentalAdapter.notifyDataSetChanged();
+                        if(getActivity()!=null) {
+                            dataRentalAdapter = new UserSideVendorDataRentalAdapter(getActivity(), userSideRentalProductDescription, phno);
+                            userSideVendorDataRecyclerView.setAdapter(dataRentalAdapter);
+                            userSideVendorDataRecyclerView.setHasFixedSize(true);
+                            GridLayoutManager mgridlayoutmanager = new GridLayoutManager(getActivity(), 2);
+                            userSideVendorDataRecyclerView.setLayoutManager(mgridlayoutmanager);
+                            dataRentalAdapter.notifyDataSetChanged();
+                        }
                     }
                 }
             }
