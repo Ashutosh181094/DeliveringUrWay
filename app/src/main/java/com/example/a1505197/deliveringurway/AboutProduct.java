@@ -195,27 +195,13 @@ int Rating,Ratingsum=0;
     {
         Rating=ratingValue;
         Comment=comment;
-        DatabaseReference userImagedata=FirebaseDatabase.getInstance().getReference("users").child(username.getUid());
-        userImagedata.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists())
-                {
-                    UserInfo userInfo=dataSnapshot.getValue(UserInfo.class);
-                    databaseReferenceRatings= FirebaseDatabase.getInstance().getReference().child("+91"+phoneNumber).child(productName);
-                    Rating rating=new Rating(username.getEmail(),Comment,userInfo.image_url,Rating);
-                    databaseReferenceRatings.push().setValue(rating);
-                    Comment="";
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
+        UserImage userImage=new UserImage();
+        String image_url=userImage.getImage_url();
+        Toast.makeText(this, ""+image_url, Toast.LENGTH_SHORT).show();
+        databaseReferenceRatings= FirebaseDatabase.getInstance().getReference().child("+91"+phoneNumber).child(productName);
+        Rating rating=new Rating(username.getEmail(),Comment,Rating);
+        databaseReferenceRatings.push().setValue(rating);
+        Comment="";
     }
 
     @Override

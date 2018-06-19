@@ -1,15 +1,14 @@
 package com.example.a1505197.deliveringurway;
 
 public class Rating  {
-    String user,comments,image_url;
+    String user,comments;
        int rating;
     public Rating() {
     }
 
-    public Rating(String user, String comments, String image_url, int rating) {
+    public Rating(String user, String comments, int rating) {
         this.user = user;
         this.comments = comments;
-        this.image_url = image_url;
         this.rating = rating;
     }
 
@@ -29,13 +28,7 @@ public class Rating  {
         this.comments = comments;
     }
 
-    public String getImage_url() {
-        return image_url;
-    }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
-    }
 
     public int getRating() {
         return rating;

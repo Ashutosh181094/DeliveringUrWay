@@ -47,7 +47,8 @@ import java.io.ByteArrayOutputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
+{
     CarouselView carouselView;
     Toolbar toolbar;
     FirebaseAuth mAuth;
@@ -364,6 +365,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             .centerCrop()
                             .into(userCircleImage);
                     name.setText(userInfo.name);
+                    UserImage userImage=new UserImage();
+                    userImage.setImage_url(userInfo.image_url);
+
                 }
 
 
@@ -409,7 +413,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                Toast.makeText(MainActivity.this, "load"+taskSnapshot.getDownloadUrl().toString(), Toast.LENGTH_SHORT).show();
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                UserImage userImage=new UserImage();
+                userImage.setImage_url(taskSnapshot.getDownloadUrl().toString());
                 userData.child(user.getUid()).child("image_url").setValue(taskSnapshot.getDownloadUrl().toString());
             }
         });

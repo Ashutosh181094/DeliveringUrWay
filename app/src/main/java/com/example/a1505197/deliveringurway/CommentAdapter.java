@@ -37,12 +37,13 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.VendorVi
     @Override
     public void onBindViewHolder(VendorViewHolder holder, int position)
     {
-
+       UserImage userImage=new UserImage();
+       String image_url=userImage.getImage_url();
 
         holder.tvComment.setText(data.get(position).comments);
         holder.tvComment.setTextSize(15);
         Picasso.with(context)
-                .load(data.get(position).image_url)
+                .load(image_url)
                 .fit()
                 .centerCrop()
                 .into(holder.userImage);
