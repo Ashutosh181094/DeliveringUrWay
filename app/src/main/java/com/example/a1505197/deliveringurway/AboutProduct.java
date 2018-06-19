@@ -76,11 +76,7 @@ int ratingone=0,ratingtwo=0,ratingthree=0,ratingfour=0,ratingfive=0;
         clothProductDescriptions=new ArrayList<>();
         rentalProductDescriptions=new ArrayList<>();
        final String s[]=new String[5];
-        s[0]="ONE";
-        s[1]="TWO";
-        s[2]="THREE";
-        s[3]="FOUR";
-        s[4]="FIVE";
+
 
         databaseReferenceRatings=FirebaseDatabase.getInstance().getReference().child("+91"+phoneNumber).child(productName);
         databaseReferenceRatings.addValueEventListener(new ValueEventListener() {
@@ -123,6 +119,53 @@ int ratingone=0,ratingtwo=0,ratingthree=0,ratingfour=0,ratingfive=0;
                             {
                                ratingfive++;
                             }
+                            if(ratingone!=0)
+                            {
+                                s[0]="ONE";
+                            }
+                            else
+                            {
+                                s[0]="";
+                            }
+                            if(ratingtwo!=0)
+                            {
+                                s[1]="TWO";
+                            }
+                            else {
+                                s[1] = "";
+                            }
+                            if(ratingthree!=0)
+                            {
+                                s[2]="THREE";
+                            }
+                            else
+                            {
+                                s[2]="";
+                            }
+                            if(ratingfour!=0)
+                            {
+                                s[3]="FOUR";
+                            }
+                            else
+                            {
+                                s[3]="";
+                            }
+
+                            if(ratingfive!=0)
+                            {
+                                s[4]="FIVE";
+                            }
+                            else
+                            {
+                                s[4]="";
+                            }
+
+
+
+
+
+
+
                         Ratingsum=Ratingsum+rating.rating;
                     }
                     a[0]=ratingone;
@@ -135,10 +178,11 @@ int ratingone=0,ratingtwo=0,ratingthree=0,ratingfour=0,ratingfive=0;
                     {
                         p.add(new PieEntry(a[i],s[i]));
                     }
-                    PieDataSet pieDataSet=new PieDataSet(p,"Rating");
+                    PieDataSet pieDataSet=new PieDataSet(p,"Rating For Products");
                     pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
                     PieData pieData=new PieData(pieDataSet);
                     PieChart chart=findViewById(R.id.ratingChart);
+                    chart.setCenterText("Ratings");
                     chart.setData(pieData);
                     chart.animateY(1000);
                     chart.invalidate();
