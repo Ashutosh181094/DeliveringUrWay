@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 import com.stepstone.apprating.AppRatingDialog;
 import com.stepstone.apprating.listener.RatingDialogListener;
 
@@ -55,6 +56,7 @@ int Rating,Ratingsum=0;
         Intent intent=getIntent();
         ratingBar=findViewById(R.id.ratingBar);
         Description=findViewById(R.id.product_description);
+        imageView=findViewById(R.id.itemImage);
         ratings=new ArrayList<>();
         productName=intent.getStringExtra("productName");
         phoneNumber=intent.getStringExtra("phoneNumber");
@@ -123,6 +125,11 @@ int Rating,Ratingsum=0;
                    FoodProductDescription foodProductDescription = dataSnapshot.getValue(FoodProductDescription.class);
                    userSideFoodProductDescription.add(foodProductDescription);
                    Description.setText(userSideFoodProductDescription.get(0).description);
+                   Picasso.with(getApplicationContext())
+                           .load(userSideFoodProductDescription.get(0).image_url)
+                           .fit()
+                           .centerCrop()
+                           .into(imageView);
                }
                else
                    if(Type.equals("Clothing"))
@@ -132,6 +139,11 @@ int Rating,Ratingsum=0;
                        ClothProductDescription clothProductDescription = dataSnapshot.getValue(ClothProductDescription.class);
                        clothProductDescriptions.add(clothProductDescription);
                        Description.setText(clothProductDescriptions.get(0).size_available+"\n"+clothProductDescriptions.get(0).description);
+                       Picasso.with(getApplicationContext())
+                               .load(clothProductDescriptions.get(0).image_url)
+                               .fit()
+                               .centerCrop()
+                               .into(imageView);
                    }
                    else
                    {
@@ -140,6 +152,11 @@ int Rating,Ratingsum=0;
                        RentalProductDescription rentalProductDescription = dataSnapshot.getValue(RentalProductDescription.class);
                        rentalProductDescriptions.add(rentalProductDescription);
                        Description.setText("Cost/Day->"+rentalProductDescriptions.get(0).cost_per_day+"\nCost/Hour->"+rentalProductDescriptions.get(0).cost_per_hour);
+                       Picasso.with(getApplicationContext())
+                               .load(rentalProductDescriptions.get(0).image_url)
+                               .fit()
+                               .centerCrop()
+                               .into(imageView);
                    }
                 }
             }
