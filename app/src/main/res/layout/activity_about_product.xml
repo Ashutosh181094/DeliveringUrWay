@@ -69,7 +69,9 @@
                         android:id="@+id/ratingBar"
                         android:rating="0"
                         android:max="5"
-                        android:isIndicator="true"/>
+                        android:isIndicator="true"
+                        android:theme="@style/RatingBar"
+                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -89,6 +91,12 @@
                         android:padding="12dp"
                         android:textColor="@color/Black"
                         android:textSize="20sp"/>
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:id="@+id/ratingChart">
+
+                    </com.github.mikephil.charting.charts.PieChart>
 
 
                 </LinearLayout>
@@ -99,7 +107,12 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/commenttextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Comments"
@@ -109,6 +122,15 @@
                         android:textSize="20sp"
                         android:layout_marginLeft="20dp"
                         />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:textSize="20sp"
+                        android:text="(0)"
+                        android:id="@+id/numofComment"
+                        android:textColor="@color/Black"/>
+                    </LinearLayout>
 
 
 

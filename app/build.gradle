@@ -38,6 +38,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.google.android.gms:play-services-places:11.8.0'
     implementation 'com.stepstone.apprating:app-rating:2.0.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
 }
 apply plugin: 'com.google.gms.google-services'
