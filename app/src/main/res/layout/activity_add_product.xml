@@ -10,19 +10,22 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp">
 
             <android.support.v7.widget.CardView
-                android:layout_width="340dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="30dp"
+                android:paddingBottom="4dp">
 
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    >
 
                     <ImageView
                         android:id="@+id/vendorImage"
@@ -67,22 +70,53 @@
                         android:textSize="20dp"
                         android:layout_marginLeft="20dp"/>
 
+
                     <EditText
                         android:id="@+id/etCost"
                         android:layout_width="match_parent"
+                        android:layout_marginStart="10dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/etCostPrice"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etCost"
+                        android:id="@+id/etCostHalf"
+                        android:layout_marginStart="10dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="H"
+                        android:id="@+id/food_vendor_cost_half"
+                        android:textSize="20dp"
+                        android:layout_below="@+id/etCost"
+                        android:layout_marginStart="4dp"
+                        android:layout_alignLeft="@+id/etCostHalf"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="F"
+                        android:id="@+id/food_vendor_cost_full"
+                        android:textSize="20dp"
+                        android:layout_below="@+id/etCostPrice"
+                        android:layout_marginStart="4dp"
+                        android:layout_alignLeft="@+id/etCost"
+                        />
 
                     <TextView
                         android:id="@+id/tvdescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/etCost"
+                        android:layout_below="@+id/etCostHalf"
                         android:text="Description"
                         android:textColor="@color/Black"
                         android:textSize="20dp"
                         android:layout_marginLeft="20dp"/>
+
 
                     <EditText
                         android:id="@+id/etdescription"
@@ -98,7 +132,10 @@
                         android:id="@+id/btnUpload"
                         android:background="@drawable/loginbutton"
                         android:layout_marginTop="40dp"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/White"
+                        android:layout_centerHorizontal="true"
+                        android:paddingHorizontal="50dp"/>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
         </RelativeLayout>

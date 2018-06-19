@@ -65,16 +65,47 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/etCostPrice"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etCost"
+                        android:id="@+id/etCostHalf"
+                        android:layout_marginStart="10dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="H"
+                        android:id="@+id/food_vendor_cost_half"
+                        android:textSize="20dp"
+                        android:layout_below="@+id/etCost"
+                        android:layout_marginStart="4dp"
+                        android:layout_alignLeft="@+id/etCostHalf"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="F"
+                        android:id="@+id/food_vendor_cost_full"
+                        android:textSize="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/etCostPrice"
+                        android:layout_marginStart="4dp"
+                        android:layout_alignLeft="@+id/etCost"
+                        />
 
                     <TextView
                         android:id="@+id/tvdescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/etCost"
+                        android:layout_below="@+id/etCostHalf"
                         android:text="Description"
                         android:textColor="@color/Black"
                         android:textSize="20dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginLeft="20dp"/>
 
                     <EditText
