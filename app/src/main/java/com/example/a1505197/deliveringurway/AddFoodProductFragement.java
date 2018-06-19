@@ -1,6 +1,9 @@
 package com.example.a1505197.deliveringurway;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -181,6 +184,31 @@ public class AddFoodProductFragement extends Fragment implements ChangePhotoDial
     public void onStart() {
         super.onStart();
 
+    }
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setCancelable(false);
+        builder.setMessage("Are you sure you want to Cancel adding product?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                //if user pressed "yes", then he is allowed to exit from application
+                Intent intent= new Intent(AddFoodProductFragement.this.getActivity(),VendorData.class);
+                startActivity(intent);
+
+                //finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
 ////////////
