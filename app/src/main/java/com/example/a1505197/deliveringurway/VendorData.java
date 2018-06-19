@@ -108,7 +108,7 @@ public class VendorData extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists())
                         {
-                            if (vendortype.get(0).type.equals("Food"))
+                            if (vendortype.get(0).type.equals("Food")||vendortype.get(0).type.equals("Clothes"))
                             {
                                 data.clear();
                                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
