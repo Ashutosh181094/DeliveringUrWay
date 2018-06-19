@@ -1,19 +1,14 @@
 package com.example.a1505197.deliveringurway;
 
-import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -27,12 +22,14 @@ public class UserSideVendorDataRentalAdapter extends RecyclerView.Adapter<UserSi
     LayoutInflater inflater;
 
     ArrayList<RetrieveVendorType> vendortype;
+    String phoneNumber;
 
 
-    public UserSideVendorDataRentalAdapter(Context context, List<RentalProductDescription> data)
+    public UserSideVendorDataRentalAdapter(Context context, List<RentalProductDescription> data,String phnoneNumber)
     {
         this.context=context;
         this.data=data;
+        this.phoneNumber=phnoneNumber;
         inflater=LayoutInflater.from(context);
 
     }
@@ -80,36 +77,14 @@ public class UserSideVendorDataRentalAdapter extends RecyclerView.Adapter<UserSi
             imageView=itemView.findViewById(R.id.product_card_Image);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    final int position=getAdapterPosition();
-                    GetEditProductNameInFragment getEditProductNameInFragment=new GetEditProductNameInFragment();
-                    getEditProductNameInFragment.setName(data.get(position).product_name);
-                    final Dialog dialog=new Dialog(context);
-                    dialog.setContentView(R.layout.dialog_edit_delete);
-                    dialog.show();
-                    Button button_edit=dialog.findViewById(R.id.btn_edit);
-                    Button button_delete=dialog.findViewById(R.id.btn_delete);
-                    vendortype=new ArrayList<>();
-
-                    button_edit.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v)
-                        {
-
-
-                        }
-                    });
-                    button_delete.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-                            DatabaseReference deletedata=FirebaseDatabase.getInstance().getReference("productinfo").child(""+vendortype.get(position).type).child(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
-                            DatabaseReference deleteproductCommentsandRating=FirebaseDatabase.getInstance().getReference(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
-                            deletedata.removeValue();
-                            deleteproductCommentsandRating.removeValue();
-                            dialog.dismiss();
-                        }
-                    });
+                public void onClick(View v)
+                {
+                    int pos;
+                    pos=getAdapterPosition();
+                    Intent intent=new Intent(context,AboutProduct.class);
+                    intent.putExtra("productName",data.get(pos).product_name);
+                    intent.putExtra("phoneNumber",phoneNumber);
+                    context.startActivity(intent);
 
 
                 }
