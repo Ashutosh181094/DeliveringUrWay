@@ -4,11 +4,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,8 +35,9 @@ public class VendorDataRentalAdapter extends RecyclerView.Adapter<VendorDataRent
     List<RentalProductDescription> data;
     LayoutInflater inflater;
     DatabaseReference VendorTypeInfo;
+    DatabaseReference VendorProductedit;
     ArrayList<RetrieveVendorType> vendortype;
-
+    FirebaseUser user;
 
     public VendorDataRentalAdapter(Context context, List<RentalProductDescription> data)
     {
@@ -53,7 +57,7 @@ public class VendorDataRentalAdapter extends RecyclerView.Adapter<VendorDataRent
     }
 
     @Override
-    public void onBindViewHolder(VendorViewHolder holder, int position)
+    public void onBindViewHolder(final VendorViewHolder holder, final int position)
     {
 
 
@@ -65,6 +69,71 @@ public class VendorDataRentalAdapter extends RecyclerView.Adapter<VendorDataRent
                 .fit()
                 .centerCrop()
                 .into(holder.imageView);
+        holder.popupimageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+                PopupMenu popupMenu=new PopupMenu(context,holder.popupimageView);
+                popupMenu.inflate(R.menu.edit_rental_menu);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId())
+                        {
+                            case R.id.edit_rental_menu_edit_photo:
+                                Toast.makeText(context, "edit photo", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.edit_rental_menu_edit_cost_per_hour:
+                                final Dialog dialog=new Dialog(context);
+                                dialog.setContentView(R.layout.dialog_edit_rental_cost_per_hour);
+                                dialog.show();
+                                Button upload=dialog.findViewById(R.id.cost_per_hour_update);
+                                upload.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        EditText costperhour=dialog.findViewById(R.id.et_cost_per_hour);
+                                        String scostperhour=costperhour.getText().toString();
+
+                                        VendorProductedit=FirebaseDatabase.getInstance().getReference("productinfo").child("Rental")
+                                                .child(""+FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber())
+                                                .child(""+data.get(position).product_name);
+                                        VendorProductedit.child("cost_per_hour").setValue((Object)scostperhour);
+                                        dialog.dismiss();
+                                    }
+                                });
+
+
+
+
+                                break;
+                                case R.id.edit_rental_menu_edit_cost_per_day:
+                                    final Dialog dialog2=new Dialog(context);
+                                    dialog2.setContentView(R.layout.dialog_edit_rental_cost_per_day);
+                                    dialog2.show();
+                                    Button uploadcostperday=dialog2.findViewById(R.id.cost_per_day_update);
+                                    uploadcostperday.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            EditText costperday=dialog2.findViewById(R.id.et_cost_per_day);
+                                            String scostperday=costperday.getText().toString();
+
+                                            VendorProductedit=FirebaseDatabase.getInstance().getReference("productinfo").child("Rental")
+                                                    .child(""+FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber())
+                                                    .child(""+data.get(position).product_name);
+                                            VendorProductedit.child("cost_per_day").setValue((Object)scostperday);
+                                            dialog2.dismiss();
+                                        }
+                                    });
+
+                                    break;
+
+                        }
+                        return false;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
 
     }
 
@@ -78,7 +147,7 @@ public class VendorDataRentalAdapter extends RecyclerView.Adapter<VendorDataRent
         TextView productname;
         TextView costperhour;
         TextView costperday;
-        ImageView imageView;
+        ImageView imageView,popupimageView;
 
         public VendorViewHolder(View itemView) {
             super(itemView);
@@ -86,6 +155,7 @@ public class VendorDataRentalAdapter extends RecyclerView.Adapter<VendorDataRent
             costperhour=itemView.findViewById(R.id.PriceEnteredCostPerHour);
             costperday=itemView.findViewById(R.id.PriceEnteredCostPerDay);
             imageView=itemView.findViewById(R.id.product_card_Image);
+            popupimageView=itemView.findViewById(R.id.more_optionsRental);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
