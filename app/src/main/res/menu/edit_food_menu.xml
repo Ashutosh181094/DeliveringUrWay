@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/edit_food_menu_edit_photo"
+        android:title="Set new photo">
+
+    </item>
+
+    <item
+        android:id="@+id/edit_food_menu_edit_name"
+        android:title="Edit Name">
+
+    </item>
+
+
+    <item
+        android:id="@+id/edit_food_menu_edit_cost_per_full"
+        android:title="Edit Cost for full"
+        ></item>
+    <item
+        android:id="@+id/edit_food_menu_edit_cost_per_half"
+        android:title="Edit Cost for half"
+        ></item>
+</menu>
