@@ -21,4 +21,8 @@
         android:id="@+id/edit_food_menu_edit_cost_per_half"
         android:title="Edit Cost for half"
         ></item>
+    <item
+        android:id="@+id/edit_rental_menu_delete"
+        android:title="Delete"
+        ></item>
 </menu>

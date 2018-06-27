@@ -21,4 +21,9 @@
         android:id="@+id/edit_rental_menu_edit_cost_per_day"
         android:title="Edit Cost per day"
         ></item>
+
+    <item
+        android:id="@+id/edit_rental_menu_delete"
+        android:title="Delete"
+        ></item>
 </menu>

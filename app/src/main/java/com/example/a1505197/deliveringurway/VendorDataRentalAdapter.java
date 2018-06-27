@@ -127,6 +127,65 @@ public class VendorDataRentalAdapter extends RecyclerView.Adapter<VendorDataRent
 
                                     break;
 
+                                    //EDIT NAME
+
+/*
+                            case R.id.edit_rental_menu_edit_name:
+                                final Dialog dialog3=new Dialog(context);
+                                dialog3.setContentView(R.layout.dialog_edit_rental_product_name);
+                                dialog3.show();
+                                Button uploadname=dialog3.findViewById(R.id.product_name_update);
+                                uploadname.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        EditText newName=dialog3.findViewById(R.id.et__edit_product_name);
+                                        String name=newName.getText().toString();
+
+                                        VendorProductedit=FirebaseDatabase.getInstance().getReference("productinfo").child("Rental")
+                                                .child(""+FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber())
+                                                .child(""+data.get(position).product_name);
+                                        VendorProductedit.child("product_name").setValue((Object)name);
+                                        dialog3.dismiss();
+                                    }
+                                });
+
+                                break;
+
+*/
+
+
+
+
+
+
+
+                            case R.id.edit_rental_menu_delete:
+                                final Dialog dialog4=new Dialog(context);
+                                dialog4.setContentView(R.layout.edit_confirm_delete);
+                                dialog4.show();
+                                Button delete=dialog4.findViewById(R.id.confirm_delete_button);
+                                delete.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Toast.makeText(context, ""+data.size(), Toast.LENGTH_SHORT).show();
+                                        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+                                        DatabaseReference deletedata=FirebaseDatabase.getInstance().getReference("productinfo").child("Rental").child(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
+                                        DatabaseReference deleteproductCommentsandRating=FirebaseDatabase.getInstance().getReference(""+user.getPhoneNumber()).child(""+data.get(position).product_name);
+                                        deletedata.removeValue();
+                                        deleteproductCommentsandRating.removeValue();
+
+                                        dialog4.dismiss();
+                                    }
+                                });
+
+                                break;
+
+
+
+
+
+
+
                         }
                         return false;
                     }
@@ -156,9 +215,14 @@ public class VendorDataRentalAdapter extends RecyclerView.Adapter<VendorDataRent
             costperday=itemView.findViewById(R.id.PriceEnteredCostPerDay);
             imageView=itemView.findViewById(R.id.product_card_Image);
             popupimageView=itemView.findViewById(R.id.more_optionsRental);
+
+            //non useful code for edit ..replaced by options menu on view
+
+          /*
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     final int position=getAdapterPosition();
                     GetEditProductNameInFragment getEditProductNameInFragment=new GetEditProductNameInFragment();
                     getEditProductNameInFragment.setName(data.get(position).product_name);
@@ -168,7 +232,7 @@ public class VendorDataRentalAdapter extends RecyclerView.Adapter<VendorDataRent
                     Button button_edit=dialog.findViewById(R.id.btn_edit);
                     Button button_delete=dialog.findViewById(R.id.btn_delete);
                     vendortype=new ArrayList<>();
-
+/*
                     button_edit.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v)
@@ -248,7 +312,11 @@ public class VendorDataRentalAdapter extends RecyclerView.Adapter<VendorDataRent
 
 
                 }
+
             });
+
+            //ends here
+           */
 
         }
     }

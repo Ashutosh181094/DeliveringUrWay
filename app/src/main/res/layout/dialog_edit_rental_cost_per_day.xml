@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/White"
-    android:paddingHorizontal="40dp">
+android:padding="30dp">
     <TextView
         android:id="@+id/btn_edit"
         android:layout_width="wrap_content"
@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/Black"
         android:hint="Enter cost"
+        android:inputType="number"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="40dp"
         android:background="@color/White"
@@ -35,6 +36,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_cost_per_day"
+        android:background="@drawable/loginbutton"
+        android:textColor="@color/White"
+        android:paddingHorizontal="60dp"
         android:layout_centerHorizontal="true"
         android:text="Update"/>
 

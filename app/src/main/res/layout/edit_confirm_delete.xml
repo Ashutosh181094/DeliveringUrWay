@@ -7,41 +7,27 @@
 
     android:padding="30dp">
     <TextView
-        android:id="@+id/btn_edit"
+        android:id="@+id/tv_edit_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/Black"
         android:layout_centerHorizontal="true"
         android:textSize="20dp"
-        android:text="Edit Cost/Hour"
+        android:text="Confirm delete"
         android:background="@color/White"
 
         />
-    <EditText
-        android:id="@+id/et_cost_per_hour"
-        android:layout_below="@+id/btn_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="EnterCost"
-        android:inputType="number"
-        android:textColor="@color/Black"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="30dp"
-        android:background="@color/White"
 
-        android:layout_centerHorizontal="true"
-
-
-        />
     <Button
-        android:id="@+id/cost_per_hour_update"
+        android:id="@+id/confirm_delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_cost_per_hour"
+        android:layout_below="@+id/tv_edit_delete"
         android:background="@drawable/loginbutton"
         android:textColor="@color/White"
         android:paddingHorizontal="60dp"
+        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
-        android:text="Update"/> />
+        android:text="DELETE"/>
 
 </RelativeLayout>
