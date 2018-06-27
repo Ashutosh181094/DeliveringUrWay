@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/edit_food_menu_edit_photo"
+        android:title="Set new photo">
+
+    </item>
+
+    <item
+        android:id="@+id/edit_clothing_menu_edit_name"
+        android:title="Edit Name">
+
+    </item>
+
+
+    <item
+        android:id="@+id/edit_clothing_menu_edit_cost"
+        android:title="Edit Cost"
+        ></item>
+    <item
+        android:id="@+id/edit_clothing_menu_edit_size"
+        android:title="Edit Size available"
+        ></item>
+    <item
+        android:id="@+id/edit_clothing_menu_edit_description"
+        android:title="Edit description"
+        ></item>
+    <item
+        android:id="@+id/edit_rental_menu_delete"
+        android:title="Delete"
+        ></item>
+</menu>
