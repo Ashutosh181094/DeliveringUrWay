@@ -5,6 +5,14 @@
         android:title="Set new photo">
 
     </item>
+
+    <item
+        android:id="@+id/edit_rental_menu_edit_name"
+        android:title="Edit Name">
+
+    </item>
+
+
     <item
         android:id="@+id/edit_rental_menu_edit_cost_per_hour"
         android:title="Edit Cost per hour"
