@@ -73,7 +73,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/etCostPerHour"
-                        android:text="Cost/day"
+                        android:text="Cost/day (12 Hours)"
                         android:textColor="@color/Black"
                         android:textSize="20dp"
                         android:layout_marginLeft="20dp"/>
@@ -88,9 +88,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/etCostPerDay"
-                        android:layout_marginLeft="120dp"
+                        android:layout_centerHorizontal="true"
                         android:text="Upload"
                         android:id="@+id/btnUpload"
+                        android:textColor="@color/White"
+                        android:paddingHorizontal="60dp"
                         android:background="@drawable/loginbutton"
                         android:layout_marginTop="40dp"
                         android:layout_marginBottom="10dp"/>

@@ -79,14 +79,14 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginLeft="20dp"/>
 
-                    <Spinner
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/SizeChart"
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/spinnerSizeChart">
+                    <!--<Spinner-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@+id/SizeChart"-->
+                        <!--android:layout_marginTop="10dp"-->
+                        <!--android:id="@+id/spinnerSizeChart">-->
 
-                    </Spinner>
+                    <!--</Spinner>-->
                     <TextView
                         android:id="@+id/tvdescription"
                         android:layout_width="match_parent"
@@ -97,6 +97,52 @@
                         android:textSize="20dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="20dp" />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/SizeChart"
+                        android:layout_marginTop="20dp"
+                        android:id="@+id/spinnerSizeChart"
+                        android:layout_centerHorizontal="true"
+                        >
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="S"
+                            android:layout_marginHorizontal="30dp"
+
+                            android:id="@+id/chkbox_small"/>
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="M"
+                            android:id="@+id/chkbox_medium"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_toEndOf="@+id/chkbox_small"/>
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="L"
+                            android:id="@+id/chkbox_large"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_toEndOf="@+id/chkbox_medium"/>
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="XL"
+                            android:id="@+id/chkbox_xlarge"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_below="@+id/chkbox_small"/>
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="XXL"
+                            android:id="@+id/chkbox_xxlarge"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_below="@+id/chkbox_small"
+                            android:layout_toEndOf="@+id/chkbox_xlarge"/>
+
+                    </RelativeLayout>
 
                     <EditText
                         android:id="@+id/etdescription"
@@ -111,9 +157,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/etdescription"
-                        android:layout_marginLeft="120dp"
+                        android:textColor="@color/White"
+                        android:paddingHorizontal="60dp"
                         android:text="Upload"
                         android:id="@+id/btnUpload"
+                        android:layout_centerHorizontal="true"
                         android:background="@drawable/loginbutton"
                         android:layout_marginTop="40dp"
                         android:layout_marginBottom="10dp"/>
