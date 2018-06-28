@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/White"
+    android:padding="30dp">
+    <TextView
+        android:id="@+id/clothing_edit_size_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Black"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:text="Select sizes available"
+        android:background="@color/White"
+
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/clothing_edit_size_textview"
+        android:layout_marginTop="20dp"
+        android:id="@+id/SizeChart"
+        android:layout_centerHorizontal="true"
+        >
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S"
+            android:layout_marginHorizontal="30dp"
+
+            android:id="@+id/chkbox_small"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M"
+            android:id="@+id/chkbox_medium"
+            android:layout_marginHorizontal="30dp"
+            android:layout_toEndOf="@+id/chkbox_small"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L"
+            android:id="@+id/chkbox_large"
+            android:layout_marginHorizontal="30dp"
+            android:layout_toEndOf="@+id/chkbox_medium"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XL"
+            android:id="@+id/chkbox_xlarge"
+            android:layout_marginHorizontal="30dp"
+            android:layout_below="@+id/chkbox_small"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XXL"
+            android:id="@+id/chkbox_xxlarge"
+            android:layout_marginHorizontal="30dp"
+            android:layout_below="@+id/chkbox_small"
+            android:layout_toEndOf="@+id/chkbox_xlarge"/>
+
+    </RelativeLayout>
+
+
+        />
+    <Button
+        android:id="@+id/cost_per_day_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SizeChart"
+        android:background="@drawable/loginbutton"
+        android:textColor="@color/White"
+        android:paddingHorizontal="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:text="Update"/>
+
+</RelativeLayout>
